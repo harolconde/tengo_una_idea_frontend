@@ -1,0 +1,79 @@
+// Extra small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap
+
+// Small devices (landscape phones, 576px and up)
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) { 
+    
+    //Login
+    .container-description-login{
+        display: none;
+    }
+    .container-card-login{
+        width: 100%;
+        min-width: 90% !important;
+    }
+    .container-card-login .card-login {
+        width: 90%;
+    }
+    .title-page-mobile{
+        font-weight: 600;
+        color: #555;
+        display: block !important;
+        margin: 0 auto;
+    }
+
+    //Barra de navegacion
+    .container-g-home .navbar{
+        display: block !important;
+        width: 100%;
+        z-index: 1001;
+    }
+
+    //Chat
+    .container-g-home .container-chat{
+        position: fixed;
+        height: 100%;
+        width: 100% !important;
+    }
+    .container-g-home .container-chat .container-g-chat{
+        display: none;
+    }
+    .container-g-home .container-chat .title-chat-ideas{
+        display: none;
+    }
+    .container-g-home .container-chat .container-chats-ideas{
+        border-top: 1px solid rgba(0, 0, 0, 0.125);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+        height: 79% !important;
+        top: 60px;
+    }
+    .container-g-home .container-chat .see-all-ideas{
+        display: none !important;
+    }
+    .container-g-home .container-board-home .container-ideas .container-write-idea .container-idea-general .container-title-idea::before, .container-g-home .container-board-home .container-ideas .container-write-idea .container-idea-general .container-title-idea::after{
+        display: none !important;
+    }
+    .container-g-home .container-chat .write-message-mobil{
+        height: 14%;
+        background-color: #fafafa;
+        display: block !important;
+    }
+ }
+
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) { 
+
+ }
+
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991.98px) { 
+
+ }
+
+// Large devices (desktops, less than 1200px)
+@media (max-width: 1199.98px) { 
+
+ }
+
+// Extra large devices (large desktops)

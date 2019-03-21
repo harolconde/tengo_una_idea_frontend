@@ -1,0 +1,139 @@
+// Estilos de la pagina login
+
+ /* Estilos login  */
+.container-general-login{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-image: url('../img/textura/giftly.png');
+    background-repeat: repeat;
+    background-color: #114357;  /* fallback for old browsers */
+    background-color: -webkit-linear-gradient(to left, #F29492, #114357);  /* Chrome 10-25, Safari 5.1-6 */
+    background-color: linear-gradient(to left, #F29492, #114357); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.container-general-login .container{
+    height: 100%;
+}
+.container-general-login .container .row-login{
+    height: 100%;
+}
+.container-l{
+    width: 100%;
+    height: 100%;
+    position: relative; 
+}
+.title-page-mobile{
+    font-weight: 300;
+    color: #555;
+    display: none;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    padding: 14px;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+.card-login{
+    width: 47%;
+    height: auto;
+    position: absolute;
+    right: 0;
+    top: 10%;
+    background-color: #fafafa;
+    padding-top: 15px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
+.card-login .car-title{
+    padding: 50px 8px 50px 8px;
+}
+.card-login .car-title .img-login{
+    width: 40%;
+    display: block;
+    margin: 0 auto;
+}
+.card-login .card-content{
+    padding: 20px 0px 20px 0px;
+    padding-bottom: 0 !important;
+}
+ .card-login .card-content .input-card-login{
+    background-color: rgba(12, 12,12, 0.01);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid #616161 ;
+    border-radius: 0;
+ }
+ .card-login .card-content .card-content-input{
+    padding: 0px 15px 0px 15px;
+ }
+ .card-login .card-content .card-action{
+    width: 100%;
+    height: auto;
+    margin-top: 60px;
+ }
+ .card-login .card-content .card-action .btn-submit-login{
+    width: 100%;
+    height: 65px;
+    background-color: #f5925d;
+    text-transform: uppercase;
+    color: #fafafa;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif, 'Calibri';
+    border-radius: 0px 0px 5px 5px;
+ }
+ .card-login .card-content .card-action .btn-submit-login:hover{
+    opacity: 0.8;
+    transition: 0.4s; 
+ }
+
+ /* Descripcion */
+ .container-general .container-title{
+    width: 79%;
+    position: absolute;
+    left: 0;
+    top: 10%;
+ }
+ .container-general .container-title .title-page .title-page-idea{
+     font-size: 3rem;
+     font-weight: 400;
+     margin-bottom: 100px;
+     color: #555;
+     position: relative;
+ }
+ .container-general .container-title .container-description{
+     font-size: 2rem;
+     font-weight: 300;
+     color: #555;
+     top: 150%;
+     position: absolute;
+ }
+ .container-general .container-title .title-page .title-page-idea .title-idea-block{
+     display: block;
+     position: absolute;
+     right: 0;
+    //  font-size: 4.5rem;
+    //  color: #ffea00;
+    //  text-shadow: -1px -1px 8px #ffea00;
+    font-family: 'Poiret One', cursive;
+    text-transform: uppercase;
+    display: block;
+    font-size: 8rem;
+    color: #555;
+    text-shadow: #114357;  /* fallback for old browsers */
+    text-shadow: -webkit-linear-gradient(to left, #F29492, #114357);  /* Chrome 10-25, Safari 5.1-6 */
+    text-shadow: linear-gradient(to left, #F29492, #114357); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */;
+    font-weight: bold;
+    letter-spacing: -4px;
+    text-align: center;
+    // background: linear-gradient(to bottom, #ece4d9 0%,#e9dfd1 100%);
+    //position: absolute;
+    //padding: 100px 200px;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%,-50%);
+    // border-radius: 20px;
+ }

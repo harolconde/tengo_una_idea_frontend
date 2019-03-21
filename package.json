@@ -1,0 +1,25 @@
+{
+  "name": "tengo_una_idea_final",
+  "version": "0.1.0",
+  "description": "Tablero de ideas",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel sources/js -d deploy/js --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Tablero",
+    "ideas",
+    "post"
+  ],
+  "author": "Harol Conde - Nataly Heredia",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-sass": "^4.0.2"
+  }
+}

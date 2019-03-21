@@ -1,0 +1,18 @@
+
+
+// Variables y responsive de la app
+
+@import 'lib/variables';
+@import 'lib/responsive';
+
+// Paginas o layouts de la app
+
+@import 'layout/login';
+@import 'layout/navbar';
+@import 'layout/home';
+
+// Fuentes y estilos base de la app
+
+@import 'base/fonts';
+@import 'base/general';
+

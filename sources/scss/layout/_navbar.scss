@@ -1,0 +1,79 @@
+
+//Navigation
+
+/*  Estilos barra de navegacion */
+.container-g-home .navbar{
+    display: none;
+    width: 100%;
+    height: 60px;
+    background-color: #263238;
+    padding: 8px 0px 0px 0px;
+    
+}
+.container-g-home .navbar .navbar-collapse{
+    // padding-top: 10px;
+    // padding-bottom: 10px;
+    // padding-left: 10px;
+    // padding-right: 10px;
+    background-color: #fafafa;
+    color: #444;
+    border-bottom: 1px solid rgba(0,0,0,.125);
+    // margin-top: 5px;
+}
+.container-g-home .navbar .navbar-collapse .navbar-nav .active{
+    background-color: #f5f5f5;
+}
+.list-group-item.active{
+    border-color: rgba(0, 0, 0, 0.125);
+}
+.container-g-home .navbar .navbar-collapse .navbar-nav .active a{
+    color: #333;   
+}
+.container-g-home .navbar .navbar-collapse ul li a{
+    color: #555;
+}
+.container-g-home .navbar .btn-hamburguer{
+    position: absolute;
+    top: 10px;
+    right: 12px;
+}
+.container-g-home .navbar .dates-user-mobil{
+    display: flex;
+    width: 80%;
+    align-items: center;
+}
+.container-g-home .navbar .dates-user-mobil .img-user-perfil-mobil{
+    width: 23%;
+    position: relative;
+    left: 10px;
+    padding-bottom: 4px;
+}
+.container-g-home .navbar .dates-user-mobil .img-user-perfil-mobil img{
+    width: 50%;
+    height: auto;
+}
+.container-g-home .navbar .dates-user-mobil .container-name-user-mobil span{
+    color: #fafafa;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+
+//Comments mobil
+
+.write-message-mobil .row-write-message-mobil{
+    height: 100%;
+}
+.btn-send-message-mobil{
+    height: 100%;
+    align-items: center;
+    justify-content: left;
+    display: flex;
+}
+.btn-send-message-mobil .btn-send-mobil{
+    margin: 0;
+    padding: 0;
+}
+.btn-send-message-mobil .btn-send-mobil i{
+    font-size: 4.5rem;
+}
