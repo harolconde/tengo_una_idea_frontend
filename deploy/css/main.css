@@ -948,6 +948,19 @@
   justify-content: center;
 }
 
+.container .all-Ideas-All-User {
+  position: relative;
+}
+
+.container .all-Ideas-All-User .container-idea {
+  display: flex;
+}
+
+.container .all-Ideas-All-User .container-idea .idea-show-all {
+  width: 200px;
+  height: 100px;
+}
+
 /* Estilos de las fuentes*/
 h1, h2, h3, h4, h5, h6, span, p, a {
   font-family: 'Roboto', sans-serif, Verdana;

@@ -38,18 +38,16 @@ btnPowerof.addEventListener('click', function () {
     btnLogout.style.display = 'none';
   }
 }); //Template board de ideas
-
-var btnLinksTemplate = document.getElementsByClassName('ideas-link-template');
-
-var showIdeas = function showIdeas() {
-  for (var i = 0; i < btnLinksTemplate.length; i++) {
-    btnLinksTemplate.addEventListener('click', function (e) {
-      e.preventDefault;
-      console.log(this);
-    });
-  }
-}; // Carrusel de imagenes
-
+// const btnLinksTemplate = document.getElementsByClassName('ideas-link-template')
+// let showIdeas = function(){
+//     for(let i = 0; i < btnLinksTemplate.length; i++){
+//         btnLinksTemplate[i].addEventListener('click', function(e){
+//             e.preventDefault()
+//             console.log(this)
+//         })
+//     }
+// }
+// Carrusel de imagenes
 
 $(document).ready(function () {
   $('.owl-cards').owlCarousel({

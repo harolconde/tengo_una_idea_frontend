@@ -256,6 +256,42 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
     <script>
         const home = document.getElementById('container-board-home')
         const btnOff = document.getElementById('btnLogout')
+        // Links de los templates ideas muertas y finalizadas
+
+        const btnIfinish = document.getElementById('idea-link-f')
+        const btnIdead = document.getElementById('idea-link-d')
+
+        btnIfinish.addEventListener('click', (e) => {
+            e.preventDefault()
+            let contentIfinish = 
+            `
+                <div class="container">
+                    <section>
+                        <div class="row">
+                            <div class="col-12">
+                                <a href="#"><i class="fas fa-arrow-left"></i> Vover al inicio</a>
+                            </div>
+                            <div class="col-12 all-Ideas-All-User">
+                                <h1 class="center">Ideas finalizadas</h1>
+                                <p class="center description-allUser">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique voluptate non sint? Dolorem, quia incidunt? Perferendis vitae iste, quasi voluptate culpa provident! Perferendis dolores vero optio in architecto porro totam!
+                                </p>
+                                <div class="container-idea">
+                                    <div class="idea-show-all">
+
+                                        <div class="message-allIdea">
+                                            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, corporis quae corrupti voluptatem odio sed atque nihil temporibus modi obcaecati.</span>
+                                        </div>
+                                        <button class="btn btn-block bg-primary">Votar</button>
+                                    </div>
+                                <div>
+                            </div>
+                        </div>
+                    <section>
+                <div>
+            `
+            home.innerHTML = contentIfinish
+        })
 
         btnOff.addEventListener('click', function(){
         let content = 
@@ -271,10 +307,9 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                 </div>
             `
             home.innerHTML = content;
-
-
-
         })
+
+
     </script>
     
   </body>

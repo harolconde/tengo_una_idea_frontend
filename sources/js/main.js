@@ -42,16 +42,17 @@ btnPowerof.addEventListener('click', () => {
 })
 
 //Template board de ideas
-const btnLinksTemplate = document.getElementsByClassName('ideas-link-template')
+// const btnLinksTemplate = document.getElementsByClassName('ideas-link-template')
 
-let showIdeas = function(){
-    for(let i = 0; i < btnLinksTemplate.length; i++){
-        btnLinksTemplate.addEventListener('click', function(e){
-            e.preventDefault
-            console.log(this)
-        })
-    }
-}
+// let showIdeas = function(){
+//     for(let i = 0; i < btnLinksTemplate.length; i++){
+
+//         btnLinksTemplate[i].addEventListener('click', function(e){
+//             e.preventDefault()
+//             console.log(this)
+//         })
+//     }
+// }
 
 
 
