@@ -84,4 +84,26 @@ $(document).ready(function(){
     })
 })
 
+// funcion acordeon perfil del usuario 
+let acordeon = document.getElementsByClassName('container-all-idea-user')
+//let panel = document.querySelectorAll('.list-allideas')
+let varBol = false
+
+for(let i = 0; i < acordeon.length; i++){
+    acordeon[i].addEventListener('click', function(){
+        this.classList.toggle('activa')
+        let panel = this.nextElementSibling;
+        if(panel.style.display === 'none'){
+            panel.style.display = 'block'
+        }
+        else{
+            panel.style.display = 'none'
+        }
+    })
+}
+
+
+
+
+
 

@@ -1,0 +1,95 @@
+.contenedor{
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 0.9rem;
+    line-height: 135%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.contenedor .contatiner-idea-credentials{
+    position: relative;
+    width: 80%;
+    margin: 10px;
+    padding: 5px;
+    background-color: #fafafa;
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
+}
+.contenedor .contatiner-idea-credentials::before, .contenedor .contatiner-idea-credentials::after{
+    content: '';
+    height: 0;
+    width: 0;
+    position: absolute;
+    display: block;
+    border-width: 10px 15px 12px 0px;
+    border-style: solid;
+    border-color: transparent #fafafa;
+    left: -14px;
+    z-index: 1000; 
+    top: 8px; 
+}
+.contenedor .contatiner-idea-credentials::before{
+    content: '';
+    height: 0;
+    width: 0;
+    position: absolute;
+    display: block;
+    border-width: 10px 15px 12px 0px;
+    border-style: solid;
+    border-color: transparent rgba(0, 0, 0, 0.3);
+    left: -15px;
+    z-index: 1000; 
+    top: 8px; 
+}
+.name-user-idea{
+    color: #555;
+    border-bottom: 1px dotted #DDD;
+    font-size: 0.9rem;
+    padding: 0 0 10px 0;
+    clear: both;
+    font-weight: 600;
+}
+
+/*voting style */
+.votos {
+    width: 100%;
+    /* width: 138px; */
+    /* margin: 0 0 10px 40px; */
+    border: 2px solid #eee;
+    padding: 10px;
+    list-style: none;
+    border-radius: 4px;
+    margin-bottom: 0;
+}
+
+.votos .dw_button {
+    background: url(images/votos.png) -64px 0 no-repeat;
+    float: left;
+    height: 42px;
+    width: 64px;
+    cursor:pointer;
+    margin:0 0 0 10px;
+}
+.votos .dw_button:hover {
+    background: url(images/votos.png) no-repeat -64px -42px;
+}
+
+.votos .up_button {
+    background: url(images/votos.png) 0 0 no-repeat;
+    /* float: left; */
+    height: auto;
+    width: 64px;
+    cursor: pointer;
+    
+}
+.votos .up_button:hover{background: url(images/votos.png) no-repeat 0 -42px;}
+
+
+.voting_btn span{font-size: 11px;font-family:Arial,sans-serif;margin:10px 0 0 37px;display:block;width:27px;height:22px;line-height:22px;text-align:center}
+
+.likes_votado{background: url(images/votos.png) no-repeat 0 -42px !important;}
+.hates_votado{background: url(images/votos.png) no-repeat -64px -42px !important;}

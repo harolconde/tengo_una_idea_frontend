@@ -961,6 +961,546 @@
   height: 100px;
 }
 
+.contenedor {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  font-size: 0.9rem;
+  line-height: 135%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.contenedor .contatiner-idea-credentials {
+  position: relative;
+  width: 80%;
+  margin: 10px;
+  padding: 5px;
+  background-color: #fafafa;
+  border-radius: 4px;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
+}
+
+.contenedor .contatiner-idea-credentials::before, .contenedor .contatiner-idea-credentials::after {
+  content: '';
+  height: 0;
+  width: 0;
+  position: absolute;
+  display: block;
+  border-width: 10px 15px 12px 0px;
+  border-style: solid;
+  border-color: transparent #fafafa;
+  left: -14px;
+  z-index: 1000;
+  top: 8px;
+}
+
+.contenedor .contatiner-idea-credentials::before {
+  content: '';
+  height: 0;
+  width: 0;
+  position: absolute;
+  display: block;
+  border-width: 10px 15px 12px 0px;
+  border-style: solid;
+  border-color: transparent rgba(0, 0, 0, 0.3);
+  left: -15px;
+  z-index: 1000;
+  top: 8px;
+}
+
+.name-user-idea {
+  color: #555;
+  border-bottom: 1px dotted #DDD;
+  font-size: 0.9rem;
+  padding: 0 0 10px 0;
+  clear: both;
+  font-weight: 600;
+}
+
+/*voting style */
+.votos {
+  width: 100%;
+  /* width: 138px; */
+  /* margin: 0 0 10px 40px; */
+  border: 2px solid #eee;
+  padding: 10px;
+  list-style: none;
+  border-radius: 4px;
+  margin-bottom: 0;
+}
+
+.votos .dw_button {
+  background: url(images/votos.png) -64px 0 no-repeat;
+  float: left;
+  height: 42px;
+  width: 64px;
+  cursor: pointer;
+  margin: 0 0 0 10px;
+}
+
+.votos .dw_button:hover {
+  background: url(images/votos.png) no-repeat -64px -42px;
+}
+
+.votos .up_button {
+  background: url(images/votos.png) 0 0 no-repeat;
+  /* float: left; */
+  height: auto;
+  width: 64px;
+  cursor: pointer;
+}
+
+.votos .up_button:hover {
+  background: url(images/votos.png) no-repeat 0 -42px;
+}
+
+.voting_btn span {
+  font-size: 11px;
+  font-family: Arial,sans-serif;
+  margin: 10px 0 0 37px;
+  display: block;
+  width: 27px;
+  height: 22px;
+  line-height: 22px;
+  text-align: center;
+}
+
+.likes_votado {
+  background: url(images/votos.png) no-repeat 0 -42px !important;
+}
+
+.hates_votado {
+  background: url(images/votos.png) no-repeat -64px -42px !important;
+}
+
+.container-g-user {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  position: relative;
+}
+
+.container-g-user .container-user1 {
+  height: 100%;
+  background: white;
+  display: grid;
+  grid-template-rows: 25% 15% 60%;
+  position: fixed;
+  width: 23%;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  z-index: 1000;
+}
+
+.container-g-user .container-user1.admon1 {
+  grid-template-rows: 25% 15% 60%;
+}
+
+.container-g-user .container-user1 .container-imagen {
+  background: lightcyan;
+  width: 100%;
+  color: black;
+}
+
+.container-g-user .container-user1 .container-datos {
+  display: flex;
+  justify-content: center;
+}
+
+.container-datos .container-name-user {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container-g-user .container-user1 .container-edit .container-btn-edicion .btn-edition-toogle {
+  width: 100%;
+  border-top: 0.5px solid #555;
+  border-bottom: 0.5px solid #555;
+  border-left: none;
+  border-right: none;
+  background-color: #263238;
+  height: 40px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-family: 'Roboto', sans-serif, Verdana;
+  font-size: 1.2rem;
+}
+
+.container-g-user .container-user1 .container-edit .container-btn-edicion button .icon-edit {
+  position: absolute;
+  left: 15px;
+}
+
+.container-g-user .container-user1 .container-edit .container-btn-edicion button .icon-seemore-user {
+  position: absolute;
+  right: 15px;
+}
+
+.container-g-user .container-user1 .container-edit .container-edit-datos {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-g-user .container-user1 .container-edit .container-edit-datos .box-datose {
+  width: 90%;
+  height: auto;
+  margin: 15px;
+  border-radius: 2px;
+  border: 0.5px solid #555;
+  border: none;
+}
+
+.container-g-user .container-user1 .container-edit .container-edit-datos .box-datose .form-group {
+  margin-bottom: 0;
+  font-family: 'Roboto', sans-serif, Verdana;
+  border-top: none;
+}
+
+.container-g-user .container-user1 .container-edit .container-edit-datos .box-datose .form-group .form-control {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 0.5px solid #444;
+  border-radius: 0;
+}
+
+.container-g-user .container-user1 .container-edit .container-btn-edicion .container-btn-acept-datos {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.container-g-user .container-user1 .container-edit .container-btn-edicion .container-btn-acept-datos .btn-submit-duser {
+  border: 3px solid #ffa000;
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  margin-top: 15%;
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #555;
+  border-color: #555;
+  padding: 14px;
+}
+
+.container-g-user .container-user1 .container-edit .container-btn-edicion .container-btn-acept-datos .btn-submit-duser.btn-submit-admon {
+  margin-top: 6%;
+}
+
+.container-g-user .container-user1 .container-edit .container-btn-edicion .container-btn-acept-datos .btn-submit-duser:hover {
+  background-color: #ffb74d;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
+  border: 3px solid #ffb74d;
+  color: #fff;
+  transition: 0.2s;
+}
+
+.container-g-user .container-user1 .container-edit .container-volveri {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 5px 10px 5px 10px;
+  text-align: right;
+}
+
+.container-g-user .container-user2 {
+  background-image: url("../img/texturas/ww.png");
+  display: grid;
+  grid-template-rows: 1fr 3fr;
+  position: absolute;
+  right: 0;
+  width: 77%;
+  padding: 30px;
+}
+
+.container-g-user .container-user2 .titulo-ideas-user {
+  padding: 30px;
+  color: #000;
+  font-size: 2.5rem;
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.container-g-user .container-user2 .list-ideas-user {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: absolute;
+  top: 64%;
+}
+
+.container-g-user .container-user2 .list-ideas-user .caja-list .container-all-idea-user {
+  width: 90%;
+  height: auto;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  position: relative;
+  flex-direction: column;
+  border: 0.2px solid #888;
+  padding: 10px 15px 10px 15px;
+  cursor: pointer;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
+  background-color: rgba(255, 160, 0, 0.5);
+  font-weight: 600;
+  color: #444;
+}
+
+.container-g-user .container-user2 .list-ideas-user .caja-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container-g-user .container-user2 .list-ideas-user .caja-list i {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+
+.container-g-user .container-user2 .list-ideas-user .caja-list .list-allideas {
+  width: 90%;
+  height: auto;
+  border-radius: 2px;
+  display: none;
+  justify-content: left;
+  align-items: center;
+  position: relative;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.activa {
+  background-color: #fff;
+}
+
+.container-g-user .container-user2 .list-ideas-user .caja-list .list-allideas .list-group {
+  width: 100%;
+}
+
+.container-g-user .container-user2 .list-ideas-user .caja-list .list-allideas .list-group .list-group-item .fa-eye {
+  position: absolute;
+  margin-right: 3%;
+  font-size: 1rem;
+  padding-top: 4px;
+}
+
+.container-g-user .container-user2 .list-ideas-user .caja-list .list-allideas .list-group .list-group-item .fa-trash-alt {
+  font-size: 1.3rem;
+}
+
+.container-g-user .container-user2 .list-ideas-user .caja-list .list-allideas .list-group .list-group-item .eye-ideas {
+  margin-right: 0;
+}
+
+.container-g-user {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  position: relative;
+}
+
+.container-g-user .container-user1 .container-imagen {
+  background: lightcyan;
+  width: 100%;
+  color: black;
+}
+
+.container-g-user .container-user1 .container-datos {
+  display: flex;
+  justify-content: center;
+}
+
+.container-datos .container-name-user {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container-g-user .container-user1 .container-edit .container-btn-edicion .btn-edition-toogle {
+  width: 100%;
+  border-top: 0.5px solid #555;
+  border-bottom: 0.5px solid #555;
+  border-left: none;
+  border-right: none;
+  background-color: #263238;
+  height: 40px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-family: 'Roboto', sans-serif, Verdana;
+  font-size: 1.2rem;
+}
+
+.container-g-user .container-user1 .container-edit .container-btn-edicion button .icon-edit {
+  position: absolute;
+  left: 15px;
+}
+
+.container-g-user .container-user1 .container-edit .container-btn-edicion button .icon-seemore-user {
+  position: absolute;
+  right: 15px;
+}
+
+.container-g-user .container-user1 .container-edit .container-edit-datos {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-g-user .container-user1 .container-edit .container-edit-datos .box-datose {
+  width: 90%;
+  height: auto;
+  margin: 15px;
+  border-radius: 2px;
+  border: 0.5px solid #555;
+  border: none;
+}
+
+.container-g-user .container-user1 .container-edit .container-edit-datos .box-datose .form-group {
+  margin-bottom: 0;
+  font-family: 'Roboto', sans-serif, Verdana;
+  border-top: none;
+}
+
+.container-g-user .container-user1 .container-edit .container-edit-datos .box-datose .form-group .form-control {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 0.5px solid #444;
+  border-radius: 0;
+}
+
+.container-g-user .container-user1 .container-edit .container-btn-edicion .container-btn-acept-datos {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.container-g-user .container-user1 .container-edit .container-admon-usuarios {
+  width: 100%;
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  margin-top: 30px;
+  border-top: 0.5px solid #555;
+  border-bottom: 0.5px solid #555;
+  border-left: none;
+  border-right: none;
+  background-color: #263238;
+  position: relative;
+  color: #fff;
+  font-family: 'Roboto', sans-serif, Verdana;
+  font-size: 1.2rem;
+}
+
+.container-g-user .container-user1 .container-edit .container-admon-ideas {
+  width: 100%;
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  border-top: 0.5px solid #555;
+  border-bottom: 0.5px solid #555;
+  border-left: none;
+  border-right: none;
+  background-color: #263238;
+  position: relative;
+  color: #fff;
+  font-family: 'Roboto', sans-serif, Verdana;
+  font-size: 1.2rem;
+}
+
+.container-g-user .container-user1 .container-edit .container-btn-edicion .container-btn-acept-datos .btn-submit-duser:hover {
+  background-color: #ffb74d;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
+  border: 3px solid #ffb74d;
+  color: #fff;
+  transition: 0.2s;
+}
+
+.container-g-user .container-user1 .container-edit .container-volveri {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 5px 10px 5px 10px;
+  text-align: right;
+}
+
+.container-g-user .section-admon-ideas {
+  width: 77%;
+  position: absolute;
+  right: 0;
+}
+
+.container-g-user .section-admon-datos {
+  width: 77%;
+  right: 0;
+  position: absolute;
+  display: grid;
+  grid-template-rows: 1fr 1.5fr;
+}
+
+.container .section-perfil-admon {
+  display: grid;
+  grid-template-rows: 1fr 1fr 3fr;
+}
+
+.container .section-perfil-admon .admon-titulo-usuarios {
+  padding-bottom: 0;
+}
+
+.container .section-perfil-admon .admon-volver-perfil {
+  bottom: 0;
+  width: 100%;
+  padding: 5px 10px 5px 10px;
+  text-align: left;
+}
+
+.container .section-perfil-admon .card .card-body-card {
+  background-color: #c0ca33;
+  border-top: 1px solid #e0e0e0;
+}
+
+.container .section-perfil-admon .card .card-body .span-admon-postuladas {
+  float: right;
+}
+
+.container .section-perfil-admon .card .card-body .span-admon-aprobadas {
+  float: right;
+}
+
+.container .section-perfil-admon .card .card-body .btn-card-edit {
+  float: left;
+  padding-left: 15%;
+}
+
+.container .section-perfil-admon .card .card-body .btn-card-remove {
+  float: right;
+  padding-right: 15%;
+}
+
+.container .section-perfil-admon .card .card-body-card .btn-card-i {
+  border: none;
+  background-color: transparent;
+  font-size: 1.5rem;
+}
+
 /* Estilos de las fuentes*/
 h1, h2, h3, h4, h5, h6, span, p, a {
   font-family: 'Roboto', sans-serif, Verdana;
@@ -972,7 +1512,7 @@ h1, h2, h3, h4, h5, h6, span, p, a {
 }
 
 body {
-  background-color: #316767;
+  background-color: #fafafa;
 }
 
 button {

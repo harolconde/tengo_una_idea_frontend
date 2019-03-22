@@ -1,0 +1,40 @@
+.container .section-perfil-admon{
+    display: grid;
+    grid-template-rows: 1fr 1fr 3fr;
+}
+.container .section-perfil-admon .admon-titulo-usuarios{
+    padding-bottom: 0;
+}
+
+.container .section-perfil-admon .admon-volver-perfil{
+    bottom: 0;
+    width: 100%;
+    padding: 5px 10px 5px 10px;
+    text-align: left;
+
+}
+.container .section-perfil-admon .card .card-body-card{
+    background-color: #c0ca33;
+    border-top: 1px solid #e0e0e0;
+    
+}
+.container .section-perfil-admon .card .card-body .span-admon-postuladas{
+    float: right;
+}
+.container .section-perfil-admon .card .card-body .span-admon-aprobadas{
+    float: right;
+}
+.container .section-perfil-admon .card .card-body .btn-card-edit{
+    float: left;
+    padding-left: 15%;
+}
+.container .section-perfil-admon .card .card-body .btn-card-remove{
+    float: right;
+    padding-right: 15%;
+
+}
+.container .section-perfil-admon .card .card-body-card .btn-card-i{
+    border: none;
+    background-color: transparent;
+    font-size: 1.5rem;
+}

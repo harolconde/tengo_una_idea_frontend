@@ -17,23 +17,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
         <link rel="stylesheet" href="css/owl.carousel.css">
         <link rel="stylesheet" href="css/owl.theme.default.min.css">
         <style type="text/css">
-.contenedor{width:600px;margin-right:auto;margin-left:auto;font-family:Georgia;font-size:13px;line-height:135%}
-h3{color: #979797;border-bottom: 1px dotted #DDD;font-size:21px;padding:0 0 10px 0;clear:both}
 
-/*voting style */
-.votos {float:right;width:138px;margin:0 0 10px 40px;border:2px solid #eee;padding:10px;list-style:none;}
-
-.votos .dw_button {background: url(images/votos.png) -64px 0 no-repeat;float: left;height: 42px;width: 64px;cursor:pointer;margin:0 0 0 10px}
-.votos .dw_button:hover {background: url(images/votos.png) no-repeat -64px -42px;}
-
-.votos .up_button {background: url(images/votos.png) 0 0 no-repeat;float: left;height: 42px;width: 64px;cursor:pointer;}
-.votos .up_button:hover{background: url(images/votos.png) no-repeat 0 -42px;}
-
-.voting_btn{float:left;}
-.voting_btn span{font-size: 11px;font-family:Arial,sans-serif;margin:10px 0 0 37px;display:block;width:27px;height:22px;line-height:22px;text-align:center}
-
-.likes_votado{background: url(images/votos.png) no-repeat 0 -42px !important;}
-.hates_votado{background: url(images/votos.png) no-repeat -64px -42px !important;}
 
 </style>
     </head>
@@ -96,18 +80,26 @@ h3{color: #979797;border-bottom: 1px dotted #DDD;font-size:21px;padding:0 0 10px
                         <div class="contenedor">
                             <?php
                             require_once("config.php");
-                            $posts=$db->query("SELECT * FROM ideas order by votos desc");
+                            $posts=$db->query("SELECT * FROM ideas order by f_creacion desc");
                             if ($filas=$posts->fetch_array())
                             {
                                 do
                                 {
                                 ?>
-                                <h3><?php echo utf8_encode($filas["id_user"]); ?></h3>
-                                <ul class="votos">
-                                    <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_Idea"]; ?>"><span><?php echo $filas["votos"]; ?></span></li>
+                                <div class="contatiner-idea-credentials">
+                                    <div class="container-name-votes">
+                                        <h3 class="name-user-idea"><?php echo utf8_encode($filas["id_user"]); ?> {{newName}}</h3>
+                                    </div>
                                     
-                                </ul>
-                                <p><?php echo utf8_encode($filas["argumento"]); ?></p>
+                                    
+                                    <p><?php echo utf8_encode($filas["argumento"]); ?></p>
+                                    <ul class="votos bg-primary">
+                                        <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_Idea"]; ?>">
+                                            <span><?php echo $filas["votos"]; ?></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                               
                                 <?php
                                 }
                                 while($filas=$posts->fetch_array());
