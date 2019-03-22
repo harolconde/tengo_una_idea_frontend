@@ -16,6 +16,26 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/owl.carousel.css">
         <link rel="stylesheet" href="css/owl.theme.default.min.css">
+        <style type="text/css">
+.contenedor{width:600px;margin-right:auto;margin-left:auto;font-family:Georgia;font-size:13px;line-height:135%}
+h3{color: #979797;border-bottom: 1px dotted #DDD;font-size:21px;padding:0 0 10px 0;clear:both}
+
+/*voting style */
+.votos {float:right;width:138px;margin:0 0 10px 40px;border:2px solid #eee;padding:10px;list-style:none;}
+
+.votos .dw_button {background: url(images/votos.png) -64px 0 no-repeat;float: left;height: 42px;width: 64px;cursor:pointer;margin:0 0 0 10px}
+.votos .dw_button:hover {background: url(images/votos.png) no-repeat -64px -42px;}
+
+.votos .up_button {background: url(images/votos.png) 0 0 no-repeat;float: left;height: 42px;width: 64px;cursor:pointer;}
+.votos .up_button:hover{background: url(images/votos.png) no-repeat 0 -42px;}
+
+.voting_btn{float:left;}
+.voting_btn span{font-size: 11px;font-family:Arial,sans-serif;margin:10px 0 0 37px;display:block;width:27px;height:22px;line-height:22px;text-align:center}
+
+.likes_votado{background: url(images/votos.png) no-repeat 0 -42px !important;}
+.hates_votado{background: url(images/votos.png) no-repeat -64px -42px !important;}
+
+</style>
     </head>
 	<body>
         <div id="app" class="container-g-home">
@@ -73,26 +93,30 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                 <div class="container-chats-ideas">	
                     <!--<button><a href="php/todos.php">Todos los usuarios registrados</a></button> -->
                     <div class="container-all-new-chat p-2">
-                        <ul v-for="item of message" class="list-container-chats-ideas">
-                            <li class="content-message-chat">
-                                <div class="message-chat">
-                                    <div class="img-user-chat">
-                                        <img v-bind:src="image" alt="">
-                                    </div>
-                                    <div class="title-message-chat" >
-                                        <dl>
-                                            <dt>{{item.names}}</dt> 
-                                        </dl>
-                                    </div>
-                                    <div class="comment-message-chat">
-                                        <p class="h6">{{item.comment}}</p>
-                                    </div>
-                                    <div class="btn-vote-chat">
-                                        <button class="btn btn-block">Votar</button>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
+                        <div class="contenedor">
+                            <?php
+                            require_once("config.php");
+                            $posts=$db->query("SELECT * FROM ideas order by votos desc");
+                            if ($filas=$posts->fetch_array())
+                            {
+                                do
+                                {
+                                ?>
+                                <h3><?php echo utf8_encode($filas["id_user"]); ?></h3>
+                                <ul class="votos">
+                                    <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_Idea"]; ?>"><span><?php echo $filas["votos"]; ?></span></li>
+                                    
+                                </ul>
+                                <p><?php echo utf8_encode($filas["argumento"]); ?></p>
+                                <?php
+                                }
+                                while($filas=$posts->fetch_array());
+                            }
+                            else echo "<h3>No hay entradas disponibles.</h3>";
+                            ?>
+                            
+
+                        </div>
                     </div>
                 </div>
                 <div class="see-all-ideas">
@@ -220,12 +244,12 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                         <div class="col-1"></div>
                         <div class="link-i-finish box-links-i col-5 ">
                             <div class="i-finish i-id-board">
-                                <a href="" class="ideas-finish ideas-link-template" id="idea-link-f">Ideas finalizadas</a>
+                                <a href="" class="ideas-finish">Ideas finalizadas</a>
                             </div>
                         </div>
                         <div class="link-i-dead box-links-i col-5 ">
                             <div class="i-dead i-id-board">
-                                <a href="" class="ideas-dead ideas-link-template" id="idea-link-d">Ideas muertas</a>
+                                <a href="" class="ideas-dead">Ideas muertas</a>
                             </div>
                         </div>
                         <div class="col-1"></div>
@@ -254,63 +278,57 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script>
-        const home = document.getElementById('container-board-home')
-        const btnOff = document.getElementById('btnLogout')
-        // Links de los templates ideas muertas y finalizadas
+    const home = document.getElementById('container-board-home')
+    const btnOff = document.getElementById('btnLogout')
 
-        const btnIfinish = document.getElementById('idea-link-f')
-        const btnIdead = document.getElementById('idea-link-d')
+    btnOff.addEventListener('click', function(){
+    let content = 
+        `
+            <div>
+                <span>
+                    <?php  
 
-        btnIfinish.addEventListener('click', (e) => {
-            e.preventDefault()
-            let contentIfinish = 
-            `
-                <div class="container">
-                    <section>
-                        <div class="row">
-                            <div class="col-12">
-                                <a href="#"><i class="fas fa-arrow-left"></i> Vover al inicio</a>
-                            </div>
-                            <div class="col-12 all-Ideas-All-User">
-                                <h1 class="center">Ideas finalizadas</h1>
-                                <p class="center description-allUser">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique voluptate non sint? Dolorem, quia incidunt? Perferendis vitae iste, quasi voluptate culpa provident! Perferendis dolores vero optio in architecto porro totam!
-                                </p>
-                                <div class="container-idea">
-                                    <div class="idea-show-all">
-
-                                        <div class="message-allIdea">
-                                            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, corporis quae corrupti voluptatem odio sed atque nihil temporibus modi obcaecati.</span>
-                                        </div>
-                                        <button class="btn btn-block bg-primary">Votar</button>
-                                    </div>
-                                <div>
-                            </div>
-                        </div>
-                    <section>
-                <div>
-            `
-            home.innerHTML = contentIfinish
-        })
-
-        btnOff.addEventListener('click', function(){
-        let content = 
-            `
-                <div>
-                    <span>
-                        <?php  
-
-                            echo $_SESSION["user_id"];
-                        ?>
-                    </span>
-                    <button class="btn btn-lg" id="btn-prueba-template">Hasme click</button>
-                </div>
-            `
-            home.innerHTML = content;
-        })
-
-
+                        echo $_SESSION["user_id"];
+                    ?>
+                </span>
+            </div>
+        `
+        
+        home.innerHTML = content;
+        }
+    )
     </script>
+
+
+
+
+<!-- <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script> -->
+<script type="text/javascript">
+$(document).ready(function() 
+{
+	$(".votos .voting_btn").click(function (e) 
+	{
+	 	e.preventDefault();
+		var voto_hecho = $(this).data('voto');
+		var id = $(this).data("id"); 
+		var li = $(this);
+		
+		if(voto_hecho && id)
+		{
+			$.post('ajax_voto.php', {'id':id, 'voto':voto_hecho}, function(data) 
+			{
+				if (data!="voto_duplicado") 
+				{
+					li.addClass(voto_hecho+"_votado").find("span").text(data);
+					li.closest("ul").append("<span class='votado'>Gracias!</span>");
+				}
+				else li.closest("ul").append("<span class='votado'>Ya has votado!</span>");
+			});
+			setTimeout(function() {$('.votado').fadeOut('fast');}, 3000);
+		}
+	});
+});
+</script>
     
   </body>
 </html>
