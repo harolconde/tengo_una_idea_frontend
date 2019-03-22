@@ -6,10 +6,10 @@ if(!empty($_POST)){
 			include "conexion.php";
 			
 			$user_id=null;
-			$sql1= "select * from user where (username=\"$_POST[username]\" or email=\"$_POST[username]\") and password=\"$_POST[password]\" ";
+			$sql1= "SELECT * FROM users WHERE (username=\"$_POST[username]\" or email=\"$_POST[username]\") and password=\"$_POST[password]\" ";
 			$query = $con->query($sql1);
 			while ($r=$query->fetch_array()) {
-				$user_id=$r["id"];
+				$user_id=$r["id_user"];
 				break;
 			}
 			if($user_id==null){
