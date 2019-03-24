@@ -374,6 +374,10 @@
   border-top: 1px solid rgba(0, 0, 0, 0.125);
 }
 
+.container-g-home .container-chat .container-chats-ideas .container-all-new-chat {
+  overflow-x: hidden;
+}
+
 .container-g-home .container-chat .title-chat-ideas span {
   font-weight: 600;
   font-size: 1rem;
@@ -1012,23 +1016,25 @@
 
 .name-user-idea {
   color: #555;
-  border-bottom: 1px dotted #DDD;
-  font-size: 0.9rem;
-  padding: 0 0 10px 0;
+  font-size: 0.85rem;
+  padding: 0 0 7px 0;
   clear: both;
   font-weight: 600;
 }
 
 /*voting style */
 .votos {
-  width: 100%;
+  position: absolute;
+  width: auto;
   /* width: 138px; */
   /* margin: 0 0 10px 40px; */
-  border: 2px solid #eee;
-  padding: 10px;
+  /* border: 2px solid #eee; */
+  /* padding: 10px; */
   list-style: none;
   border-radius: 4px;
-  margin-bottom: 0;
+  /* margin-bottom: 0; */
+  top: 3px;
+  right: 8px;
 }
 
 .votos .dw_button {
@@ -1045,11 +1051,10 @@
 }
 
 .votos .up_button {
-  background: url(images/votos.png) 0 0 no-repeat;
-  /* float: left; */
   height: auto;
-  width: 64px;
+  width: auto;
   cursor: pointer;
+  display: flex;
 }
 
 .votos .up_button:hover {
@@ -1057,22 +1062,104 @@
 }
 
 .voting_btn span {
-  font-size: 11px;
-  font-family: Arial,sans-serif;
-  margin: 10px 0 0 37px;
-  display: block;
-  width: 27px;
-  height: 22px;
-  line-height: 22px;
+  font-size: 0.9rem;
+  font-family: 'Roboto',sans-serif, Arial;
+  /* margin: 10px 0 0 37px; */
+  /* display: block; */
+  width: auto;
+  height: auto;
+  /* line-height: 22px; */
   text-align: center;
+  font-weight: 600;
 }
 
-.likes_votado {
-  background: url(images/votos.png) no-repeat 0 -42px !important;
+.voting_btn .like {
+  margin-right: 4px;
+  color: #555;
+  font-size: 0.94rem;
 }
 
-.hates_votado {
-  background: url(images/votos.png) no-repeat -64px -42px !important;
+.voting_btn .like:hover {
+  color: #111;
+}
+
+/* Configuracion y estilos del Scrollbar del chat de ideas*/
+.container-chats-ideas::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.container-chats-ideas::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+.container-chats-ideas::-webkit-scrollbar-thumb:hover {
+  background: #b3b3b3;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.container-chats-ideas::-webkit-scrollbar-thumb:active {
+  background-color: #999999;
+}
+
+.container-chats-ideas::-webkit-scrollbar-track {
+  background: #e1e1e1;
+  border-radius: 4px;
+}
+
+.container-chats-ideas::-webkit-scrollbar-track:hover,
+.container-chats-ideas::-webkit-scrollbar-track:active {
+  background: #d4d4d4;
+}
+
+.contenedor .contatiner-idea-credentials .idea-message-chat-users {
+  width: 100%;
+  /* height: 100px; */
+  padding: 2px 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: justify;
+  display: block;
+  transition: all .5s;
+}
+
+.contenedor .contatiner-idea-credentials .btn-seemoremessage {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  /* background-color: red; */
+  position: relative;
+  border-radius: 0;
+  border-top: 1px solid #ddd;
+  /* left: 0; */
+  border-right: none;
+  border-left: none;
+  border-bottom: none;
+  padding-top: 5px;
+  padding-bottom: 0px;
+}
+
+.contenedor .contatiner-idea-credentials .btn-seemoremessage i {
+  position: absolute;
+  right: 10px;
+  color: #9e9e9e;
+}
+
+.contenedor .contatiner-idea-credentials .img-user-in-chat {
+  position: absolute;
+  top: 0;
+  left: -65px;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+
+.contenedor .contatiner-idea-credentials .img-user-in-chat img {
+  width: 98%;
 }
 
 .container-g-user {
@@ -1529,4 +1616,10 @@ a {
 
 li {
   list-style: none;
+}
+
+.btn:focus {
+  outline: none;
+  outline-offset: none;
+  box-shadow: none;
 }

@@ -88,9 +88,9 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.125);
     border-top: 1px solid rgba(0, 0, 0, 0.125);
 }
-// .container-g-home .container-chat .container-chats-ideas .container-all-new-chat{
-//     background-color: #fafafa;
-// }
+.container-g-home .container-chat .container-chats-ideas .container-all-new-chat{
+    overflow-x: hidden;
+}
 .container-g-home .container-chat .title-chat-ideas span{
     font-weight: 600;
     font-size: 1rem;

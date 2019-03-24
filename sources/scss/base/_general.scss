@@ -17,3 +17,17 @@ a{
 li{
     list-style: none;
 }
+.btn:focus{
+    outline: none;
+    outline-offset: none;
+    box-shadow: none;
+}
+// .btn:active.focus{
+//     outline: 0;
+//     outline-offset: 0;
+// }
+// a:focus, .btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus, input[type="file"]:focus,
+// input[type="radio"]:focus, input[type="checkbox"]:focus, input:focus {
+//     outline-offset: 0;
+//     outline: 0;
+// }

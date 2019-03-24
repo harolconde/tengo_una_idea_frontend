@@ -87,17 +87,21 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                                 {
                                 ?>
                                 <div class="contatiner-idea-credentials">
+                                    <div class="img-user-in-chat">
+                                        <img v-bind:src="image" alt="">
+                                    </div>
                                     <div class="container-name-votes">
                                         <h3 class="name-user-idea"><?php echo utf8_encode($filas["id_user"]); ?> {{newName}}</h3>
+                                        <ul class="votos">
+                                            <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_Idea"]; ?>">
+                                                <i class="fas fa-thumbs-up like"></i>
+                                                <span><?php echo $filas["votos"]; ?></span>
+                                            </li>
+                                        </ul>
                                     </div>
+                                    <p class="idea-message-chat-users" id="idea-message-chat-users"><?php echo utf8_encode($filas["argumento"]); ?></p>
+                                    <button class="btn btn-block btn-seemoremessage" id="btn-seemoremessage">Ver <i class="fas fa-plus"></i></button>
                                     
-                                    
-                                    <p><?php echo utf8_encode($filas["argumento"]); ?></p>
-                                    <ul class="votos bg-primary">
-                                        <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_Idea"]; ?>">
-                                            <span><?php echo $filas["votos"]; ?></span>
-                                        </li>
-                                    </ul>
                                 </div>
                                
                                 <?php
@@ -271,24 +275,24 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script>
     const home = document.getElementById('container-board-home')
-    const btnOff = document.getElementById('btnLogout')
+    // const btnOff = document.getElementById('btnLogout')
 
-    btnOff.addEventListener('click', function(){
-    let content = 
-        `
-            <div>
-                <span>
-                    <?php  
+    // btnOff.addEventListener('click', function(){
+    // let content = 
+    //     `
+    //         <div>
+    //             <span>
+    //                 <?php  
 
-                        echo $_SESSION["user_id"];
-                    ?>
-                </span>
-            </div>
-        `
+    //                     echo $_SESSION["user_id"];
+    //                 ?>
+    //             </span>
+    //         </div>
+    //     `
         
-        home.innerHTML = content;
-        }
-    )
+    //     home.innerHTML = content;
+    //     }
+    // )
     </script>
 
 

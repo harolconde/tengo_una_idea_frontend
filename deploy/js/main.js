@@ -28,26 +28,40 @@ var app = new Vue({
 });
 var btnPowerof = document.getElementById('btnLogout');
 var btnLogout = document.getElementById('btn-logout-off');
+var statePower = false;
 var state = false;
 btnPowerof.addEventListener('click', function () {
-  if (btnLogout.style.display = 'none') {
+  if (statePower == false) {
     btnLogout.style.display = 'block';
-  }
-
-  if (btnLogout.style.display = 'block') {
+    statePower = true;
+  } else {
     btnLogout.style.display = 'none';
+    statePower = false;
   }
-}); //Template board de ideas
-// const btnLinksTemplate = document.getElementsByClassName('ideas-link-template')
-// let showIdeas = function(){
-//     for(let i = 0; i < btnLinksTemplate.length; i++){
-//         btnLinksTemplate[i].addEventListener('click', function(e){
-//             e.preventDefault()
-//             console.log(this)
-//         })
-//     }
-// }
-// Carrusel de imagenes
+}); //**************Chat ideas*************/
+//Mostrar todo el mensaje
+
+var btnSemoreMessage = document.getElementsByClassName('btn-seemoremessage');
+var paragraphMessageChat = document.getElementsByClassName('idea-message-chat-users');
+
+var _loop = function _loop(i) {
+  btnSemoreMessage[i].addEventListener('click', function () {
+    if (state == false) {
+      paragraphMessageChat[i].style.whiteSpace = "normal";
+      paragraphMessageChat[i].style.transitionDuration = "0.5s";
+      state = true;
+    } else {
+      paragraphMessageChat[i].style.whiteSpace = "nowrap";
+      paragraphMessageChat[i].style.transitionDuration = "0.5s";
+      state = false;
+    }
+  });
+};
+
+for (var i = 0; i < btnSemoreMessage.length; i++) {
+  _loop(i);
+} // Carrusel de imagenes
+
 
 $(document).ready(function () {
   $('.owl-cards').owlCarousel({

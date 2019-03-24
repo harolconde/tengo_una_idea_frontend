@@ -27,32 +27,45 @@ const app = new Vue({
     }
 })
 
-let btnPowerof = document.getElementById('btnLogout')
-let btnLogout = document.getElementById('btn-logout-off')
+const btnPowerof = document.getElementById('btnLogout')
+const btnLogout = document.getElementById('btn-logout-off')
+let statePower = false;
 let state = false;
 
 
 btnPowerof.addEventListener('click', () => {
-    if(btnLogout.style.display = 'none'){
-       btnLogout.style.display = 'block' 
+    if(statePower == false){
+       btnLogout.style.display = 'block'
+       statePower = true 
     }
-    if(btnLogout.style.display = 'block' ){
+    else{
         btnLogout.style.display = 'none'
+        statePower = false
     }
 })
 
-//Template board de ideas
-// const btnLinksTemplate = document.getElementsByClassName('ideas-link-template')
+//**************Chat ideas*************/
 
-// let showIdeas = function(){
-//     for(let i = 0; i < btnLinksTemplate.length; i++){
+//Mostrar todo el mensaje
+const btnSemoreMessage = document.getElementsByClassName('btn-seemoremessage')
+const paragraphMessageChat = document.getElementsByClassName('idea-message-chat-users')
 
-//         btnLinksTemplate[i].addEventListener('click', function(e){
-//             e.preventDefault()
-//             console.log(this)
-//         })
-//     }
-// }
+for(let i = 0; i < btnSemoreMessage.length; i++){
+    btnSemoreMessage[i].addEventListener('click', () => {
+        if(state == false){
+            paragraphMessageChat[i].style.whiteSpace = "normal"
+            paragraphMessageChat[i].style.transitionDuration = "0.5s"
+            state = true;
+        }
+        else{
+            paragraphMessageChat[i].style.whiteSpace = "nowrap"
+            paragraphMessageChat[i].style.transitionDuration = "0.5s"
+            state = false
+        }
+    })
+}
+
+
 
 
 
