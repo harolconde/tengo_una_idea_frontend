@@ -72,8 +72,23 @@
  }
 
 // Large devices (desktops, less than 1200px)
-@media (max-width: 1199.98px) { 
+@media (max-width: 1279.98px) { 
 
  }
 
+
 // Extra large devices (large desktops)
+@media (max-width: 1499.98px) { 
+    .container-g-home .container-chat{
+        width: 29% !important;
+    }
+    .container-g-home .container-board-home {
+        width: 71% !important;
+    }
+}
+
+@media (max-width: 1919.98px) { 
+    .container-g-home .container-chat{
+        width: 23%;
+    }
+}

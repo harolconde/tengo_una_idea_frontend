@@ -50,6 +50,21 @@
   }
 }
 
+@media (max-width: 1499.98px) {
+  .container-g-home .container-chat {
+    width: 29% !important;
+  }
+  .container-g-home .container-board-home {
+    width: 71% !important;
+  }
+}
+
+@media (max-width: 1919.98px) {
+  .container-g-home .container-chat {
+    width: 23%;
+  }
+}
+
 /* Estilos login  */
 .container-general-login {
   width: 100%;
