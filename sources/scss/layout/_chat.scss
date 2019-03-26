@@ -69,16 +69,13 @@
 }
 
 .votos .dw_button {
-    background: url(images/votos.png) -64px 0 no-repeat;
     float: left;
     height: 42px;
     width: 64px;
     cursor:pointer;
     margin:0 0 0 10px;
 }
-.votos .dw_button:hover {
-    background: url(images/votos.png) no-repeat -64px -42px;
-}
+
 
 .votos .up_button {
     height: auto;
@@ -86,7 +83,6 @@
     cursor: pointer;
     display: flex;
 }
-.votos .up_button:hover{background: url(images/votos.png) no-repeat 0 -42px;}
 
 
 .voting_btn span{
@@ -144,6 +140,7 @@
     text-overflow: ellipsis;
     text-align: justify;
     display: block;
+    font-size: 0.8rem;
     transition: all .5s;
 }
 .contenedor .contatiner-idea-credentials .btn-seemoremessage{

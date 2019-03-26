@@ -3,7 +3,7 @@
 
 // Small devices (landscape phones, 576px and up)
 // Extra small devices (portrait phones, less than 576px)
-@media (max-width: 575.98px) { 
+@media (min-width: 1px) and (max-width: 767px) { 
     
     //Login
     .container-description-login{
@@ -59,36 +59,136 @@
         background-color: #fafafa;
         display: block !important;
     }
+
+  
+
+    /* Tablero de ideas */
+    .container-g-home .container-board-home{
+        display: none;
+    }
  }
 
 // Small devices (landscape phones, less than 768px)
-@media (max-width: 767.98px) { 
+@media (min-width: 768px) and (max-width: 991px) { 
+    .container-g-home .container-chat {
+        width: 40% !important;
+    }
+    .container-g-home .container-board-home {
+        width: 60% !important;
+    }
 
+    .contenedor .contatiner-idea-credentials {
+        width: 70% !important;
+    }
+
+    /* Boton salir */
+    .container-g-home .container-board-home .container-ideas .btn-logout {
+        right: 50px !important;
+    }
+
+    /* Chat ideas */
+    .container-g-home .container-post-it .box-cards .owl-carousel .owl-nav .owl-next{
+        position: absolute;
+        right: 0 !important;
+    }
+    .container-g-home .container-post-it .box-cards .owl-carousel .owl-nav .owl-prev{
+        position: absolute;
+        left: 0 !important;
+    }
+     /**** Cards donde se encuentran las ideas del tablero ****/
+    .container-g-home .container-post-it .box-cards .owl-cards {
+        height: 200px !important;
+    }
+    .container-g-home .container-post-it .box-cards .owl-cards .item-cards{
+        width: 180px !important;
+        height: 166px !important;
+    }
  }
 
 // Medium devices (tablets, less than 992px)
-@media (max-width: 991.98px) { 
+@media (min-width: 992px) and (max-width: 1199px) { 
+    .container-g-home .container-chat {
+        width: 35% !important;
+    }
+    .container-g-home .container-board-home {
+        width: 65% !important;
+    }
 
+    .contenedor .contatiner-idea-credentials {
+        width: 70% !important;
+    }
+
+    /**** Cards donde se encuentran las ideas del tablero ****/
+    .container-g-home .container-post-it .box-cards .owl-cards {
+        height: 200px !important;
+    }
+    .container-g-home .container-post-it .box-cards .owl-cards .item-cards{
+        width: 230px !important;
+        height: 166px !important;
+    }
  }
 
 // Large devices (desktops, less than 1200px)
-@media (max-width: 1279.98px) { 
+@media (min-width: 1200px) and (max-width: 1280px){ 
+    .container-g-home .container-chat {
+        width: 27.5% !important;
+    }
+    .container-g-home .container-board-home {
+        width: 72.5% !important;
+    }
+    .contenedor .contatiner-idea-credentials {
+        width: 75% !important;
+    }
 
+
+    /* Cards donde se encuentran las ideas del tablero */
+    .container-g-home .container-post-it .box-cards .owl-cards .item-cards{
+        width: 180px !important;
+    }
  }
 
 
 // Extra large devices (large desktops)
-@media (max-width: 1499.98px) { 
+@media (min-width: 1281px) and (max-width: 1440px){ 
     .container-g-home .container-chat{
-        width: 29% !important;
+        width: 23% !important;
     }
     .container-g-home .container-board-home {
-        width: 71% !important;
+        width: 77%;
+    }
+    .contenedor .contatiner-idea-credentials {
+        width: 70% !important;
+    }
+
+    /* Contenedro post it*/
+
+    /* Flechas del carrusel */
+    .container-g-home .container-post-it .box-cards .owl-carousel .owl-nav.disabled {
+        display: flex;
+        /* font-size: 5rem; */
+        color: #555;
+        width: 101%;
+        position: absolute;
+        top: 30px;
+        pointer-events: none;
     }
 }
 
-@media (max-width: 1919.98px) { 
-    .container-g-home .container-chat{
-        width: 23%;
+@media (min-width: 1920px) { 
+    .contenedor .contatiner-idea-credentials {
+        width: 77% !important;
+    }
+
+    /* Contenedro post it*/
+
+    /* Flechas del carrusel */
+    .container-g-home .container-post-it .box-cards .owl-carousel .owl-nav.disabled {
+        display: flex;
+        /* font-size: 5rem; */
+        color: #555;
+        width: 101%;
+        position: absolute;
+        top: 30px;
+        pointer-events: none;
     }
 }

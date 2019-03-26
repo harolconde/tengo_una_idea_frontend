@@ -1,4 +1,4 @@
-@media (max-width: 575.98px) {
+@media (min-width: 1px) and (max-width: 767px) {
   .container-description-login {
     display: none;
   }
@@ -48,20 +48,118 @@
     background-color: #fafafa;
     display: block !important;
   }
+  /* Tablero de ideas */
+  .container-g-home .container-board-home {
+    display: none;
+  }
 }
 
-@media (max-width: 1499.98px) {
+@media (min-width: 768px) and (max-width: 991px) {
   .container-g-home .container-chat {
-    width: 29% !important;
+    width: 40% !important;
   }
   .container-g-home .container-board-home {
-    width: 71% !important;
+    width: 60% !important;
+  }
+  .contenedor .contatiner-idea-credentials {
+    width: 70% !important;
+  }
+  /* Boton salir */
+  .container-g-home .container-board-home .container-ideas .btn-logout {
+    right: 50px !important;
+  }
+  /* Chat ideas */
+  .container-g-home .container-post-it .box-cards .owl-carousel .owl-nav .owl-next {
+    position: absolute;
+    right: 0 !important;
+  }
+  .container-g-home .container-post-it .box-cards .owl-carousel .owl-nav .owl-prev {
+    position: absolute;
+    left: 0 !important;
+  }
+  /**** Cards donde se encuentran las ideas del tablero ****/
+  .container-g-home .container-post-it .box-cards .owl-cards {
+    height: 200px !important;
+  }
+  .container-g-home .container-post-it .box-cards .owl-cards .item-cards {
+    width: 180px !important;
+    height: 166px !important;
   }
 }
 
-@media (max-width: 1919.98px) {
+@media (min-width: 992px) and (max-width: 1199px) {
   .container-g-home .container-chat {
-    width: 23%;
+    width: 35% !important;
+  }
+  .container-g-home .container-board-home {
+    width: 65% !important;
+  }
+  .contenedor .contatiner-idea-credentials {
+    width: 70% !important;
+  }
+  /**** Cards donde se encuentran las ideas del tablero ****/
+  .container-g-home .container-post-it .box-cards .owl-cards {
+    height: 200px !important;
+  }
+  .container-g-home .container-post-it .box-cards .owl-cards .item-cards {
+    width: 230px !important;
+    height: 166px !important;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1280px) {
+  .container-g-home .container-chat {
+    width: 27.5% !important;
+  }
+  .container-g-home .container-board-home {
+    width: 72.5% !important;
+  }
+  .contenedor .contatiner-idea-credentials {
+    width: 75% !important;
+  }
+  /* Cards donde se encuentran las ideas del tablero */
+  .container-g-home .container-post-it .box-cards .owl-cards .item-cards {
+    width: 180px !important;
+  }
+}
+
+@media (min-width: 1281px) and (max-width: 1440px) {
+  .container-g-home .container-chat {
+    width: 23% !important;
+  }
+  .container-g-home .container-board-home {
+    width: 77%;
+  }
+  .contenedor .contatiner-idea-credentials {
+    width: 70% !important;
+  }
+  /* Contenedro post it*/
+  /* Flechas del carrusel */
+  .container-g-home .container-post-it .box-cards .owl-carousel .owl-nav.disabled {
+    display: flex;
+    /* font-size: 5rem; */
+    color: #555;
+    width: 101%;
+    position: absolute;
+    top: 30px;
+    pointer-events: none;
+  }
+}
+
+@media (min-width: 1920px) {
+  .contenedor .contatiner-idea-credentials {
+    width: 77% !important;
+  }
+  /* Contenedro post it*/
+  /* Flechas del carrusel */
+  .container-g-home .container-post-it .box-cards .owl-carousel .owl-nav.disabled {
+    display: flex;
+    /* font-size: 5rem; */
+    color: #555;
+    width: 101%;
+    position: absolute;
+    top: 30px;
+    pointer-events: none;
   }
 }
 
@@ -376,10 +474,10 @@
   background-color: #fafafa;
   position: absolute;
   width: 100%;
-  height: 70%;
+  height: 69.59%;
   z-index: 1001;
   overflow-y: auto;
-  background-image: url("../img/textura/doodles.png");
+  background-image: linear-gradient(rgba(109, 76, 65, 0.12), rgba(109, 76, 65, 0.12)), url("../img/textura/doodles.png");
   background-repeat: repeat;
 }
 
@@ -467,7 +565,7 @@
   width: 100%;
   height: 6.5%;
   background-color: #fff;
-  border-top: 0.5px solid #f0f0f0;
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
   z-index: 1002;
   display: flex;
   justify-content: center;
@@ -488,6 +586,7 @@
   height: 14%;
   background-color: #fafafa;
   display: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .container-g-home .container-chat .write-message-mobil .textarea .container-textarea-mobil {
@@ -518,7 +617,6 @@
 .container-g-home .container-board-home {
   width: 77%;
   height: auto;
-  background-color: #fafafa;
   position: absolute;
   right: 0;
   top: 0;
@@ -526,7 +624,9 @@
 
 .container-g-home .container-board-home .section-write-ideas {
   padding-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 12px;
+  background-color: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .container-g-home .container-board-home .section-write-ideas .container-idea-general .group-message-send {
@@ -570,12 +670,12 @@
   width: 100%;
   display: flex;
   position: relative;
-  margin: 10px;
-  justify-content: center;
+  justify-content: left;
 }
 
 .container-g-home .container-board-home .container-ideas .container-write-idea .container-idea-general .container-write-idea-board {
-  width: 85%;
+  width: 80%;
+  padding: 0;
 }
 
 .container-g-home .container-board-home .container-ideas .container-write-idea .container-idea-general .container-title-idea .title-idea {
@@ -649,9 +749,8 @@
 }
 
 .container-g-home .container-board-home .container-ideas .logout-icon {
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   color: #555;
-  top: 10px;
   position: absolute;
 }
 
@@ -680,18 +779,53 @@
 .container-g-home .container-board-home .container-ideas .btn-logout .btn-i-logout {
   width: 100%;
   height: 100%;
+  background-color: #fafafa;
+  border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .container-g-home .container-board-home .container-ideas .btn-logout {
   display: none;
+  position: absolute;
+  top: 7px;
+  right: 80px;
+  /* border: 1px solid rgba(0, 0, 0, 0.125); */
+  padding: 0;
+}
+
+.container-g-home .container-board-home .container-ideas .btn-logout::before, .container-g-home .container-board-home .container-ideas .btn-logout::after {
+  content: '';
+  height: 0;
+  width: 0;
+  position: absolute;
+  display: block;
+  border-width: 10px 0px 12px 15px;
+  border-style: solid;
+  border-color: transparent #fafafa;
+  right: -14px;
+  z-index: 999;
+  top: 6px;
+}
+
+.container-g-home .container-board-home .container-ideas .btn-logout::before {
+  content: '';
+  height: 0;
+  width: 0;
+  position: absolute;
+  display: block;
+  border-width: 10px 0px 12px 15px;
+  border-style: solid;
+  border-color: transparent rgba(0, 0, 0, 0.255);
+  right: -15px;
+  z-index: 999;
+  top: 6px;
 }
 
 /* Configuracion estilos CSS Grid de las post it */
 .container-g-home .container-board-home .section-post {
   padding-left: 0;
   padding-right: 0;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 15px;
+  padding-bottom: 1px;
 }
 
 .box {
@@ -723,8 +857,17 @@
   padding: 0;
 }
 
+.container-g-home .container-board-home .container-post-it .row-post .container-box-post .title-cards-idea {
+  width: 100%;
+  padding: 10px 10px 10px 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #777;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
 .container-g-home .container-board-home .section-ideas-df {
-  padding-bottom: 20px;
+  padding-bottom: 0px;
 }
 
 .container-g-home .container-board-home .container-i-df {
@@ -813,14 +956,21 @@
 /* Notas destacadas*/
 .container-g-home .container-post-it .box-cards {
   width: 100%;
+  background-color: #fff;
+  border-radius: 5px;
+  /* padding-top: 15px; */
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .container-g-home .container-post-it .box-cards .owl-cards {
-  height: 150px;
+  height: 166px;
   width: 100%;
   position: relative;
   display: flex;
   justify-content: center;
+  padding-top: 15px;
 }
 
 .container-g-home .container-post-it .box-cards .owl-carousel.owl-drag .active {
@@ -835,12 +985,46 @@
   position: relative;
   display: block;
   margin: 0 auto;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.container-g-home .container-post-it .box-cards .owl-cards .item-cards .idea-message-chat-users {
+  display: block;
+  padding: 5px 8px 5px 8px;
+  font-size: .8rem;
+  color: #555;
+  cursor: pointer;
 }
 
 .container-g-home .container-post-it .box-cards .owl-cards .item-cards .item-card-idea {
-  width: 100%;
-  height: auto;
+  width: 25px;
+  height: 31px;
   padding: 0;
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.container-g-home .container-post-it .box-cards .owl-cards .item-cards .item-card-idea span {
+  /* position: absolute; */
+  /* right: 5.8px; */
+  font-size: .8rem;
+  /* top: 4px; */
+  font-weight: 600;
+  color: #ef5350;
+  /* float: right; */
+  /* margin-right: 7px; */
+  /* margin-top: 4px; */
+  /* display: flex; */
+  /* width: 18px; */
+  /* height: 27px; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* align-content: center; */
+  /* text-align: center; */
 }
 
 .container-g-home .container-post-it .box-cards .owl-cards .card-postuled {
@@ -857,11 +1041,11 @@
 
 .container-g-home .container-post-it .box-cards .owl-cards .item-cards .item-card-idea .liston {
   position: absolute;
-  right: -11px;
+  right: -9px;
   top: -6px;
   font-size: 2.7rem;
   padding: 0;
-  color: #555;
+  color: #ef5350;
 }
 
 .container-g-home .container-post-it .box-cards .owl-cards .item-cards .btn-item-card {
@@ -889,6 +1073,15 @@
   padding-top: 10px;
 }
 
+.container-g-home .container-post-it .box-cards .owl-carousel .owl-nav {
+  margin-top: 10px;
+  display: flex;
+  font-size: 4rem;
+  color: rgba(0, 0, 0, 0.425);
+  align-items: center;
+  margin-bottom: 20px;
+}
+
 .container-g-home .container-post-it .box-cards .owl-carousel .owl-nav .owl-prev, .owl-next {
   margin: 0;
   padding: 0;
@@ -896,6 +1089,8 @@
 
 .container-g-home .container-post-it .box-cards .owl-carousel .owl-nav .owl-prev, .owl-next:hover {
   background-color: transparent;
+  position: absolute;
+  left: 0;
 }
 
 .container-g-home .container-post-it .box-cards .owl-carousel .owl-nav.disabled .owl-prev {
@@ -935,6 +1130,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  align-content: center;
 }
 
 .container-g-home .container-post-it .box-cards .owl-carousel .owl-nav.disabled .owl-prev:hover {
@@ -944,7 +1140,12 @@
 
 .container-g-home .container-post-it .box-cards .owl-carousel .owl-nav .owl-next {
   position: absolute;
-  right: 0;
+  right: 10px;
+}
+
+.container-g-home .container-post-it .box-cards .owl-carousel .owl-nav .owl-prev {
+  position: absolute;
+  left: 10px;
 }
 
 .container-g-home .container-post-it .box-cards .owl-theme .owl-nav:hover {
@@ -957,7 +1158,7 @@
 }
 
 .container-g-home .container-board-home .section-footer .container-footer {
-  padding: 5px 80px 5px 80px;
+  padding: 0px 80px 5px 80px;
 }
 
 .container-g-home .container-board-home .section-footer .container-footer .footer-dates-copy {
@@ -1053,7 +1254,6 @@
 }
 
 .votos .dw_button {
-  background: url(images/votos.png) -64px 0 no-repeat;
   float: left;
   height: 42px;
   width: 64px;
@@ -1061,19 +1261,11 @@
   margin: 0 0 0 10px;
 }
 
-.votos .dw_button:hover {
-  background: url(images/votos.png) no-repeat -64px -42px;
-}
-
 .votos .up_button {
   height: auto;
   width: auto;
   cursor: pointer;
   display: flex;
-}
-
-.votos .up_button:hover {
-  background: url(images/votos.png) no-repeat 0 -42px;
 }
 
 .voting_btn span {
@@ -1137,6 +1329,7 @@
   text-overflow: ellipsis;
   text-align: justify;
   display: block;
+  font-size: 0.8rem;
   transition: all .5s;
 }
 
@@ -1614,7 +1807,7 @@ h1, h2, h3, h4, h5, h6, span, p, a {
 }
 
 body {
-  background-color: #fafafa;
+  background-color: #eeeeee;
 }
 
 button {

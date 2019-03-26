@@ -65,12 +65,6 @@ for(let i = 0; i < btnSemoreMessage.length; i++){
     })
 }
 
-
-
-
-
-
-
 // Carrusel de imagenes
 
 $(document).ready(function(){
@@ -79,6 +73,7 @@ $(document).ready(function(){
         loop:true,
         margin: 5,
         nav:true,
+        smartSpeed: 900,
         dots: false,
         autoplay:false,
         autoplayTimeout:1000,
@@ -87,12 +82,16 @@ $(document).ready(function(){
             0:{
                 items:1
             },
-            600:{
+            767:{
+                items:2
+            },
+            1199:{
                 items:3
             },
-            1000:{
-                items:4
+            1285:{
+                items: 4
             }
+
         }
     })
 })

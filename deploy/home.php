@@ -22,7 +22,12 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
 </style>
     </head>
 	<body>
+
+        <!-- ************* Contenedor principal de la aplicacion ************* -->
         <div id="app" class="container-g-home">
+
+            <!-- Barra de navegacion vistas moviles de la aplicacion -->
+
             <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
                 <div class="dates-user-mobil ">
                     <div class="img-user-perfil-mobil">
@@ -51,6 +56,9 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                     </ul>
                 </div>
             </nav>
+
+            <!-- **************** Contenedor del chat de ideas **************** -->
+
             <div class="container-chat">
                 <div class="container-g-chat">
                     <div class="wel row">
@@ -139,6 +147,9 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                     </div>
                 </div>
             </div>
+
+            <!-- *** Contenedor derecho de las vistas Home, todas las ideas, ideas muertas y finalizadas *** -->
+
             <div class="container-board-home" id="container-board-home">
                 <section class="section-write-ideas">
                     <div class="container container-ideas">
@@ -160,61 +171,89 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- <div class="container-title-idea col-10">
-                                            <input type="text" name="" id="" placeholder="Titulo Idea" class="title-idea" v-model="newTitle"> 
-                                            <textarea name="" id="" cols="30" rows="10" class="space-whrite-idea" v-model="newMessage"></textarea>
-                                        </div>
-                                        <div class="col-2">
-                                            <button class="btn btn-plus-idea" @click="addComments">
-                                                <i class="fas fa-plus-square plus-add-idea"></i>
-                                            </button>
-                                        </div> -->
                                     </div>
                                 </div>
                             </div>
                             <div class="col-1 column-logout">
                                 <i class="fas fa-power-off logout-icon" id="btnLogout"></i>
-                                <div class="btn-logout" id="btn-logout-off">
+                                <div class="btn btn-logout" id="btn-logout-off">
                                     <button class="btn-i-logout"><a href="./php/logout.php">Salir</a></button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
+                
+                <!-- ************* contenedor de las post its ************* -->
+
                 <section class="section-post">
                     <div class="container-post-it">
                         <div class="row row-post">
                             <div class="col-1"></div>
-                            <div class="col-10 container-box-post">
+                            <div class="col-10 container-box-post">       
                                 <div class="box-cards">
+                                    <div class="title-cards-idea"> <span class="span-title-cards-ideas">Las ideas mas votadas</span> </div>
                                     <div class="owl-carousel owl-cards owl-theme">
-                                        <div class="item item-cards card-postuled"><h4>1</h4>
-                                            <div class="item-card-idea">
-                                                <i class="material-icons liston">turned_in_not</i>
+
+                                    <?php
+                                        require_once("config.php");
+                                        $posts=$db->query("SELECT * FROM ideas order by votos desc");
+                                        if ($filas=$posts->fetch_array())
+                                        {
+                                            do
+                                            {
+                                            ?>
+                                            <div class="item item-cards card-postuled">
+                                                <!-- <div class="img-user-in-chat">
+                                                    <img v-bind:src="image" alt="">
+                                                </div> -->
+                                                <div class="container-name-votes item-card-idea">
+                                                    <!-- <h3 class="name-user-idea"><?php echo utf8_encode($filas["id_user"]); ?> {{newName}}</h3> -->
+                                                    <i class="material-icons liston">turned_in_not</i>
+                                                    <span><?php echo $filas["votos"]; ?></span>
+                                                    <!-- <ul class="votos">
+                                                        <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_Idea"]; ?>">
+                                                            <i class="fas fa-thumbs-up like"></i>
+                                                            <span><?php echo $filas["votos"]; ?></span>
+                                                        </li>
+                                                    </ul> -->
+                                                </div>
+                                                <p class="idea-message-chat-users" id="idea-message-chat-users" data-toggle="modal" data-target="#exampleModalScrollable"><?php echo utf8_encode($filas["argumento"]); ?></p>
+                                                <button class="btn-item-card btn btn-block voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_Idea"]; ?>">Votar</button>
+                                                
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-scrollable" role="document">
+                                                    <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        ...
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                                </div>
                                             </div>
-                                            <button class="btn-item-card btn btn-block">Votar</button>
-                                        </div>
-                                        <div class="item item-cards card-postuled"><h4>2</h4>
-                                            <div class="item-card-idea">
-                                                <i class="material-icons liston">turned_in_not</i>
-                                            </div>
-                                            <button class="btn-item-card btn btn-block">Votar</button>
-                                        </div>
-                                        <div class="item item-cards card-postuled"><h4>3</h4>
-                                            <div class="item-card-idea">
-                                                <i class="material-icons liston">turned_in_not</i>
-                                            </div>
-                                            <button class="btn-item-card btn btn-block">Votar</button>
-                                        </div>
-                                        <div class="item item-cards card-postuled"><h4>4</h4>
-                                            <div class="item-card-idea">
-                                                <i class="material-icons liston">turned_in_not</i>
-                                            </div>
-                                            <button class="btn-item-card btn btn-block">Votar</button>
-                                        </div>
+                                        
+                                            <?php
+                                            }
+                                            while($filas=$posts->fetch_array());
+                                        }
+                                        else echo "<h3>No hay entradas disponibles.</h3>";
+                                        ?>
+
                                     </div>
                                 </div>
                                 <div class="box-cards">
+                                    <div class="title-cards-idea"><span class="span-title-cards-ideas">Ideas en proceso de aprobación</span></div>
                                     <div class="owl-carousel owl-cards owl-theme ">
                                         <div class="item item-cards card-pas-umbral"><h4>1</h4></div>
                                         <div class="item item-cards card-pas-umbral"><h4>2</h4></div>
@@ -223,6 +262,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                                     </div>
                                 </div>
                                 <div class="box-cards">
+                                    <div class="title-cards-idea"><span class="span-title-cards-ideas">Ideas aprobadas</span></div>
                                     <div class="owl-carousel owl-cards owl-theme">
                                         <div class="item item-cards card-aproved"><h4>1</h4></div>
                                         <div class="item item-cards card-aproved"><h4>2</h4></div>
@@ -235,6 +275,9 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                         </div>
                     </div>
                 </section>
+
+                <!-- ********** Botones ideas finalizadas y muertas ********** -->
+
                 <section class="section-ideas-df">
                     <div class="container container-i-df row">
                         <div class="col-1"></div>
@@ -252,6 +295,9 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                     </div>
 
                 </section>
+                
+                <!-- *************** Footer ************** -->
+
                 <section class="section-footer">
                     <div class="container container-footer ">
                         <hr>
@@ -274,6 +320,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script>
+
     const home = document.getElementById('container-board-home')
     // const btnOff = document.getElementById('btnLogout')
 
@@ -300,6 +347,13 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
 
 <!-- <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script> -->
 <script type="text/javascript">
+
+$('.section-write-ideas').on('click', function(){
+    $('#exampleModalScrollable').modal('toggle')
+})
+
+
+
 $(document).ready(function() 
 {
 	$(".votos .voting_btn").click(function (e) 
