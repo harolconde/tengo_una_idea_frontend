@@ -128,7 +128,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                         <i class="fas fa-angle-down"></i>
                     </div>
                     <div class="see-all-ideas-link">
-                        <a href="">Ver todas</a>
+                        <a href="" class="link" id="link-see-all-Ideas">Ver todas</a>
                     </div>
                 </div>
                 <div class="write-message-mobil w-100 container fixed-bottom">
@@ -319,65 +319,131 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script>
-
-    const home = document.getElementById('container-board-home')
-    // const btnOff = document.getElementById('btnLogout')
-
-    // btnOff.addEventListener('click', function(){
-    // let content = 
-    //     `
-    //         <div>
-    //             <span>
-    //                 <?php  
-
-    //                     echo $_SESSION["user_id"];
-    //                 ?>
-    //             </span>
-    //         </div>
-    //     `
-        
-    //     home.innerHTML = content;
-    //     }
-    // )
-    </script>
-
-
-
 
 <!-- <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script> -->
 <script type="text/javascript">
 
-$('.section-write-ideas').on('click', function(){
-    $('#exampleModalScrollable').modal('toggle')
-})
+    $('').on('click', function(){
+        $('#exampleModalScrollable').modal('toggle')
+    })
 
 
 
-$(document).ready(function() 
-{
-	$(".votos .voting_btn").click(function (e) 
-	{
-	 	e.preventDefault();
-		var voto_hecho = $(this).data('voto');
-		var id = $(this).data("id"); 
-		var li = $(this);
-		
-		if(voto_hecho && id)
-		{
-			$.post('ajax_voto.php', {'id':id, 'voto':voto_hecho}, function(data) 
-			{
-				if (data!="voto_duplicado") 
-				{
-					li.addClass(voto_hecho+"_votado").find("span").text(data);
-					li.closest("ul").append("<span class='votado'>Gracias!</span>");
-				}
-				else li.closest("ul").append("<span class='votado'>Ya has votado!</span>");
-			});
-			setTimeout(function() {$('.votado').fadeOut('fast');}, 3000);
-		}
-	});
-});
+    $(document).ready(function() 
+    {
+        $(".votos .voting_btn").click(function (e) 
+        {
+            e.preventDefault();
+            var voto_hecho = $(this).data('voto');
+            var id = $(this).data("id"); 
+            var li = $(this);
+            
+            if(voto_hecho && id)
+            {
+                $.post('ajax_voto.php', {'id':id, 'voto':voto_hecho}, function(data) 
+                {
+                    if (data!="voto_duplicado") 
+                    {
+                        li.addClass(voto_hecho+"_votado").find("span").text(data);
+                        li.closest("ul").append("<span class='votado'>Gracias!</span>");
+                    }
+                    else li.closest("ul").append("<span class='votado'>Ya has votado!</span>");
+                });
+                setTimeout(function() {$('.votado').fadeOut('fast');}, 3000);
+            }
+        });
+    });
+
+
+    // Templates pagina home, todas la ideas, ideas finalizadas y muertas
+
+    const home = document.getElementById('container-board-home')
+    const allIdeas = document.getElementById('link-see-all-Ideas')
+
+
+        
+
+    // Template todas las ideas
+    allIdeas.addEventListener('click', function(e){
+        e.preventDefault()
+        let content = 
+            `
+                <div class="container app2">
+                    <div class="row">
+                        <div class="col-12 container-link-return p-2">
+                            <a href="" class="link"><i class="fas fa-arrow-left"></i> Volver al inicio</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="contenedor-all-ideas">
+                            <?php
+                                        require_once("config.php");
+                                        $posts=$db->query("SELECT * FROM ideas order by votos desc");
+                                        if ($filas=$posts->fetch_array())
+                                        {
+                                            do
+                                            {
+                                            ?>
+                                            <div class="contatiner-idea-credentials col-3">
+                                                <div class="img-user-in-chat">
+                                                    <img src="img/perfil/userPerfil.png" alt="">
+                                                </div>
+                                                <div class="container-name-votes">
+                                                    <h3 class="name-user-idea"><?php echo utf8_encode($filas["id_user"]); ?> Nombre de usuario</h3>
+                                                    <ul class="votos">
+                                                        <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_Idea"]; ?>">
+                                                            <i class="fas fa-thumbs-up like"></i>
+                                                            <span><?php echo $filas["votos"]; ?></span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <p class="idea-message-chat-users all-message-all-users" id="idea-message-chat-users"><?php echo utf8_encode($filas["argumento"]); ?></p>
+                                                <button class="btn btn-block btn-seemoremessage  btn-seemoremessage-template" id="btn-seemoremessage-template">Ver <i class="fas fa-plus"></i></button>
+                                                
+                                            </div>
+                                        
+                                            <?php
+                                            }
+                                            while($filas=$posts->fetch_array());
+                                        }
+                                        else echo "<h3>No hay entradas disponibles.</h3>";
+                                        ?>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            `
+            
+            home.innerHTML = content;
+
+            const btnShowAllIdea = document.getElementsByClassName('btn-seemoremessage-template')
+            const textAllIdeas = document.getElementByClassName('all-message-all-users')
+            let stateMessage = false
+
+
+            for(let i = 0; i < btnShowAllIdea.length; i ++){
+                btnShowAllIdea[i].addEventListener('click', ()=> {
+                    if(stateMessage == false){
+                        textAllIdeas[i].style.whiteSpace = 'normal'
+                        stateMessage = true
+                    }
+                    else{
+                        
+                        textAllIdeas[i].style.whiteSpace = 'nowrap'
+                        stateMessage = false
+                        
+                    }
+                })
+            }
+
+        }
+    )
+
+        
+        
+
 </script>
     
   </body>

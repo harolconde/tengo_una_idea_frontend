@@ -22,7 +22,6 @@ const app = new Vue({
             })
             this.newMessage = ''
             this.newTitle = ''
-
         }
     }
 })
@@ -43,6 +42,7 @@ btnPowerof.addEventListener('click', () => {
         statePower = false
     }
 })
+
 
 //**************Chat ideas*************/
 
