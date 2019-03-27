@@ -127,7 +127,7 @@ if(!isset($_SESSION["id_user"]) || $_SESSION["id_user"]==null){
                                     </div>
                                     <div class="container-name-votes">
                                         <h3 class="name-user-idea"><?php echo utf8_encode($filas["id_user"]); 
-                                         $id_creador=$filas["id_user"];
+                                        
                                         ?> 
                                             <?php    
                                                 $usuario = $_SESSION["id_user"];
@@ -320,7 +320,7 @@ if(!isset($_SESSION["id_user"]) || $_SESSION["id_user"]==null){
                                     <div class="owl-carousel owl-cards owl-theme ">
                                         <?php
                                             require_once("config.php");
-                                            $posts=$db->query("SELECT * FROM ideas order by f_creacion desc");
+                                            $posts=$db->query("SELECT * FROM ideas where estado='comite' order by f_creacion desc");
                                             if ($filas=$posts->fetch_array())
                                             {
                                                 do
