@@ -636,6 +636,11 @@
   border-radius: 3px;
 }
 
+.container-g-home .container-board-home .section-write-ideas .container-idea-general .group-message-send .form-New-Message {
+  width: 100%;
+  display: flex;
+}
+
 .container-g-home .container-board-home .section-write-ideas .container-idea-general .group-message-send .input-group-text {
   padding: 0;
   background-color: #212943;

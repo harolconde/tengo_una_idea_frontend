@@ -4,6 +4,18 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
 	print "<script>alert(\"Acceso invalido!\");window.location='login.php';</script>";
     }
 ?>
+<?php
+    $host_db="localhost";
+    $user_db="root";
+    $pass_db="";
+    $bd_name="db_novatecideas";
+    $tabla="ideas";
+ 
+    $conexion=new mysqli($host_db, $user_db, $pass_db, $bd_name);
+    if ($conexion -> connect_error) {
+        die("La conexion fallo". $conexion -> connect_error);
+    }
+?>
 
 <html>
 	<head>
@@ -157,14 +169,16 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                                         <div class="col-auto container-write-idea-board">
                                             <label class="sr-only" for="inlineFormInputGroup">Cual es tu idea?</label>
                                             <div class="input-group group-message-send mb-2">
-                                                <textarea name="" id="" cols="30" rows="10" class="space-whrite-idea" v-model="newMessage" class="form-control" id="inlineFormInputGroup" placeholder="Cual es tu idea?"></textarea>
-                                                <div class="input-group-prepend">
-                                                    <div class="input-group-text">
-                                                        <button class="btn btn-plus-idea" @click="addComments">
-                                                        <i class="fas fa-plus"></i>
-                                                        </button>
+                                                <form action="procesar_mensaje.php" method="POST" class="form-New-Message">
+                                                    <textarea name="" id="" cols="30" rows="10" class="space-whrite-idea" v-model="newMessage" class="form-control" id="inlineFormInputGroup" placeholder="Cual es tu idea?" name="argumento"></textarea>
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text">
+                                                            <button class="btn btn-plus-idea" @click="addComments" type="submit" value="Enviar Comentario" >
+                                                                <i class="fas fa-plus"></i>
+                                                            </button>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
