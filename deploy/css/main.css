@@ -402,7 +402,7 @@
   position: fixed;
   height: 100%;
   width: 23%;
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
   z-index: 1000;
 }
 
@@ -434,9 +434,9 @@
 }
 
 .container-g-home .container-chat .container-g-chat::before {
-  border-width: 11px 0px 13px 15px;
+  border-width: 11px 0px 13px 16px;
   border-color: transparent rgba(0, 0, 0, 0.2);
-  right: -16px;
+  right: -15px;
 }
 
 .container-g-home .container-chat .container-g-chat .container-img-user {
@@ -1801,17 +1801,19 @@
   height: auto;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .contenedor-all-ideas .contatiner-idea-credentials {
-  width: 100%;
+  width: 23.25%;
   background-color: #fff;
   height: auto;
   position: relative;
   margin: 10px 10px 10px 76px;
   padding: 10px 10px 0px 10px;
   border-radius: 4px;
-  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
+  /* box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75); */
+  border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .contenedor-all-ideas .contatiner-idea-credentials .btn-seemoremessage {
@@ -1822,6 +1824,14 @@
   border-top: 1px solid #ddd;
   border-radius: 0;
   padding: 5px 10px 5px 10px;
+}
+
+.container .container-link-return {
+  padding: 10px 10px 10px 23px !important;
+  width: 100%;
+  background-color: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  margin-bottom: 10px;
 }
 
 .contenedor-all-ideas .contatiner-idea-credentials .btn-seemoremessage i {
@@ -1836,7 +1846,7 @@
   width: 0;
   position: absolute;
   display: block;
-  border-width: 10px 15px 12px 0px;
+  border-width: 10px 14px 12px 0px;
   border-style: solid;
   border-color: transparent #fff;
   left: -14px;
@@ -1850,10 +1860,10 @@
   width: 0;
   position: absolute;
   display: block;
-  border-width: 10px 15px 12px 0px;
+  border-width: 10px 14px 12px 0px;
   border-style: solid;
-  border-color: transparent #000;
-  left: -14.2px;
+  border-color: transparent rgba(0, 0, 0, 0.125);
+  left: -15.2px;
   z-index: 1000;
   top: 8px;
 }
@@ -1881,6 +1891,19 @@
 
 .contenedor-all-ideas .contatiner-idea-credentials .img-user-in-chat img {
   width: 90%;
+}
+
+.card-columns {
+  display: inline-block;
+  -webkit-column-count: 1;
+          column-count: 1;
+  width: 100%;
+  column-break-inside: avoid;
+}
+
+.card-columns .card {
+  display: inline-flex !important;
+  margin-bottom: .75rem;
 }
 
 /* Estilos de las fuentes*/

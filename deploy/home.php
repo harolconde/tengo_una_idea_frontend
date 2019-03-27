@@ -16,10 +16,6 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/owl.carousel.css">
         <link rel="stylesheet" href="css/owl.theme.default.min.css">
-        <style type="text/css">
-
-
-</style>
     </head>
 	<body>
 
@@ -316,6 +312,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/owl.carousel.min.js"></script>
+    <script src="js/masonry.pkgd.min.js"></script>
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -357,6 +354,28 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
 
     // Templates pagina home, todas la ideas, ideas finalizadas y muertas
 
+    
+    let statusItem = false
+
+    let itemCollapse = function(){
+        for(let i = 0; i < btnShowAllIdea.length; i++){
+            btnShowAllIdea[i].addEventListener('click', () => {
+                if(statusItem == false){
+                    textAllIdeas[i].style.whiteSpace = 'normal'
+                    statusItem = true
+                    console.log(statusItem)   
+                }
+                else{
+                    textAllIdeas[i].style.whiteSpace = 'nowrap'
+                    statusItem = false
+                    console.log(statusItem)
+                }        
+
+            })
+           
+        }
+    }
+
     const home = document.getElementById('container-board-home')
     const allIdeas = document.getElementById('link-see-all-Ideas')
 
@@ -376,8 +395,9 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <div class="contenedor-all-ideas">
-                            <?php
+                            <div class=" contenedor-all-ideas ">
+                                <div class="card-columns">
+                                    <?php
                                         require_once("config.php");
                                         $posts=$db->query("SELECT * FROM ideas order by votos desc");
                                         if ($filas=$posts->fetch_array())
@@ -385,7 +405,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                                             do
                                             {
                                             ?>
-                                            <div class="contatiner-idea-credentials col-3">
+                                            <div class="contatiner-idea-credentials card">
                                                 <div class="img-user-in-chat">
                                                     <img src="img/perfil/userPerfil.png" alt="">
                                                 </div>
@@ -408,7 +428,8 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                                             while($filas=$posts->fetch_array());
                                         }
                                         else echo "<h3>No hay entradas disponibles.</h3>";
-                                        ?>
+                                    ?>
+                                </div>
                             </div>
                         </div>
                         
@@ -419,24 +440,32 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
             home.innerHTML = content;
 
             const btnShowAllIdea = document.getElementsByClassName('btn-seemoremessage-template')
-            const textAllIdeas = document.getElementByClassName('all-message-all-users')
-            let stateMessage = false
+            const textAllIdeas = document.querySelectorAll('.all-message-all-users')
+            //let stateMessage = false
 
 
             for(let i = 0; i < btnShowAllIdea.length; i ++){
                 btnShowAllIdea[i].addEventListener('click', ()=> {
-                    if(stateMessage == false){
+                    if(statusItem == false){
                         textAllIdeas[i].style.whiteSpace = 'normal'
-                        stateMessage = true
+                        statusItem = true
+                        console.log(statusItem)   
                     }
                     else{
-                        
                         textAllIdeas[i].style.whiteSpace = 'nowrap'
-                        stateMessage = false
-                        
-                    }
+                        statusItem = false
+                        console.log(statusItem)
+                    }     
                 })
+
             }
+
+            let elem = document.querySelector('.grid');
+            let msnry = new Masonry( elem, {
+            // options
+                itemSelector: '.grid-item',
+                columnWidth: 10
+            })
 
         }
     )
