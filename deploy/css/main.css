@@ -1394,7 +1394,7 @@
 }
 
 .container-g-user .container-user1.admon1 {
-  grid-template-rows: 25% 15% 60%;
+  grid-template-rows: 1fr 1fr 2fr 1fr 0.5fr !important;
 }
 
 .container-g-user .container-user1 .container-imagen {
@@ -1414,7 +1414,7 @@
   justify-content: center;
 }
 
-.container-g-user .container-user1 .container-edit .container-btn-edicion .btn-edition-toogle {
+.container-g-user .container-user1 .container-btn-edicion .btn-edition-toogle {
   width: 100%;
   border-top: 0.5px solid #555;
   border-bottom: 0.5px solid #555;
@@ -1431,22 +1431,22 @@
   font-size: 1.2rem;
 }
 
-.container-g-user .container-user1 .container-edit .container-btn-edicion button .icon-edit {
+.container-g-user .container-user1 .container-btn-edicion button .icon-edit {
   position: absolute;
   left: 15px;
 }
 
-.container-g-user .container-user1 .container-edit .container-btn-edicion button .icon-seemore-user {
+.container-g-user .container-user1 .container-btn-edicion button .icon-seemore-user {
   position: absolute;
   right: 15px;
 }
 
-.container-g-user .container-user1 .container-edit .container-edit-datos {
+.container-g-user .container-user1 .container-edit-datos {
   display: flex;
   flex-direction: column;
 }
 
-.container-g-user .container-user1 .container-edit .container-edit-datos .box-datose {
+.container-g-user .container-user1 .container-edit-datos .box-datose {
   width: 90%;
   height: auto;
   margin: 15px;
@@ -1455,13 +1455,13 @@
   border: none;
 }
 
-.container-g-user .container-user1 .container-edit .container-edit-datos .box-datose .form-group {
+.container-g-user .container-user1 .container-edit-datos .box-datose .form-group {
   margin-bottom: 0;
   font-family: 'Roboto', sans-serif, Verdana;
   border-top: none;
 }
 
-.container-g-user .container-user1 .container-edit .container-edit-datos .box-datose .form-group .form-control {
+.container-g-user .container-user1 .container-edit-datos .box-datose .form-group .form-control {
   border-top: none;
   border-left: none;
   border-right: none;
@@ -1469,12 +1469,12 @@
   border-radius: 0;
 }
 
-.container-g-user .container-user1 .container-edit .container-btn-edicion .container-btn-acept-datos {
+.container-g-user .container-user1 .container-btn-edicion .container-btn-acept-datos {
   padding-left: 15px;
   padding-right: 15px;
 }
 
-.container-g-user .container-user1 .container-edit .container-btn-edicion .container-btn-acept-datos .btn-submit-duser {
+.container-g-user .container-user1 .container-btn-edicion .container-btn-acept-datos .btn-submit-duser {
   border: 3px solid #ffa000;
   width: 100%;
   height: 30px;
@@ -1491,11 +1491,11 @@
   padding: 14px;
 }
 
-.container-g-user .container-user1 .container-edit .container-btn-edicion .container-btn-acept-datos .btn-submit-duser.btn-submit-admon {
+.container-g-user .container-user1 .container-btn-edicion .container-btn-acept-datos .btn-submit-duser.btn-submit-admon {
   margin-top: 6%;
 }
 
-.container-g-user .container-user1 .container-edit .container-btn-edicion .container-btn-acept-datos .btn-submit-duser:hover {
+.container-g-user .container-user1 .container-btn-edicion .container-btn-acept-datos .btn-submit-duser:hover {
   background-color: #ffb74d;
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
   border: 3px solid #ffb74d;
@@ -1503,7 +1503,7 @@
   transition: 0.2s;
 }
 
-.container-g-user .container-user1 .container-edit .container-volveri {
+.container-g-user .container-user1 .container-volveri {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -1629,7 +1629,7 @@
   justify-content: center;
 }
 
-.container-g-user .container-user1 .container-edit .container-btn-edicion .btn-edition-toogle {
+.container-g-user .container-user1 .container-btn-edicion .btn-edition-toogle {
   width: 100%;
   border-top: 0.5px solid #555;
   border-bottom: 0.5px solid #555;
@@ -1646,22 +1646,22 @@
   font-size: 1.2rem;
 }
 
-.container-g-user .container-user1 .container-edit .container-btn-edicion button .icon-edit {
+.container-g-user .container-user1 .container-btn-edicion button .icon-edit {
   position: absolute;
   left: 15px;
 }
 
-.container-g-user .container-user1 .container-edit .container-btn-edicion button .icon-seemore-user {
+.container-g-user .container-user1 .container-btn-edicion button .icon-seemore-user {
   position: absolute;
   right: 15px;
 }
 
-.container-g-user .container-user1 .container-edit .container-edit-datos {
+.container-g-user .container-user1 .container-edit-datos {
   display: flex;
   flex-direction: column;
 }
 
-.container-g-user .container-user1 .container-edit .container-edit-datos .box-datose {
+.container-g-user .container-user1 .container-edit-datos .box-datose {
   width: 90%;
   height: auto;
   margin: 15px;
@@ -1670,13 +1670,13 @@
   border: none;
 }
 
-.container-g-user .container-user1 .container-edit .container-edit-datos .box-datose .form-group {
+.container-g-user .container-user1 .container-edit-datos .box-datose .form-group {
   margin-bottom: 0;
   font-family: 'Roboto', sans-serif, Verdana;
   border-top: none;
 }
 
-.container-g-user .container-user1 .container-edit .container-edit-datos .box-datose .form-group .form-control {
+.container-g-user .container-user1 .container-edit-datos .box-datose .form-group .form-control {
   border-top: none;
   border-left: none;
   border-right: none;
@@ -1684,12 +1684,16 @@
   border-radius: 0;
 }
 
-.container-g-user .container-user1 .container-edit .container-btn-edicion .container-btn-acept-datos {
+.container-g-user .container-user1 .container-btn-edicion .container-btn-acept-datos {
   padding-left: 15px;
   padding-right: 15px;
 }
 
-.container-g-user .container-user1 .container-edit .container-admon-usuarios {
+.container-g-user .container-user1 .btn-admon-usid {
+  width: 100%;
+}
+
+.container-g-user .container-user1 .btn-admon-usid .container-admon-usuarios {
   width: 100%;
   height: 42px;
   display: flex;
@@ -1708,7 +1712,7 @@
   font-size: 1.2rem;
 }
 
-.container-g-user .container-user1 .container-edit .container-admon-ideas {
+.container-g-user .container-user1 .btn-admon-usid .container-admon-ideas {
   width: 100%;
   height: 42px;
   display: flex;
@@ -1726,7 +1730,7 @@
   font-size: 1.2rem;
 }
 
-.container-g-user .container-user1 .container-edit .container-btn-edicion .container-btn-acept-datos .btn-submit-duser:hover {
+.container-g-user .container-user1 .container-btn-edicion .container-btn-acept-datos .btn-submit-duser:hover {
   background-color: #ffb74d;
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);
   border: 3px solid #ffb74d;
@@ -1734,18 +1738,27 @@
   transition: 0.2s;
 }
 
-.container-g-user .container-user1 .container-edit .container-volveri {
+.container-g-user .container-user1 .container-volveri {
   position: absolute;
   bottom: 0;
   width: 100%;
   padding: 5px 10px 5px 10px;
   text-align: right;
+  height: 40px;
+  background-color: #fff;
+  display: flex;
+  justify-content: flex-end;
+  align-content: center;
+  align-items: center;
 }
 
 .container-g-user .section-admon-ideas {
   width: 77%;
   position: absolute;
   right: 0;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  margin: 0;
 }
 
 .container-g-user .section-admon-datos {
@@ -1758,7 +1771,7 @@
 
 .container .section-perfil-admon {
   display: grid;
-  grid-template-rows: 1fr 1fr 3fr;
+  grid-template-rows: 0.2fr 0.3fr 4fr;
 }
 
 .container .section-perfil-admon .admon-titulo-usuarios {
@@ -1773,16 +1786,20 @@
 }
 
 .container .section-perfil-admon .card .card-body-card {
-  background-color: #c0ca33;
+  background-color: #f9fbe7;
   border-top: 1px solid #e0e0e0;
 }
 
 .container .section-perfil-admon .card .card-body .span-admon-postuladas {
   float: right;
+  background-color: #f0f4c3;
+  color: #555;
 }
 
 .container .section-perfil-admon .card .card-body .span-admon-aprobadas {
   float: right;
+  background-color: #f0f4c3;
+  color: #555;
 }
 
 .container .section-perfil-admon .card .card-body .btn-card-edit {
@@ -1799,6 +1816,67 @@
   border: none;
   background-color: transparent;
   font-size: 1.5rem;
+}
+
+.grid-item {
+  width: 300px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.container-i .section-perfil-admon-i {
+  display: grid;
+  grid-template-rows: 0.2fr 0.3fr 4fr;
+}
+
+.container-i .section-perfil-admon-i .admon-titulo-ideas-i {
+  padding-bottom: 0;
+}
+
+.container-i .section-perfil-admon-i .admon-volver-perfil-i {
+  bottom: 0;
+  width: 100%;
+  padding: 5px 10px 5px 10px;
+  text-align: left;
+}
+
+.container-i .section-perfil-admon-i .card .card-body-card-i {
+  background-color: #f9fbe7;
+  border-top: 1px solid #e0e0e0;
+}
+
+.container-i .section-perfil-admon-i .card .card-body .span-admon-postuladas {
+  float: right;
+  background-color: #f0f4c3;
+  color: #555;
+}
+
+.container-i .section-perfil-admon-i .card .card-body .span-admon-aprobadas {
+  float: right;
+  background-color: #f0f4c3;
+  color: #555;
+}
+
+.container-i .section-perfil-admon-i .card .card-body .btn-card-edit-i {
+  float: left;
+  padding-left: 15%;
+}
+
+.container-i .section-perfil-admon-i .card .card-body .btn-card-remove-i {
+  float: right;
+  padding-right: 15%;
+}
+
+.container-i .section-perfil-i.section-perfil-admon-i .card .card-body-card-i .btn-card-i {
+  border: none;
+  background-color: transparent;
+  font-size: 1.5rem;
+}
+
+.grid-item {
+  width: 300px;
+  margin-top: 12px;
+  margin-bottom: 12px;
 }
 
 .contenedor-all-ideas {

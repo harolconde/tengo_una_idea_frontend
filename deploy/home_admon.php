@@ -20,10 +20,10 @@
                     <span class="userdate">email.admon@email.com.co</span>
                 </div>
             </div>
-            <div class="container-edit">
-                <div class="container-btn-edicion">
-                    <button class="btn-edition-toogle"> <i class="fas fa-cog icon-edit"></i> Registrar Usuario<i class="fas fa-plus icon-seemore-user"></i></button>
-                    <div class="container-edit-datos">
+            
+            <div class="container-btn-edicion">
+                <button class="btn-edition-toogle"> <i class="fas fa-cog icon-edit"></i> Registrar Usuario<i class="fas fa-plus icon-seemore-user"></i></button>
+                <div class="container-edit-datos">
                         <div class=" box-datose">
                             <div class="form-group">
                                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nombre de Usuario">
@@ -49,13 +49,16 @@
                         </div>
                     </div>
                    
-                </div>
+            </div>
+            <div class="btn-admon-usid">
                 <button class="container-admon-usuarios" id="container-admon-usuarios"> Administrar Usuarios</button>
                 <button class="container-admon-ideas" id= "container-admon-ideas" >Administrar ideas</button>  
-                <div class="container-volveri">
-                    <a href="home.php"><i class="fas fa-arrow-left"></i> volver al <span class="return-index">inicio</span></a> 
-                </div>
             </div>
+            <div class="container-volveri">
+                <a href="home.php"><i class="fas fa-arrow-left"></i> volver al <span class="return-index">inicio</span></a> 
+             </div>          
+            
+            
            
         </div>
         <section class="section-admon-ideas">
@@ -119,13 +122,14 @@
                     </div>
             </section>
     </div>
-
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 <script>
     // Eventos templates pagina administrador
     const perfilAdmon = document.getElementById('section-admon-datos')
     const btnAllUser = document.getElementById('container-admon-usuarios')
     const btnAllIdeas = document.getElementById('container-admon-ideas')
 
+//template de administrar usuarios
     btnAllUser.addEventListener('click', ()=>{
         let contentAllUser = 
         `
@@ -137,28 +141,299 @@
                     <div class="admon-titulo-usuarios">
                         <h1>Todos los usuarios</h1>
                     </div>
-                
-                    <div class="card" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card imagen</h5>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Nombre del Usuario</li>
-                                <li class="list-group-item">Correo</li>
-                                <li class="list-group-item">Ideas Postuladas <span class="badge badge-primary badge-pill span-admon-postuladas">5</span></li>
-                                <li class="list-group-item">Ideas Aprobadas <span class="badge badge-primary badge-pill span-admon-aprobadas">2</span></li>
-                            </ul>
+                    <div class="grid">
+                        <div class="grid-item">
+                            <div class="card" style="width: 18rem;">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card imagen</h5>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Nombre del Usuario</li>
+                                        <li class="list-group-item">Correo</li>
+                                        <li class="list-group-item">Ideas Postuladas <span class="badge badge-primary badge-pill span-admon-postuladas">5</span></li>
+                                        <li class="list-group-item">Ideas Aprobadas <span class="badge badge-primary badge-pill span-admon-aprobadas">2</span></li>
+                                    </ul>
+                                </div>
+                                <div class="card-body card-body-card">
+                                <button class="btn-card-edit btn-card-i "><i class="fas fa-pencil-alt"></i></button>
+                                <button class="btn-card-remove btn-card-i"><i class="fas fa-trash-alt"></i></button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body card-body-card">
-                        <button class="btn-card-edit btn-card-i "><i class="fas fa-pencil-alt"></i></button>
-                        <button class="btn-card-remove btn-card-i"><i class="fas fa-trash-alt"></i></button>
+                        <div class="grid-item">
+                            <div class="card" style="width: 18rem;">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card imagen</h5>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Nombre del Usuario</li>
+                                        <li class="list-group-item">Correo</li>
+                                        <li class="list-group-item">Nombre del Usuario</li>
+                                        <li class="list-group-item">Correo</li>
+                                        <li class="list-group-item">Ideas Postuladas <span class="badge badge-primary badge-pill span-admon-postuladas">5</span></li>
+                                        <li class="list-group-item">Ideas Aprobadas <span class="badge badge-primary badge-pill span-admon-aprobadas">2</span></li>
+                                    </ul>
+                                </div>
+                                <div class="card-body card-body-card">
+                                <button class="btn-card-edit btn-card-i "><i class="fas fa-pencil-alt"></i></button>
+                                <button class="btn-card-remove btn-card-i"><i class="fas fa-trash-alt"></i></button>
+                                </div>
+                            </div>
                         </div>
-                    </div>    
+                        <div class="grid-item">
+                            <div class="card" style="width: 18rem;">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card imagen</h5>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Nombre del Usuario</li>
+                                        <li class="list-group-item">Correo</li>
+                                        <li class="list-group-item">Ideas Postuladas <span class="badge badge-primary badge-pill span-admon-postuladas">5</span></li>
+                                        <li class="list-group-item">Ideas Aprobadas <span class="badge badge-primary badge-pill span-admon-aprobadas">2</span></li>
+                                    </ul>
+                                </div>
+                                <div class="card-body card-body-card">
+                                <button class="btn-card-edit btn-card-i "><i class="fas fa-pencil-alt"></i></button>
+                                <button class="btn-card-remove btn-card-i"><i class="fas fa-trash-alt"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-item">
+                            <div class="card" style="width: 18rem;">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card imagen</h5>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Nombre del Usuario</li>
+                                        <li class="list-group-item">Correo</li>
+                                        <li class="list-group-item">Nombre del Usuario</li>
+                                        <li class="list-group-item">Correo</li>
+                                        <li class="list-group-item">Nombre del Usuario</li>
+                                        <li class="list-group-item">Correo</li>
+                                        <li class="list-group-item">Ideas Postuladas <span class="badge badge-primary badge-pill span-admon-postuladas">5</span></li>
+                                        <li class="list-group-item">Ideas Aprobadas <span class="badge badge-primary badge-pill span-admon-aprobadas">2</span></li>
+                                    </ul>
+                                </div>
+                                <div class="card-body card-body-card">
+                                <button class="btn-card-edit btn-card-i "><i class="fas fa-pencil-alt"></i></button>
+                                <button class="btn-card-remove btn-card-i"><i class="fas fa-trash-alt"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-item">
+                            <div class="card" style="width: 18rem;">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card imagen</h5>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Nombre del Usuario</li>
+                                        <li class="list-group-item">Correo</li>
+                                        <li class="list-group-item">Ideas Postuladas <span class="badge badge-primary badge-pill span-admon-postuladas">5</span></li>
+                                        <li class="list-group-item">Ideas Aprobadas <span class="badge badge-primary badge-pill span-admon-aprobadas">2</span></li>
+                                    </ul>
+                                </div>
+                                <div class="card-body card-body-card">
+                                <button class="btn-card-edit btn-card-i "><i class="fas fa-pencil-alt"></i></button>
+                                <button class="btn-card-remove btn-card-i"><i class="fas fa-trash-alt"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-item">
+                            <div class="card" style="width: 18rem;">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card imagen</h5>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Nombre del Usuario</li>
+                                        <li class="list-group-item">Correo</li>
+                                        <li class="list-group-item">Ideas Postuladas <span class="badge badge-primary badge-pill span-admon-postuladas">5</span></li>
+                                        <li class="list-group-item">Ideas Aprobadas <span class="badge badge-primary badge-pill span-admon-aprobadas">2</span></li>
+                                    </ul>
+                                </div>
+                                <div class="card-body card-body-card">
+                                <button class="btn-card-edit btn-card-i "><i class="fas fa-pencil-alt"></i></button>
+                                <button class="btn-card-remove btn-card-i"><i class="fas fa-trash-alt"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-item">
+                            <div class="card" style="width: 18rem;">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card imagen</h5>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Nombre del Usuario</li>
+                                        <li class="list-group-item">Correo</li>
+                                        <li class="list-group-item">Ideas Postuladas <span class="badge badge-primary badge-pill span-admon-postuladas">5</span></li>
+                                        <li class="list-group-item">Ideas Aprobadas <span class="badge badge-primary badge-pill span-admon-aprobadas">2</span></li>
+                                    </ul>
+                                </div>
+                                <div class="card-body card-body-card">
+                                <button class="btn-card-edit btn-card-i "><i class="fas fa-pencil-alt"></i></button>
+                                <button class="btn-card-remove btn-card-i"><i class="fas fa-trash-alt"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </section>   
             </div>
             
         `
         perfilAdmon.innerHTML = contentAllUser
+
+        let element = document.querySelector('.grid')
+        let msry = new Masonry(element, {
+            itemSelector: '.grid-item',
+            columWidth: 100
+        } )
+    })
+
+    //template de administrar ideas
+    btnAllIdeas.addEventListener('click', ()=>{
+        let contentAllIdeas = 
+        `
+            <div class="container-i ">
+                 <section class="section-perfil-admon-i container">
+                    <div class="admon-volver-perfil-i volver-p-i">
+                        <a href="home.php"><i class="fas fa-arrow-left"></i> volver al <span class="return-index">Perfil</span></a>
+                    </div>
+                </section>
+                <section class="container">
+                
+                    <div class="admon-titulo-ideas-i">
+                        <h1>Administración de Ideas</h1>
+                    </div>
+                    <div class="grid">
+                        <div class="grid-item">
+                            <div class="card" style="width: 18rem;">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Titulo de la Idea</h5>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Lorem ipsum dolor sit amet consectetur adipiscing elit nisi morbi nostra hac,
+                                         vulputate praesent mus blandit faucibus nascetur natoque ullamcorper bibendum. Malesuada netus convallis
+                                          commodo per nunc montes vitae fusce, sollicitudin torquent aliquet volutpat felis aenean tincidunt, 
+                                        </li>
+                                        <li class="list-group-item">Correo</li>
+                                    </ul>
+                                </div>
+                                <div class="card-body card-body-card-i">
+                                <button class="btn-card-edit-i btn-card-ide "><i class="fas fa-user"></i></button>
+                                <button class="btn-card-remove-i btn-card-ide"><i class="fas fa-plus icon-seemore-user"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-item">
+                            <div class="card" style="width: 18rem;">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Titulo de la Idea</h5>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Lorem ipsum dolor sit amet consectetur adipiscing elit nisi
+                                         morbi nostra hac</li>
+                                        <li class="list-group-item">Correo</li>
+                                    </ul>
+                                </div>
+                                <div class="card-body card-body-card">
+                                <button class="btn-card-edit-i btn-card-ide "><i class="fas fa-user"></i></button>
+                                <button class="btn-card-remove-i btn-card-ide"><i class="fas fa-plus icon-seemore-user"></i></button>                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-item">
+                            <div class="card" style="width: 18rem;">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Titulo de la Idea</h5>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Lorem ipsum dolor sit amet consectetur adipiscing elit nisi
+                                         morbi nostra hac</li>
+                                        <li class="list-group-item">Correo</li>
+                                    </ul>
+                                </div>
+                                <div class="card-body card-body-card">
+                                <button class="btn-card-edit-i btn-card-ide "><i class="fas fa-user"></i></button>
+                                <button class="btn-card-remove-i btn-card-ide"><i class="fas fa-plus icon-seemore-user"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-item">
+                            <div class="card" style="width: 18rem;">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Titulo de la Idea</h5>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Lorem ipsum dolor sit amet consectetur adipiscing elit nisi
+                                         morbi nostra hac</li>
+                                        <li class="list-group-item">Correo</li>
+                                    </ul>
+                                </div>
+                                <div class="card-body card-body-card">
+                                <button class="btn-card-edit-i btn-card-ide "><i class="fas fa-user"></i></button>
+                                <button class="btn-card-remove-i btn-card-ide"><i class="fas fa-plus icon-seemore-user"></i></button>                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-item">
+                            <div class="card" style="width: 18rem;">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Titulo de la Idea</h5>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Lorem ipsum dolor sit amet consectetur adipiscing elit nisi
+                                         morbi nostra hac</li>
+                                        <li class="list-group-item">Correo</li>
+                                    </ul>
+                                </div>
+                                <div class="card-body card-body-card">
+                                <button class="btn-card-edit-i btn-card-ide "><i class="fas fa-user"></i></button>
+                                <button class="btn-card-remove-i btn-card-ide"><i class="fas fa-plus icon-seemore-user"></i></button>                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-item">
+                            <div class="card" style="width: 18rem;">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Titulo de la Idea</h5>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Lorem ipsum dolor sit amet consectetur adipiscing elit nisi
+                                         morbi nostra hac</li>
+                                        <li class="list-group-item">Correo</li>
+                                    </ul>
+                                </div>
+                                <div class="card-body card-body-card">
+                                <button class="btn-card-edit-i btn-card-ide "><i class="fas fa-user"></i></button>
+                                <button class="btn-card-remove-i btn-card-ide"><i class="fas fa-plus icon-seemore-user"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-item">
+                            <div class="card" style="width: 18rem;">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Titulo de la Idea</h5>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Lorem ipsum dolor sit amet consectetur adipiscing elit nisi
+                                         morbi nostra hac</li>
+                                        <li class="list-group-item">Correo</li>
+                                    </ul>
+                                </div>
+                                <div class="card-body card-body-card">
+                                <button class="btn-card-edit-i btn-card-ide "><i class="fas fa-user"></i></button>
+                                <button class="btn-card-remove-i btn-card-ide"><i class="fas fa-plus icon-seemore-user"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>   
+            </div>
+            
+        `
+        perfilAdmon.innerHTML = contentAllIdeas
+
+        let element = document.querySelector('.grid')
+        let msry = new Masonry(element, {
+            itemSelector: '.grid-item',
+            columWidth: 100
+        } )
     })
 
 

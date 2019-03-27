@@ -1,0 +1,50 @@
+.container-i .section-perfil-admon-i{
+    display: grid;
+    grid-template-rows: 0.2fr 0.3fr 4fr;
+   
+}
+.container-i .section-perfil-admon-i .admon-titulo-ideas-i{
+    padding-bottom: 0;
+}
+
+.container-i .section-perfil-admon-i .admon-volver-perfil-i{
+    bottom: 0;
+    width: 100%;
+    padding: 5px 10px 5px 10px;
+    text-align: left;
+    
+}
+.container-i .section-perfil-admon-i .card .card-body-card-i{
+    background-color: #f9fbe7;
+    border-top: 1px solid #e0e0e0; 
+    
+}
+.container-i .section-perfil-admon-i .card .card-body .span-admon-postuladas{
+    float: right;
+    background-color: #f0f4c3;
+    color:#555;
+}
+.container-i .section-perfil-admon-i .card .card-body .span-admon-aprobadas{
+    float: right;
+    background-color: #f0f4c3;
+    color:#555;
+}
+.container-i .section-perfil-admon-i .card .card-body .btn-card-edit-i{
+    float: left;
+    padding-left: 15%;
+}
+.container-i .section-perfil-admon-i .card .card-body .btn-card-remove-i{
+    float: right;
+    padding-right: 15%; 
+
+}
+.container-i .section-perfil-i.section-perfil-admon-i .card .card-body-card-i .btn-card-i{
+    border: none;
+    background-color: transparent;
+    font-size: 1.5rem;
+}
+.grid-item {
+     width: 300px; 
+     margin-top: 12px;
+     margin-bottom: 12px;
+    }

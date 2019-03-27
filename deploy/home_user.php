@@ -20,8 +20,8 @@
                     <span class="userdate">email.user@email.com.co</span>
                 </div>
             </div>
-            <div class="container-edit">
-                <div class="container-btn-edicion">
+            
+            <div class="container-btn-edicion">
                     <button class="btn-edition-toogle"> <i class="fas fa-cog icon-edit"></i> Editar<i class="fas fa-plus icon-seemore-user"></i></button>
                     <div class="container-edit-datos">
                         <div class=" box-datose">
@@ -49,7 +49,7 @@
                 <div class="container-volveri">
                     <a href="home.php"><i class="fas fa-arrow-left"></i> volver al <span class="return-index">inicio</span></a> 
                 </div>
-            </div>
+           
         </div>
         <div class="container-user2">
             <div class="titulo-ideas-user"><b>Mis Ideas</b></div>
