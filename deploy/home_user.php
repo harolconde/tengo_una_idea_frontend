@@ -22,8 +22,8 @@
             </div>
             
             <div class="container-btn-edicion">
-                    <button class="btn-edition-toogle"> <i class="fas fa-cog icon-edit"></i> Editar<i class="fas fa-plus icon-seemore-user"></i></button>
-                    <div class="container-edit-datos">
+                    <button class="btn-edition-toogle" id="btn-edit-user"> <i class="fas fa-cog icon-edit"></i> Editar<i class="fas fa-plus icon-seemore-user"></i></button>
+                    <div class="container-edit-datos collapsible" id="container-edit-datos">
                         <div class=" box-datose">
                             <div class="form-group">
                                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nombre">
@@ -55,11 +55,11 @@
             <div class="titulo-ideas-user"><b>Mis Ideas</b></div>
             <div class="list-ideas-user">
                 <div class="caja1-list caja-list">
-                    <div class="container-all-idea-user postuladas">
+                    <div class="container-all-idea-user postuladas btn-collapsible">
                         <span>Ideas Postuladas</span>
                         <i class="fas fa-plus"></i>
                     </div>
-                    <div class="list-allideas id-1">
+                    <div class="list-allideas collapsible id-1">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">Primera Idea
                                 <i class="far fa-eye"></i>
@@ -78,11 +78,11 @@
                     </div>
                 </div>
                 <div class="caja2-list caja-list">
-                <div class="container-all-idea-user postuladas ">
+                    <div class="container-all-idea-user postuladas  btn-collapsible">
                         <span>Ideas Aprobadas</span>
                         <i class="fas fa-plus"></i>
                     </div>
-                    <div class="list-allideas id-2">
+                    <div class="list-allideas collapsible id-2">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">Primera Idea
                                 <i class="far fa-eye eye-ideas"></i>
@@ -98,11 +98,11 @@
                     </div>
                 </div>
                 <div class="caja3-list caja-list">
-                <div class="container-all-idea-user postuladas">
+                <div class="container-all-idea-user postuladas  btn-collapsible">
                         <span>Ideas Rechazadas</span>
                         <i class="fas fa-plus"></i>
                     </div>
-                    <div class="list-allideas">
+                    <div class="list-allideas collapsible">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">Primera Idea
                                 <i class="far fa-eye eye-ideas"></i>
@@ -118,11 +118,11 @@
                     </div>
                 </div>
                 <div class="caja4-list caja-list">
-                <div class="container-all-idea-user postuladas">
+                <div class="container-all-idea-user postuladas  btn-collapsible">
                         <span>Ideas en Debate</span>
                         <i class="fas fa-plus"></i>
                     </div>
-                    <div class="list-allideas">
+                    <div class="list-allideas collapsible">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">Primera Idea
                                 <i class="far fa-eye eye-ideas"></i>

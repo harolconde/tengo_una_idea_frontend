@@ -1,47 +1,50 @@
 
-const app = new Vue({
-    el : "#app",
-    data: {
-        comments : {
-            title: [],
-            bodyMessage: []
-        },
-        message: [],
-        newMessage: '',
-        newName: 'Nombre de usuario',
-        image: 'img/perfil/userPerfil.png',
-        state: false
-    },
-    methods:{
-        addComments(){
-            this.message.push({
-                comment: this.newMessage,
-                names: this.newName,
-                states: this.state,
-                img: this.image
-            })
-            this.newMessage = ''
-            this.newTitle = ''
-        }
-    }
-})
+// const app = new Vue({
+//     el : "#app",
+//     data: {
+//         comments : {
+//             title: [],
+//             bodyMessage: []
+//         },
+//         message: [],
+//         newMessage: '',
+//         newName: 'Nombre de usuario',
+//         image: 'img/perfil/userPerfil.png',
+//         state: false
+//     },
+//     methods:{
+//         addComments(){
+//             this.message.push({
+//                 comment: this.newMessage,
+//                 names: this.newName,
+//                 states: this.state,
+//                 img: this.image
+//             })
+//             this.newMessage = ''
+//             this.newTitle = ''
+//         }
+//     }
+// })
 
-const btnPowerof = document.getElementById('btnLogout')
+const btnPowerof = document.querySelectorAll('btnLogout')
 const btnLogout = document.getElementById('btn-logout-off')
 let statePower = false;
 let state = false;
 
+for(let i = 0; i < btnPowerof.length; i++){
+    btnPowerof[i].addEventListener('click', () => {
+        if(statePower == false){
+           btnLogout.style.display = 'block'
+           statePower = true 
+        }
+        else{
+            btnLogout.style.display = 'none'
+            statePower = false
+        }
+    })
+}
 
-btnPowerof.addEventListener('click', () => {
-    if(statePower == false){
-       btnLogout.style.display = 'block'
-       statePower = true 
-    }
-    else{
-        btnLogout.style.display = 'none'
-        statePower = false
-    }
-})
+
 
 
 //**************Chat ideas*************/
@@ -97,22 +100,58 @@ $(document).ready(function(){
 })
 
 // funcion acordeon perfil del usuario 
-let acordeon = document.getElementsByClassName('container-all-idea-user')
-//let panel = document.querySelectorAll('.list-allideas')
+const acordeon = document.getElementsByClassName('container-all-idea-user')
+let panel = document.querySelectorAll('.list-allideas')
 let varBol = false
 
 for(let i = 0; i < acordeon.length; i++){
     acordeon[i].addEventListener('click', function(){
-        this.classList.toggle('activa')
-        let panel = this.nextElementSibling;
-        if(panel.style.display === 'none'){
-            panel.style.display = 'block'
+       
+        if(varBol == false){
+            
+            //panel[i].classList.add("activa-user")
+            panel[i].style.display = 'block'
+            panel[i].style.transition = ' display 1s ease'
+            varBol = true
+            console.log(panel[i])
         }
         else{
-            panel.style.display = 'none'
+            panel[i].style.display = 'none'
+            panel[i].style.transition = 'display 1s ease'
+            varBol = false
+            console.log(panel[i])
         }
     })
 }
+
+const btnEdit = document.getElementById('btn-edit-user')
+const panelEdit = document.getElementById('container-edit-datos')
+let stateEdit = false
+
+btnEdit.addEventListener('click', function(){
+    if(stateEdit == false){
+        panelEdit.style.display = 'block'
+        stateEdit = true
+    }
+    else{
+        panelEdit.style.display = 'none'
+        stateEdit = false
+    }
+})
+
+
+// Funcion acordeon perfil del usuario
+// const acord = document.getElementsByClassName('container-all-idea-user')
+// const panel = document.querySelectorAll('list-allideas') 
+
+// let acordeon = function(){
+//     for(let i = 0; i < acord.length; i++){
+//         acord[i].addEventListener('click', ()=>{
+//             console.log(this)
+//         })
+//     }
+// }
+// window.addEventListener('load', acordeon)
 
 
 
