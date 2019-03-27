@@ -351,7 +351,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-1"></div>
+                            <div class="col-1"> </div>
                         </div>
                     </div>
                 </section>
