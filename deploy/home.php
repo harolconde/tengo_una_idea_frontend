@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
+if(!isset($_SESSION["id_user"]) || $_SESSION["id_user"]==null){
 	print "<script>alert(\"Acceso invalido!\");window.location='login.php';</script>";
     }
 ?>
@@ -9,7 +9,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
     $user_db="root";
     $pass_db="";
     $bd_name="db_novatecideas";
-    $tabla="ideas";
+    $tabla="users";
  
     $conexion=new mysqli($host_db, $user_db, $pass_db, $bd_name);
     if ($conexion -> connect_error) {
@@ -76,11 +76,30 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                         <div id="login" align="left" class="container-dates-user-active col-8">
                             <!-- <p>ID de Cuenta: 
                                 <b><?php 
-                                    echo $_SESSION["user_id"];
+                                    echo $_SESSION["id_user"];
                                 ?></b>
                             .</p>  -->
-                            <span>Nombre de usuario</span>
-                            <span>Correo de Usuario</span>
+                            <span><?php    
+                                    $usuario = $_SESSION["id_user"];
+                                    $mostrarususario = mysqli_query($conexion, "SELECT first_name, last_name FROM users WHERE id_user='$usuario'");
+                                    mysqli_data_seek ($mostrarususario, 0);
+
+                                    $extraido= mysqli_fetch_array($mostrarususario);
+                                    echo $extraido['first_name']." ".$extraido['last_name'].'<br/>';
+                                    
+                                 ?>   </span>
+
+                             <span>
+                             <?php    
+                                    $usuario = $_SESSION["id_user"];
+                                    $mostrarususario = mysqli_query($conexion, "SELECT email FROM users WHERE id_user=$usuario");
+                                    mysqli_data_seek ($mostrarususario, 0);
+
+                                    $extraido= mysqli_fetch_array($mostrarususario);
+                                    echo $extraido['email'].'<br/>';
+                                    
+                                 ?>
+                                 </span>
                             <span>Tus ideas <i></i></span>
                         </div>
                     </div>
@@ -107,7 +126,21 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                                         <img v-bind:src="image" alt="">
                                     </div>
                                     <div class="container-name-votes">
-                                        <h3 class="name-user-idea"><?php echo utf8_encode($filas["id_user"]); ?> {{newName}}</h3>
+                                        <h3 class="name-user-idea"><?php echo utf8_encode($filas["id_user"]); 
+                                         $id_creador=$filas["id_user"];
+                                        ?> 
+                                            <?php    
+                                                $usuario = $_SESSION["id_user"];
+                                                $mostrarususario = mysqli_query($conexion, "SELECT first_name, last_name FROM users WHERE id_user=$id_creador");
+                                                 mysqli_data_seek ($mostrarususario, 0);
+
+                                                $extraido= mysqli_fetch_array($mostrarususario);
+                                                echo $extraido['first_name']." ".$extraido['last_name'].'<br/>';
+                                        ?>
+                                        
+                                        
+                                        
+                                        </h3>
                                         <ul class="votos">
                                             <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_Idea"]; ?>">
                                                 <i class="fas fa-thumbs-up like"></i>
