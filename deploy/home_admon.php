@@ -13,7 +13,7 @@
 <body>
     <div class="container-g-user">
         <div class="container-user1 admon1">
-            <div class="container-imagen">imagen</div>
+            <div class="container-imagen">imagenes</div>
             <div class="container-datos">
                 <div class="container-name-user">
                     <span class="userdate">Nombre Administrador</span>
