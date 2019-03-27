@@ -146,6 +146,25 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                                 <!-- <input class="title-idea-mobil" v-model="newTitle" type="text" name="" id="" placeholder="Titulo idea"> -->
                                 <textarea class="form-control" v-model="newMessage" rows="5" id="comment" placeholder="Cual es tud idaea?"></textarea>
                             </div>
+                            <!-- <div class="container-write-idea">
+                                    <div class="container-idea-general row">
+                                        <div class="col-auto container-write-idea-board">
+                                            <label class="sr-only" for="inlineFormInputGroup">Cual es tu idea?</label>
+                                            <div class="input-group group-message-send mb-2">
+                                                <form action="procesar_mensaje.php" method="POST" class="form-New-Message">
+                                                    <textarea name="" id="" cols="30" rows="10" class="space-whrite-idea" v-model="newMessage" class="form-control" id="inlineFormInputGroup" placeholder="Cual es tu idea?" name="argumento"></textarea>
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text">
+                                                            <button class="btn btn-plus-idea" @click="addComments" type="submit" value="Enviar Comentario" >
+                                                                <i class="fas fa-plus"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
                         </div>
                         <div class="col2 btn-send-message-mobil">
                             <button class="btn btn-send-mobil" @click="addComments">
@@ -262,13 +281,64 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
 
                                     </div>
                                 </div>
+                                <!-- Card ideas aprobadas -->
                                 <div class="box-cards">
                                     <div class="title-cards-idea"><span class="span-title-cards-ideas">Ideas en proceso de aprobación</span></div>
                                     <div class="owl-carousel owl-cards owl-theme ">
-                                        <div class="item item-cards card-pas-umbral"><h4>1</h4></div>
-                                        <div class="item item-cards card-pas-umbral"><h4>2</h4></div>
-                                        <div class="item item-cards card-pas-umbral"><h4>3</h4></div>
-                                        <div class="item item-cards card-pas-umbral"><h4>4</h4></div>
+                                        <?php
+                                            require_once("config.php");
+                                            $posts=$db->query("SELECT * FROM ideas order by f_creacion desc");
+                                            if ($filas=$posts->fetch_array())
+                                            {
+                                                do
+                                                {
+                                                ?>
+                                                <div class="item item-cards card-postuled">
+                                                    <!-- <div class="img-user-in-chat">
+                                                        <img v-bind:src="image" alt="">
+                                                    </div> -->
+                                                    <div class="container-name-votes item-card-idea">
+                                                        <!-- <h3 class="name-user-idea"><?php echo utf8_encode($filas["id_user"]); ?> {{newName}}</h3> -->
+                                                        <i class="material-icons liston">turned_in_not</i>
+                                                        <span><?php echo $filas["votos"]; ?></span>
+                                                        <!-- <ul class="votos">
+                                                            <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_Idea"]; ?>">
+                                                                <i class="fas fa-thumbs-up like"></i>
+                                                                <span><?php echo $filas["votos"]; ?></span>
+                                                            </li>
+                                                        </ul> -->
+                                                    </div>
+                                                    <p class="idea-message-chat-users" id="idea-message-chat-users" data-toggle="modal" data-target="#exampleModalScrollable"><?php echo utf8_encode($filas["argumento"]); ?></p>
+                                                    <!-- <button class="btn-item-card btn btn-block voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_Idea"]; ?>">Votar</button> -->
+                                                    
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-scrollable" role="document">
+                                                        <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            ...
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                            
+                                                <?php
+                                                }
+                                                while($filas=$posts->fetch_array());
+                                            }
+                                            else echo "<h3>No hay entradas disponibles.</h3>";
+                                        ?>
                                     </div>
                                 </div>
                                 <div class="box-cards">
@@ -401,53 +471,57 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
         e.preventDefault()
         let content = 
             `
-                <div class="container app2">
-                    <div class="row">
-                        <div class="col-12 container-link-return p-2">
-                            <a href="" class="link"><i class="fas fa-arrow-left"></i> Volver al inicio</a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class=" contenedor-all-ideas ">
-                                <div class="card-columns">
-                                    <?php
-                                        require_once("config.php");
-                                        $posts=$db->query("SELECT * FROM ideas order by votos desc");
-                                        if ($filas=$posts->fetch_array())
-                                        {
-                                            do
-                                            {
-                                            ?>
-                                            <div class="contatiner-idea-credentials card">
-                                                <div class="img-user-in-chat">
-                                                    <img src="img/perfil/userPerfil.png" alt="">
-                                                </div>
-                                                <div class="container-name-votes">
-                                                    <h3 class="name-user-idea"><?php echo utf8_encode($filas["id_user"]); ?> Nombre de usuario</h3>
-                                                    <ul class="votos">
-                                                        <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_Idea"]; ?>">
-                                                            <i class="fas fa-thumbs-up like"></i>
-                                                            <span><?php echo $filas["votos"]; ?></span>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <p class="idea-message-chat-users all-message-all-users" id="idea-message-chat-users"><?php echo utf8_encode($filas["argumento"]); ?></p>
-                                                <button class="btn btn-block btn-seemoremessage  btn-seemoremessage-template" id="btn-seemoremessage-template">Ver <i class="fas fa-plus"></i></button>
-                                                
-                                            </div>
-                                        
-                                            <?php
-                                            }
-                                            while($filas=$posts->fetch_array());
-                                        }
-                                        else echo "<h3>No hay entradas disponibles.</h3>";
-                                    ?>
-                                </div>
+                <div class="app2">
+                    <section class="section-return container>
+                        <div class="row">
+                            <div class="col-12 container-link-return p-2">
+                                <a href="" class="link"><i class="fas fa-arrow-left"></i> Volver al inicio</a>
                             </div>
                         </div>
-                        
-                    </div>
+                    </section>
+                    <section class="section-all-users-all-ideas container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class=" contenedor-all-ideas ">
+                                    <div class="card-columns">
+                                        <?php
+                                            require_once("config.php");
+                                            $posts=$db->query("SELECT * FROM ideas order by votos desc");
+                                            if ($filas=$posts->fetch_array())
+                                            {
+                                                do
+                                                {
+                                                ?>
+                                                <div class="contatiner-idea-credentials card">
+                                                    <div class="img-user-in-chat">
+                                                        <img src="img/perfil/userPerfil.png" alt="">
+                                                    </div>
+                                                    <div class="container-name-votes">
+                                                        <h3 class="name-user-idea"><?php echo utf8_encode($filas["id_user"]); ?> Nombre de usuario</h3>
+                                                        <ul class="votos">
+                                                            <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_Idea"]; ?>">
+                                                                <i class="fas fa-thumbs-up like"></i>
+                                                                <span><?php echo $filas["votos"]; ?></span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <p class="idea-message-chat-users all-message-all-users" id="idea-message-chat-users"><?php echo utf8_encode($filas["argumento"]); ?></p>
+                                                    <button class="btn btn-block btn-seemoremessage  btn-seemoremessage-template" id="btn-seemoremessage-template">Ver <i class="fas fa-plus"></i></button>
+                                                    
+                                                </div>
+                                            
+                                                <?php
+                                                }
+                                                while($filas=$posts->fetch_array());
+                                            }
+                                            else echo "<h3>No hay entradas disponibles.</h3>";
+                                        ?>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                    </section>
+                    
                 </div>
             `
             
