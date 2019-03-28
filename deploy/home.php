@@ -264,7 +264,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
 
                                     <?php
                                         require_once("config.php");
-                                        $posts=$db->query("SELECT * FROM ideas order by votos desc");
+                                        $posts=$db->query("SELECT * FROM ideas WHERE estado = 'propuesta' order by votos desc limit 8");
                                         if ($filas=$posts->fetch_array())
                                         {
                                             do
@@ -617,7 +617,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
 
             const btnShowAllIdea = document.getElementsByClassName('btn-seemoremessage-template')
             const textAllIdeas = document.querySelectorAll('.all-message-all-users')
-            //let stateMessage = false
+            let stateMessage = false
 
 
             for(let i = 0; i < btnShowAllIdea.length; i ++){
