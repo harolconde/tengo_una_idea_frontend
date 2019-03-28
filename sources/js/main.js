@@ -127,32 +127,6 @@ btnEdit.addEventListener('click', function(){
 //     }
 // }
 //window.addEventListener('load', acordeon)
-const app = new Vue({
-    el : "#app",
-    data: {
-        comments : {
-            title: [], 
-            bodyMessage: []
-        },
-        message: [],
-        newMessage: '',
-        newName: 'Nombre de usuario',
-        image: 'img/perfil/userPerfil.png',
-        state: false
-    },
-    methods:{
-        addComments(){
-            this.message.push({
-                comment: this.newMessage,
-                names: this.newName,
-                states: this.state,
-                img: this.image
-            })
-            this.newMessage = ''
-            this.newTitle = ''
-        }
-    }
-})
 
 
 

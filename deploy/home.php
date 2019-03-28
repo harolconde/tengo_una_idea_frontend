@@ -646,7 +646,33 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
         }
     )
 
-        
+    const app = new Vue({
+    el : "#app",
+    data: {
+        comments : {
+            title: [], 
+            bodyMessage: []
+        },
+        message: [],
+        newMessage: '',
+        newName: 'Nombre de usuario',
+        image: 'img/perfil/userPerfil.png',
+        state: false
+    },
+    methods:{
+        addComments(){
+            this.message.push({
+                comment: this.newMessage,
+                names: this.newName,
+                states: this.state,
+                img: this.image
+            })
+            this.newMessage = ''
+            this.newTitle = ''
+        }
+    }
+})
+
         
 
 </script>
