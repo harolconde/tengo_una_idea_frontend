@@ -145,6 +145,9 @@
     .container-g-home .container-post-it .box-cards .owl-cards .item-cards{
         width: 180px !important;
     }
+    .section-return .group-message-send .input-group-search {
+        width: 100% !important;
+    }
  }
 
 
@@ -172,6 +175,9 @@
         top: 30px;
         pointer-events: none;
     }
+    .section-return .group-message-send .input-group-search {
+        width: 91% !important;
+    }
 }
 
 @media (min-width: 1920px) { 
@@ -190,5 +196,10 @@
         position: absolute;
         top: 30px;
         pointer-events: none;
+    }
+
+    //Barra de busqueda
+    .section-return .group-message-send .input-group-search {
+        width: 90% !important;
     }
 }

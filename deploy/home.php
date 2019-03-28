@@ -71,7 +71,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                 <div class="container-g-chat">
                     <div class="wel row">
                         <div class="container-img-user col-4">
-                            <img src="img/perfil/userAdmon.png" alt="" width>
+                            <img src="img/perfil/userPerfil.png" alt="">
                         </div>
                         <div id="login" align="left" class="container-dates-user-active col-8">
                             <!-- <p>ID de Cuenta: 
@@ -129,7 +129,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                         ?>
                         <div class="contatiner-idea-credentials">
                         <div class="img-user-in-chat">
-                        <img v-bind:src="image" alt="">
+                            <img src="img/perfil/userPerfil.png" alt="">
                         </div>
                         <div class="container-name-votes">
                         <h3 class="name-user-idea"><?php echo ($filas["id_user"]);
@@ -451,12 +451,12 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                         <div class="col-1"></div>
                         <div class="link-i-finish box-links-i col-5 ">
                             <div class="i-finish i-id-board">
-                                <a href="" class="ideas-finish">Ideas finalizadas</a>
+                                <a href="" class="ideas-finish" id="ideas-finish">Ideas finalizadas</a>
                             </div>
                         </div>
                         <div class="link-i-dead box-links-i col-5 ">
                             <div class="i-dead i-id-board">
-                                <a href="" class="ideas-dead">Ideas muertas</a>
+                                <a href="" class="ideas-dead" id="ideas-dead">Ideas muertas</a>
                             </div>
                         </div>
                         <div class="col-1"></div>
@@ -484,136 +484,262 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/owl.carousel.min.js"></script>
-    <script src="js/masonry.pkgd.min.js"></script>
+    <!-- <script src="js/masonry.pkgd.min.js"></script> -->
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 <!-- <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script> -->
-<script type="text/javascript">
+    <script type="text/javascript">
 
-    $('').on('click', function(){
-        $('#exampleModalScrollable').modal('toggle')
-    })
+        $('').on('click', function(){
+            $('#exampleModalScrollable').modal('toggle')
+        })
 
 
 
-    $(document).ready(function() 
-    {
-        $(".votos .voting_btn").click(function (e) 
+        $(document).ready(function() 
         {
-            e.preventDefault();
-            var voto_hecho = $(this).data('voto');
-            var id = $(this).data("id"); 
-            var li = $(this);
-            
-            if(voto_hecho && id)
+            $(".votos .voting_btn").click(function (e) 
             {
-                $.post('ajax_voto.php', {'id':id, 'voto':voto_hecho}, function(data) 
+                e.preventDefault();
+                var voto_hecho = $(this).data('voto');
+                var id = $(this).data("id"); 
+                var li = $(this);
+                
+                if(voto_hecho && id)
                 {
-                    if (data!="voto_duplicado") 
+                    $.post('ajax_voto.php', {'id_user':id, 'votos':voto_hecho}, function(data) 
                     {
-                        li.addClass(voto_hecho+"_votado").find("span").text(data);
-                        li.closest("ul").append("<span class='votado'>Gracias!</span>");
-                    }
-                    else li.closest("ul").append("<span class='votado'>Ya has votado!</span>");
-                });
-                setTimeout(function() {$('.votado').fadeOut('fast');}, 3000);
-            }
-        });
-    });
-
-
-    // Templates pagina home, todas la ideas, ideas finalizadas y muertas
-
-    
-    let statusItem = false
-
-    let itemCollapse = function(){
-        for(let i = 0; i < btnShowAllIdea.length; i++){
-            btnShowAllIdea[i].addEventListener('click', () => {
-                if(statusItem == false){
-                    textAllIdeas[i].style.whiteSpace = 'normal'
-                    statusItem = true
-                    console.log(statusItem)   
+                        if (data!="voto_duplicado") 
+                        {
+                            li.addClass(voto_hecho+"_votado").find("span").text(data);
+                            li.closest("ul").append("<span class='votado'>Gracias!</span>");
+                        }
+                        else li.closest("ul").append("<span class='votado'>Ya has votado!</span>");
+                    });
+                    setTimeout(function() {$('.votado').fadeOut('fast');}, 3000);
                 }
-                else{
-                    textAllIdeas[i].style.whiteSpace = 'nowrap'
-                    statusItem = false
-                    console.log(statusItem)
-                }        
+            });
+        });
 
-            })
-           
-        }
-    }
-
-    const home = document.getElementById('container-board-home')
-    const allIdeas = document.getElementById('link-see-all-Ideas')
 
 
         
+        let statusItem = false
 
-    // Template todas las ideas
-    allIdeas.addEventListener('click', function(e){
-        e.preventDefault()
-        let content = 
-            `
-                <div class="app2">
-                    <section class="section-return container>
-                        <div class="row">
-                            <div class="col-12 container-link-return p-2">
-                                <a href="" class="link"><i class="fas fa-arrow-left"></i> Volver al inicio</a>
-                            </div>
-                        </div>
-                    </section>
-                    <section class="section-all-users-all-ideas container">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class=" contenedor-all-ideas ">
-                                    <div class="card-columns">
-                                        <?php
-                                            require_once("config.php");
-                                            $posts=$db->query("SELECT * FROM ideas order by votos desc");
-                                            if ($filas=$posts->fetch_array())
-                                            {
-                                                do
-                                                {
-                                                ?>
-                                                <div class="contatiner-idea-credentials card">
-                                                    <div class="img-user-in-chat">
-                                                        <img src="img/perfil/userPerfil.png" alt="">
-                                                    </div>
-                                                    <div class="container-name-votes">
-                                                        <h3 class="name-user-idea"><?php echo utf8_encode($filas["id_user"]); ?> Nombre de usuario</h3>
-                                                        <ul class="votos">
-                                                            <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_Idea"]; ?>">
-                                                                <i class="fas fa-thumbs-up like"></i>
-                                                                <span><?php echo $filas["votos"]; ?></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <p class="idea-message-chat-users all-message-all-users" id="idea-message-chat-users"><?php echo utf8_encode($filas["argumento"]); ?></p>
-                                                    <button class="btn btn-block btn-seemoremessage  btn-seemoremessage-template" id="btn-seemoremessage-template">Ver <i class="fas fa-plus"></i></button>
-                                                    
+        let itemCollapse = function(){
+            for(let i = 0; i < btnShowAllIdea.length; i++){
+                btnShowAllIdea[i].addEventListener('click', () => {
+                    if(statusItem == false){
+                        textAllIdeas[i].style.whiteSpace = 'normal'
+                        statusItem = true
+                        console.log(statusItem)   
+                    }
+                    else{
+                        textAllIdeas[i].style.whiteSpace = 'nowrap'
+                        statusItem = false
+                        console.log(statusItem)
+                    }        
+
+                })
+            
+            }
+        }
+
+        // *************  TEMPLATES ****************
+
+        const home = document.getElementById('container-board-home')
+        const allIdeas = document.getElementById('link-see-all-Ideas') //Todas las ideas
+        const btnIdDead = document.getElementById('ideas-dead') //Ideas muertas
+        const btnIdFinish = document.getElementById('ideas-finish') //Ideas finalizadas
+
+        // Template todas las ideas
+        allIdeas.addEventListener('click', function(e){
+            e.preventDefault()
+            let content = //html
+                `
+                    <div class="app2">
+                        <section class="section-return container>
+                            <div class="row">
+                                <div class="col-6 container-link-return p-2">
+                                    <a href="" class="link"><i class="fas fa-arrow-left"></i> Volver al inicio</a>
+                                </div>
+                                <div class="search col-6">
+                                    <div class="col-auto container-write-idea-board">
+                                        <div class="input-group group-message-send mb-2">
+                                            <!-- <form action="" method="POST" class="form-New-Message"> -->
+                                            <div class="input-group input-group-search">
+                                                
+                                                <input type="search" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
                                                 </div>
-                                            
-                                                <?php
-                                                }
-                                                while($filas=$posts->fetch_array());
-                                            }
-                                            else echo "<h3>No hay entradas disponibles.</h3>";
-                                        ?>
+                                            </div>
+                                            <!-- </form> -->
+                                        </div>
                                     </div>
                                 </div>
-                            </div> 
-                        </div>
+                            </div>
+                        </section>
+                        <section class="section-all-users-all-ideas container">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class=" contenedor-all-ideas ">
+                                        <div class="card-columns">
+                                            <?php
+                                                require_once("config.php");
+                                                $posts=$db->query("SELECT * FROM ideas order by votos desc");
+                                                if ($filas=$posts->fetch_array())
+                                                {
+                                                    do
+                                                    {
+                                                    ?>
+                                                    <div class="contatiner-idea-credentials card">
+                                                        <div class="img-user-in-chat">
+                                                            <img src="img/perfil/userPerfil.png" alt="">
+                                                        </div>
+                                                        <div class="container-name-votes">
+                                                            <h3 class="name-user-idea"><?php echo utf8_encode($filas["id_user"]); ?> Nombre de usuario</h3>
+                                                            <ul class="votos">
+                                                                <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_Idea"]; ?>">
+                                                                    <i class="fas fa-thumbs-up like"></i>
+                                                                    <span><?php echo $filas["votos"]; ?></span>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <p class="idea-message-chat-users all-message-all-users" id="idea-message-chat-users"><?php echo utf8_encode($filas["argumento"]); ?></p>
+                                                        <button class="btn btn-block btn-seemoremessage  btn-seemoremessage-template" id="btn-seemoremessage-template">Ver <i class="fas fa-plus"></i></button>
+                                                        
+                                                    </div>
+                                                
+                                                    <?php
+                                                    }
+                                                    while($filas=$posts->fetch_array());
+                                                }
+                                                else echo "<h3>No hay entradas disponibles.</h3>";
+                                            ?>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
+                        </section>
+                        
+                    </div>
+                `
+                
+                home.innerHTML = content;
+
+                const btnShowAllIdea = document.getElementsByClassName('btn-seemoremessage-template')
+                const textAllIdeas = document.querySelectorAll('.all-message-all-users')
+                let stateMessage = false
+
+
+                for(let i = 0; i < btnShowAllIdea.length; i ++){
+                    btnShowAllIdea[i].addEventListener('click', ()=> {
+                        if(statusItem == false){
+                            textAllIdeas[i].style.whiteSpace = 'normal'
+                            statusItem = true
+                            console.log(statusItem)   
+                        }
+                        else{
+                            textAllIdeas[i].style.whiteSpace = 'nowrap'
+                            statusItem = false
+                            console.log(statusItem)
+                        }     
+                    })
+
+                }
+
+                let elem = document.querySelector('.grid');
+                let msnry = new Masonry( elem, {
+                // options
+                    itemSelector: '.grid-item',
+                    columnWidth: 10
+                })
+
+            }
+        )
+        
+        //Template Ideas muertas
+        btnIdDead.addEventListener('click', function(e){
+            e.preventDefault()
+            let content = //html
+            `
+                <div id="app3">
+                    <section class="section-return container>
+                        <div class="row">
+                            <div class="col-6 container-link-return p-2">
+                                <a href="" class="link"><i class="fas fa-arrow-left"></i> Volver al inicio</a>
+                            </div>
+                            <div class="search col-6">
+                                <div class="col-auto container-write-idea-board">
+                                    <div class="input-group group-message-send mb-2">
+                                    <!-- <form action="" method="POST" class="form-New-Message"> -->
+                                        <div class="input-group input-group-search">
+                                                <input type="search" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+                                                </div>
+                                            </div>
+                                            <!-- </form> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                     </section>
-                    
+                    <section class="ideas-muertas-paragraph container">
+                        <h3>Ideas muertas</h3>
+                        <p class="paragraph-id-dead">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel totam ratione ut, quas eveniet repudiandae laboriosam ipsum officiis iure id, magnam aspernatur dicta repellendus tempora a similique ad veritatis placeat.
+                        </p>
+                    </section>
+                    <section class="section-all-users-all-ideas container">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class=" contenedor-all-ideas ">
+                                        <div class="card-columns">
+                                            <?php
+                                                require_once("config.php");
+                                                $posts=$db->query("SELECT * FROM ideas WHERE estado='muerta' order by votos desc");
+                                                if ($filas=$posts->fetch_array())
+                                                {
+                                                    do
+                                                    {
+                                                    ?>
+                                                    <div class="contatiner-idea-credentials card">
+                                                        <div class="img-user-in-chat">
+                                                            <img src="img/perfil/userPerfil.png" alt="">
+                                                        </div>
+                                                        <div class="container-name-votes">
+                                                            <h3 class="name-user-idea"><?php echo utf8_encode($filas["id_user"]); ?> Nombre de usuario</h3>
+                                                            <!--<ul class="votos">
+                                                                <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_Idea"]; ?>">
+                                                                    <i class="fas fa-thumbs-up like"></i>
+                                                                    <span><?php echo $filas["votos"]; ?></span>
+                                                                </li>
+                                                            </ul> -->
+                                                        </div>
+                                                        <p class="idea-message-chat-users all-message-all-users" id="idea-message-chat-users"><?php echo utf8_encode($filas["argumento"]); ?></p>
+                                                        <button class="btn btn-block btn-seemoremessage  btn-seemoremessage-template" id="btn-seemoremessage-template">Ver <i class="fas fa-plus"></i></button>
+                                                        
+                                                    </div>
+                                                
+                                                    <?php
+                                                    }
+                                                    while($filas=$posts->fetch_array());
+                                                }
+                                                else echo "<h3>No hay entradas disponibles.</h3>";
+                                            ?>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
+                        </section>
                 </div>
             `
-            
-            home.innerHTML = content;
+            home.innerHTML = content
+            console.log('Ideas muertas')
 
             const btnShowAllIdea = document.getElementsByClassName('btn-seemoremessage-template')
             const textAllIdeas = document.querySelectorAll('.all-message-all-users')
@@ -636,6 +762,71 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
 
             }
 
+        })
+        
+        btnIdFinish.addEventListener('click', function(e){
+            e.preventDefault()
+            let content = //html
+            `
+                <div class="app4" id="app4">
+                <section class="section-return container>
+                        <div class="row">
+                            <div class="col-6 container-link-return p-2">
+                                <a href="" class="link"><i class="fas fa-arrow-left"></i> Volver al inicio</a>
+                            </div>
+                            <div class="search col-6">
+                                <div class="col-auto container-write-idea-board">
+                                    <div class="input-group group-message-send mb-2">
+                                    <!-- <form action="" method="POST" class="form-New-Message"> -->
+                                        <div class="input-group input-group-search">
+                                                <input type="search" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+                                                </div>
+                                            </div>
+                                            <!-- </form> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </section>
+                    <section class="ideas-muertas-paragraph container">
+                        <h3>Ideas finalizadas</h3>
+                        <p class="paragraph-id-dead">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel totam ratione ut, quas eveniet repudiandae laboriosam ipsum officiis iure id, magnam aspernatur dicta repellendus tempora a similique ad veritatis placeat.
+                        </p>
+                    </section>
+                    <section class="section-all-users-all-ideas container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="contenedor-all-ideas">
+                                    <div class="grid-item">
+                                        <div class="card" style="width: 18rem;">
+                                            <img src="..." class="card-img-top" alt="...">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Card title</h5>
+                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                            </div>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">Cras justo odio</li>
+                                                <li class="list-group-item">Dapibus ac facilisis in</li>
+                                                <li class="list-group-item">Vestibulum at eros</li>
+                                            </ul>
+                                            <div class="card-body">
+                                                <a href="#" class="card-link">Card link</a>
+                                                <a href="#" class="card-link">Another link</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            `
+            home.innerHTML = content
+            console.log('Ideas finalizadas')
+
             let elem = document.querySelector('.grid');
             let msnry = new Masonry( elem, {
             // options
@@ -643,39 +834,11 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                 columnWidth: 10
             })
 
-        }
-    )
 
-    const app = new Vue({
-    el : "#app",
-    data: {
-        comments : {
-            title: [], 
-            bodyMessage: []
-        },
-        message: [],
-        newMessage: '',
-        newName: 'Nombre de usuario',
-        image: 'img/perfil/userPerfil.png',
-        state: false
-    },
-    methods:{
-        addComments(){
-            this.message.push({
-                comment: this.newMessage,
-                names: this.newName,
-                states: this.state,
-                img: this.image
-            })
-            this.newMessage = ''
-            this.newTitle = ''
-        }
-    }
-})
+        })
 
-        
-
-</script>
+    </script>
+    
     
   </body>
 </html>

@@ -33,6 +33,15 @@
     background-color: #fff;
     border-bottom: 1px solid rgba(0, 0, 0, 0.125);
     margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+.section-return  .space-whrite-idea{
+    width: 60%;
+}
+.section-return .group-message-send .input-group-search{
+    width: 100%;
 }
 .contenedor-all-ideas .contatiner-idea-credentials .btn-seemoremessage i{
     position: absolute;
@@ -91,9 +100,16 @@
     display: inline-block;
     column-count: 1;
     width: 100%;
-    column-break-inside: avoid;
 }
 .card-columns .card {
     display: inline-flex !important;
     margin-bottom: .75rem;
+}
+
+// ESTILOS IDEAS MUERTAS
+// Titulo
+.ideas-muertas-paragraph{
+    text-align: center;
+    padding: 20px;
+    color: #555;
 }

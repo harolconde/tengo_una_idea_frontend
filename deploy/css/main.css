@@ -121,6 +121,9 @@
   .container-g-home .container-post-it .box-cards .owl-cards .item-cards {
     width: 180px !important;
   }
+  .section-return .group-message-send .input-group-search {
+    width: 100% !important;
+  }
 }
 
 @media (min-width: 1281px) and (max-width: 1440px) {
@@ -144,6 +147,9 @@
     top: 30px;
     pointer-events: none;
   }
+  .section-return .group-message-send .input-group-search {
+    width: 91% !important;
+  }
 }
 
 @media (min-width: 1920px) {
@@ -160,6 +166,9 @@
     position: absolute;
     top: 30px;
     pointer-events: none;
+  }
+  .section-return .group-message-send .input-group-search {
+    width: 90% !important;
   }
 }
 
@@ -1921,6 +1930,17 @@
   background-color: #fff;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
   margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+
+.section-return .space-whrite-idea {
+  width: 60%;
+}
+
+.section-return .group-message-send .input-group-search {
+  width: 100%;
 }
 
 .contenedor-all-ideas .contatiner-idea-credentials .btn-seemoremessage i {
@@ -1987,12 +2007,17 @@
   -webkit-column-count: 1;
           column-count: 1;
   width: 100%;
-  column-break-inside: avoid;
 }
 
 .card-columns .card {
   display: inline-flex !important;
   margin-bottom: .75rem;
+}
+
+.ideas-muertas-paragraph {
+  text-align: center;
+  padding: 20px;
+  color: #555;
 }
 
 /* Estilos de las fuentes*/
