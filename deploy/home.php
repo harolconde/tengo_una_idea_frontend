@@ -105,8 +105,8 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                                 
                                 </span>
  
-</span>
-                            <span>Tus ideas <i></i></span>
+                            </span>
+                            <a href="home_user.php"><span>Tus ideas <i></i></span></a>
                         </div>
                     </div>
                 </div>
@@ -227,7 +227,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                                             <label class="sr-only" for="inlineFormInputGroup">Cual es tu idea?</label>
                                             <div class="input-group group-message-send mb-2">
                                                 <form action="procesar_mensaje.php" method="POST" class="form-New-Message">
-                                                    <textarea name="" id="" cols="30" rows="10" class="space-whrite-idea" v-model="newMessage" class="form-control" id="inlineFormInputGroup" placeholder="Cual es tu idea?" name="argumento"></textarea>
+                                                    <textarea  cols="30" rows="10" class="space-whrite-idea" v-model="newMessage" class="form-control" id="inlineFormInputGroup" placeholder="Cual es tu idea?" name="argumento"></textarea>
                                                     <div class="input-group-prepend">
                                                         <div class="input-group-text">
                                                             <button class="btn btn-plus-idea" @click="addComments" type="submit" value="Enviar Comentario" >
