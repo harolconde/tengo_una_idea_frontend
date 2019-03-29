@@ -1,3 +1,17 @@
+<?php
+    $host_db="localhost";
+    $user_db="root";
+    $pass_db="";
+    $bd_name="db_novatecideas";
+    $tabla="users";
+ 
+    $conexion=new mysqli($host_db, $user_db, $pass_db, $bd_name);
+    if ($conexion -> connect_error) {
+        die("La conexion fallo". $conexion -> connect_error);
+    }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -87,27 +101,93 @@
                                     <ul class="list-group">
                                         <li class="list-group-item d-flex justify-content-between align-items-center">
                                             Cantidad de Usuarios Registrados
-                                            <span class="badge badge-primary badge-pill">80</span>
+                                            <span class="badge badge-primary badge-pill">
+                                                <?php
+                                                                                       
+                                                    $result  = mysqli_query($conexion, "select id_user FROM users ");
+                                                                                      
+                                                    $row_cnt = $result->num_rows;
+                                                    echo $row_cnt;
+                                                    mysqli_data_seek ($result , 0);
+                                                    $result->close();        '<br/>';
+                                                                      
+                                                ?>
+                                            </span>
                                         </li>
                                         <li class="list-group-item d-flex justify-content-between align-items-center">
                                             Cantidad de ideas
-                                            <span class="badge badge-primary badge-pill">50</span>
+                                            <span class="badge badge-primary badge-pill">
+                                            <?php
+                                                                                       
+                                                    $result  = mysqli_query($conexion, "select id_idea FROM ideas ");
+                                                                                      
+                                                    $row_cnt = $result->num_rows;
+                                                    echo $row_cnt;
+                                                    mysqli_data_seek ($result , 0);
+                                                    $result->close();        '<br/>';
+                                                                      
+                                            ?>
+                                            </span>
                                         </li>
                                         <li class="list-group-item d-flex justify-content-between align-items-center">
                                             Ideas Aprobadas
-                                            <span class="badge badge-primary badge-pill">10</span>
+                                            <span class="badge badge-primary badge-pill">
+                                            <?php
+                                                                                       
+                                                    $result  = mysqli_query($conexion, "select estado FROM ideas where estado='aprobada' ");
+                                                   
+                                                    $row_cnt = $result->num_rows;
+                                                    echo $row_cnt;
+                                                    mysqli_data_seek ($result , 0);
+                                                    $result->close();        '<br/>';
+                                   
+                                            ?>                   
+                                            </span>
                                         </li>
                                         <li class="list-group-item d-flex justify-content-between align-items-center">
                                             Ideas Muertas
-                                            <span class="badge badge-primary badge-pill">60</span>
+                                            <span class="badge badge-primary badge-pill">
+                                            <?php
+                                                                                       
+                                                    $result  = mysqli_query($conexion, "select estado FROM ideas where estado='muerta' ");
+                                                                                      
+                                                    $row_cnt = $result->num_rows;
+                                                    echo $row_cnt;
+                                                                                       mysqli_data_seek ($result , 0);
+                                                    $result->close();        '<br/>';
+                                                                      
+                                            ?>
+                                            </span>
                                         </li>
                                         <li class="list-group-item d-flex justify-content-between align-items-center">
                                             Ideas en Debate
-                                            <span class="badge badge-primary badge-pill">2</span>
+                                            <span class="badge badge-primary badge-pill">
+                                            <?php
+                                                                                       
+                                                    $result  = mysqli_query($conexion, "select estado FROM ideas where estado='debate' ");
+                                                                                      
+                                                    $row_cnt = $result->num_rows;
+                                                    echo $row_cnt;
+                                                    mysqli_data_seek ($result , 0);
+                                                    $result->close();        '<br/>';
+                                                                      
+                                            ?>
+                                            </span>
                                         </li>
                                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            Ideas en proceso
-                                            <span class="badge badge-primary badge-pill">5</span>
+                                            Ideas en comite
+                                            <span class="badge badge-primary badge-pill">
+                                            <?php
+                                                                                       
+                                                    $result  = mysqli_query($conexion, "select estado FROM ideas where estado='comite' ");
+                                                   
+                                                    $row_cnt = $result->num_rows;
+                                                    echo $row_cnt;
+                                                    mysqli_data_seek ($result , 0);
+                                                    $result->close();        '<br/>';
+                                   
+                                            ?>
+                                            </span>
                                         </li>
                                         <li class="list-group-item d-flex justify-content-between align-items-center">
                                             Cantidad de Usuarios Registrados

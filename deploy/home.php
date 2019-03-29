@@ -145,9 +145,9 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                         echo $extraido['first_name']." ".$extraido['last_name'].'<br/>';
                         ?>
                         
-                        </h3>
+                        
                         <ul class="votos">
-                        <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_Idea"]; ?>">
+                        <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_user"]; ?>">
                         <i class="fas fa-thumbs-up like"></i>
                         <span><?php echo $filas["votos"]; ?></span>
                         </li>

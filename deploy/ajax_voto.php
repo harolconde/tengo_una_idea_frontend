@@ -11,10 +11,10 @@ if($_POST)
 	}
 	else
 	{
-		$total_votos=$db->query("SELECT ".$voto." FROM ideas WHERE id_user='$id' limit 1");
+		$total_votos=$db->query("select ".$voto." from ideas WHERE id_user='$id' limit 1");
 		if ($fila=$total_votos->fetch_array()) $numero=$fila[$voto];
 		
-		$votado=$db->query("UPDATE ideas SET ".$voto."=".$voto."+1 WHERE id='$id'");
+		$votado=$db->query("UPDATE ideas SET ".$voto."=".$voto."+1 WHERE id_user='$id'");
 		setcookie("votado_".$id, 1, time()+7200);
 		echo ($numero+1);
 	}
