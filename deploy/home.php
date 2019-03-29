@@ -79,7 +79,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                                     echo $_SESSION["user_id"];
                                 ?></b>
                             .</p>  -->
-                            <span> 
+                            <span class="name-credentials"> 
                                 <?php
                                 
                                 $usuario = $_SESSION["user_id"];
@@ -92,7 +92,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                                 
                                 ?> </span>
 
-                                <span>
+                                <span class="email-credentials"> 
                                 <?php
                                 $usuario = $_SESSION["user_id"];
                                 $mostrarususario = mysqli_query($conexion, "SELECT email FROM users WHERE id_user=$usuario");
@@ -106,7 +106,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                                 </span>
  
                             </span>
-                            <a href="home_user.php"><span>Tus ideas <i></i></span></a>
+                            <a href="home_user.php"><span>Perfil <i></i></span></a>
                         </div>
                     </div>
                 </div>
@@ -128,45 +128,45 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                         {
                         ?>
                         <div class="contatiner-idea-credentials">
-                        <div class="img-user-in-chat">
-                            <img src="img/perfil/userPerfil.png" alt="">
-                        </div>
-                        <div class="container-name-votes">
-                        <h3 class="name-user-idea"><?php echo ($filas["id_user"]);
-                        $id_creador=$filas["id_user"];
+                            <div class="img-user-in-chat">
+                                <img src="img/perfil/userPerfil.png" alt="">
+                            </div>
+                            <div class="container-name-votes">
+                                <h3 class="name-user-idea"><?php echo ($filas["id_user"]);
+                                $id_creador=$filas["id_user"];
                         
-                        ?>
-                        <?php
-                        $usuario = $_SESSION["id_user"];
-                        $mostrarususario = mysqli_query($conexion, "SELECT first_name, last_name FROM users WHERE id_user=$id_creador");
-                        mysqli_data_seek ($mostrarususario, 0);
+                                ?>
+                                <?php
+                                $usuario = $_SESSION["id_user"];
+                                $mostrarususario = mysqli_query($conexion, "SELECT first_name, last_name FROM users WHERE id_user=$id_creador");
+                                mysqli_data_seek ($mostrarususario, 0);
 
-                        $extraido= mysqli_fetch_array($mostrarususario);
-                        echo $extraido['first_name']." ".$extraido['last_name'].'<br/>';
-                        ?>
+                                $extraido= mysqli_fetch_array($mostrarususario);
+                                echo $extraido['first_name']." ".$extraido['last_name'].'<br/>';
+                                ?>
                         
                         
-                        <ul class="votos">
-                        <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_user"]; ?>">
-                        <i class="fas fa-thumbs-up like"></i>
-                        <span><?php echo $filas["votos"]; ?></span>
-                        </li>
-                        </ul>
-                        </div>
-                        <p class="idea-message-chat-users" id="idea-message-chat-users"><?php echo utf8_encode($filas["argumento"]); ?></p>
-                        <button class="btn btn-block btn-seemoremessage" id="btn-seemoremessage">Ver <i class="fas fa-plus"></i></button>
+                                <ul class="votos">
+                                    <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_user"]; ?>">
+                                    <i class="fas fa-thumbs-up like"></i>
+                                    <span><?php echo $filas["votos"]; ?></span>
+                                    </li>
+                                </ul>
+                                </div>
+                                    <p class="idea-message-chat-users" id="idea-message-chat-users"><?php echo utf8_encode($filas["argumento"]); ?></p>
+                                    <button class="btn btn-block btn-seemoremessage" id="btn-seemoremessage">Ver <i class="fas fa-plus"></i></button>
                         
-                        </div>
+                                </div>
                         
-                        <?php
-                        }
-                        while($filas=$posts->fetch_array());
-                        }
-                        else echo "<h3>No hay entradas disponibles.</h3>";
-                        ?>
+                                <?php
+                                }
+                                while($filas=$posts->fetch_array());
+                                }
+                                else echo "<h3>No hay entradas disponibles.</h3>";
+                                ?>
                         
 
-                        </div>
+                            </div>
                         </div>
                 </div>
                 <div class="see-all-ideas">
@@ -227,7 +227,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                                             <label class="sr-only" for="inlineFormInputGroup">Cual es tu idea?</label>
                                             <div class="input-group group-message-send mb-2">
                                                 <form action="procesar_mensaje.php" method="POST" class="form-New-Message">
-                                                    <textarea  cols="30" rows="10" class="space-whrite-idea" v-model="newMessage" class="form-control" id="inlineFormInputGroup" placeholder="Cual es tu idea?" name="argumento"></textarea>
+                                                    <textarea  cols="30" rows="10" class="space-whrite-idea" v-model="newMessage" class="form-control" id="inlineFormInputGroup" placeholder="Cual es tu idea?" name="argumento" require></textarea>
                                                     <div class="input-group-prepend">
                                                         <div class="input-group-text">
                                                             <button class="btn btn-plus-idea" @click="addComments" type="submit" value="Enviar Comentario" >
@@ -484,7 +484,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/owl.carousel.min.js"></script>
-    <!-- <script src="js/masonry.pkgd.min.js"></script> -->
+    <script src="js/masonry.pkgd.min.js"></script>
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -699,38 +699,51 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                                 <div class="col-12">
                                     <div class=" contenedor-all-ideas ">
                                         <div class="card-columns">
-                                            <?php
-                                                require_once("config.php");
-                                                $posts=$db->query("SELECT * FROM ideas WHERE estado='muerta' order by votos desc");
-                                                if ($filas=$posts->fetch_array())
-                                                {
-                                                    do
-                                                    {
-                                                    ?>
-                                                    <div class="contatiner-idea-credentials card">
-                                                        <div class="img-user-in-chat">
-                                                            <img src="img/perfil/userPerfil.png" alt="">
-                                                        </div>
-                                                        <div class="container-name-votes">
-                                                            <h3 class="name-user-idea"><?php echo utf8_encode($filas["id_user"]); ?> Nombre de usuario</h3>
-                                                            <!--<ul class="votos">
-                                                                <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_Idea"]; ?>">
-                                                                    <i class="fas fa-thumbs-up like"></i>
-                                                                    <span><?php echo $filas["votos"]; ?></span>
-                                                                </li>
-                                                            </ul> -->
-                                                        </div>
-                                                        <p class="idea-message-chat-users all-message-all-users" id="idea-message-chat-users"><?php echo utf8_encode($filas["argumento"]); ?></p>
-                                                        <button class="btn btn-block btn-seemoremessage  btn-seemoremessage-template" id="btn-seemoremessage-template">Ver <i class="fas fa-plus"></i></button>
-                                                        
-                                                    </div>
-                                                
-                                                    <?php
-                                                    }
-                                                    while($filas=$posts->fetch_array());
+                                        <?php
+                                        require_once("config.php");
+                                        $posts=$db->query("SELECT * FROM ideas order by f_creacion desc");
+                                        if ($filas=$posts->fetch_array())
+                                        {
+                                        do
+                                        {
+                                        ?>
+                                        <div class="contatiner-idea-credentials">
+                                            <div class="img-user-in-chat">
+                                                <img src="img/perfil/userPerfil.png" alt="">
+                                            </div>
+                                            <div class="container-name-votes">
+                                                <h3 class="name-user-idea"><?php echo ($filas["id_user"]);
+                                                $id_creador=$filas["id_user"];
+                                        
+                                                ?>
+                                                <?php
+                                                $usuario = $_SESSION["id_user"];
+                                                $mostrarususario = mysqli_query($conexion, "SELECT first_name, last_name FROM users WHERE id_user=$id_creador");
+                                                mysqli_data_seek ($mostrarususario, 0);
+
+                                                $extraido= mysqli_fetch_array($mostrarususario);
+                                                echo $extraido['first_name']." ".$extraido['last_name'].'<br/>';
+                                                ?>
+                                        
+                                        
+                                                <ul class="votos">
+                                                    <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_user"]; ?>">
+                                                    <i class="fas fa-thumbs-up like"></i>
+                                                    <span><?php echo $filas["votos"]; ?></span>
+                                                    </li>
+                                                </ul>
+                                                </div>
+                                                    <p class="idea-message-chat-users" id="idea-message-chat-users"><?php echo utf8_encode($filas["argumento"]); ?></p>
+                                                    <button class="btn btn-block btn-seemoremessage" id="btn-seemoremessage">Ver <i class="fas fa-plus"></i></button>
+                                        
+                                                </div>
+                                        
+                                                <?php
+                                                }
+                                                while($filas=$posts->fetch_array());
                                                 }
                                                 else echo "<h3>No hay entradas disponibles.</h3>";
-                                            ?>
+                                                ?>
                                         </div>
                                     </div>
                                 </div> 
@@ -764,6 +777,9 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
 
         })
         
+
+        //Template ideas finalizadas 
+
         btnIdFinish.addEventListener('click', function(e){
             e.preventDefault()
             let content = //html
@@ -799,25 +815,72 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                     <section class="section-all-users-all-ideas container">
                         <div class="row">
                             <div class="col-12">
-                                <div class="contenedor-all-ideas">
-                                    <div class="grid-item">
-                                        <div class="card" style="width: 18rem;">
-                                            <img src="..." class="card-img-top" alt="...">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Card title</h5>
-                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <div class="contenedor-all-ideas ">
+                                    <div class="grid">
+
+                                    <?php
+                                               require_once("config.php");
+                                               $posts=$db->query("SELECT * FROM ideas order by f_creacion desc");
+                                               if ($filas=$posts->fetch_array())
+                                               {
+                                               do
+                                               {
+                                               ?>
+                                            <div class="grid-item">
+                                                <div class="card card-finish" style="width: 18rem;">
+                                                    <img src="img/ideas/idea_f.jpg" alt="" class="card-img-top">
+                                                    <div class="container-name-votes card-body">
+                                                        <!--<h3 class="name-user-idea"><?php echo ($filas["id_user"]);
+                                                        $id_creador=$filas["id_user"];
+                                                
+                                                        ?>-->
+                                                       
+                                                
+                                                        <p class="idea-message-chat-users card-text" id="idea-message-chat-users"><?php echo utf8_encode($filas["argumento"]); ?></p>
+                                                        <!--<ul class="votos ">
+                                                            <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_user"]; ?>">
+                                                            <i class="fas fa-thumbs-up like"></i>
+                                                            <span><?php echo $filas["votos"]; ?></span>
+                                                            </li>
+                                                        </ul> -->
+                                                       
+                                                    </div>
+                                                    <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item">
+                                                            <div class="container-date">
+                                                                <span>Fecha: </span>
+                                                                <span><?php echo utf8_encode($filas["f_creacion"]); ?></span> 
+                                                            </div>
+                                                            <div class="container-dates-user-write-idea">
+                                                                <img src="img/perfil/userPerfil.png" alt="" class="rounded-circle">
+                                                                <span class="name-write-idea">
+                                                                        <?php
+                                                                            $usuario = $_SESSION["id_user"];
+                                                                            $mostrarususario = mysqli_query($conexion, "SELECT first_name, last_name FROM users WHERE id_user=$id_creador");
+                                                                            mysqli_data_seek ($mostrarususario, 0);
+                            
+                                                                            $extraido= mysqli_fetch_array($mostrarususario);
+                                                                            echo $extraido['first_name']." ".$extraido['last_name'].'<br/>' ;
+                                                                        ?>
+                                                                </span>
+                                                                    
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                            
+                                                
+                                                </div>
+                                                
+                                                    <?php
+                                                        }
+                                                        while($filas=$posts->fetch_array());
+                                                        }
+                                                        else echo "<h3>No hay entradas disponibles.</h3>";
+                                                    ?>
                                             </div>
-                                            <ul class="list-group list-group-flush">
-                                                <li class="list-group-item">Cras justo odio</li>
-                                                <li class="list-group-item">Dapibus ac facilisis in</li>
-                                                <li class="list-group-item">Vestibulum at eros</li>
-                                            </ul>
-                                            <div class="card-body">
-                                                <a href="#" class="card-link">Card link</a>
-                                                <a href="#" class="card-link">Another link</a>
-                                            </div>
-                                        </div>
+
                                     </div>
+                                            
                                 </div>
                             </div>
                         </div>
@@ -831,7 +894,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
             let msnry = new Masonry( elem, {
             // options
                 itemSelector: '.grid-item',
-                columnWidth: 10
+                columnWidth: 200
             })
 
 

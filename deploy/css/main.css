@@ -478,6 +478,16 @@
   margin-bottom: 5px;
 }
 
+.container-g-home .container-chat .container-g-chat .container-dates-user-active .name-credentials {
+  text-transform: capitalize;
+  font-size: 0.8rem;
+}
+
+.container-g-home .container-chat .container-g-chat .container-dates-user-active .email-credentials {
+  text-transform: lowercase;
+  font-size: 0.8rem;
+}
+
 /* Contenedor del chat */
 .container-g-home .container-chat .container-chats-ideas {
   background-color: #fafafa;
@@ -2020,6 +2030,41 @@
   color: #555;
 }
 
+.container-date {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.container-date span {
+  font-size: 0.8rem;
+}
+
+.container-dates-user-write-idea .name-write-idea {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #555;
+}
+
+.card-finish .card-body .card-text {
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.grid {
+  width: 100%;
+  position: relative;
+}
+
+.grid-item {
+  width: 300px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.grid-item--width2 {
+  width: 400px;
+}
+
 /* Estilos de las fuentes*/
 h1, h2, h3, h4, h5, h6, span, p, a {
   font-family: 'Roboto', sans-serif, Verdana;
@@ -2054,4 +2099,8 @@ li {
   outline: none;
   outline-offset: none;
   box-shadow: none;
+}
+
+.rounded-circle {
+  width: 40px;
 }

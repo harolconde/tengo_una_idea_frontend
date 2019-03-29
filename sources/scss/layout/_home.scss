@@ -71,6 +71,15 @@
     margin-top: 5px;
     margin-bottom: 5px;
 }
+.container-g-home .container-chat .container-g-chat .container-dates-user-active .name-credentials{
+    text-transform: capitalize;
+    font-size: 0.8rem;
+}
+.container-g-home .container-chat .container-g-chat .container-dates-user-active .email-credentials{
+    text-transform: lowercase;
+    font-size: 0.8rem;
+}
+
 /* Contenedor del chat */
 
 .container-g-home .container-chat .container-chats-ideas{

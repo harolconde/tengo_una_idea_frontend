@@ -189,10 +189,6 @@
                                             ?>
                                             </span>
                                         </li>
-                                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                                            Cantidad de Usuarios Registrados
-                                            <span class="badge badge-primary badge-pill">4</span>
-                                        </li>
                                     </ul>
                                 </div>
                             </div>

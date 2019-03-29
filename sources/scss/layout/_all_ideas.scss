@@ -113,3 +113,36 @@
     padding: 20px;
     color: #555;
 }
+
+
+//ESTILOS IDEAS FINALIZADAS
+
+//Nombre del usuario que postula la idea y fecha de postulacion
+.container-date{
+    padding-top: 10px;
+    padding-bottom: 10px; 
+}
+.container-date span{
+    font-size: 0.8rem;
+}
+.container-dates-user-write-idea .name-write-idea{
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #555;
+}
+.card-finish .card-body .card-text{
+    font-size: 0.8rem;
+    color: #555;      
+}
+.grid{
+    width: 100%;
+    position: relative;
+}
+.grid-item { 
+    width: 300px;
+    margin-top: 12px;
+    margin-bottom: 12px; 
+}
+.grid-item--width2 { 
+    width: 400px; 
+}

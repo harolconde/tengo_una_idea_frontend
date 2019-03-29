@@ -1,3 +1,24 @@
+<?php
+session_start();
+if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
+	print "<script>alert(\"Acceso invalido!\");window.location='login.php';</script>";
+    }
+?>
+<?php
+    $host_db="localhost";
+    $user_db="root";
+    $pass_db="";
+    $bd_name="db_novatecideas";
+    $tabla="users";
+ 
+    $conexion=new mysqli($host_db, $user_db, $pass_db, $bd_name);
+    if ($conexion -> connect_error) {
+        die("La conexion fallo". $conexion -> connect_error);
+    }
+
+    require_once("config.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,18 +82,50 @@
                     </div>
                     <div class="list-allideas collapsible id-1">
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Primera Idea
+                        <?php
+                            
+                            $usuario = $_SESSION["user_id"];
+                            $posts=$db->query("SELECT * FROM ideas where id_user = $usuario  and estado = 'propuesta' order by f_creacion desc");
+                            if ($filas=$posts->fetch_array())
+                            {
+                                do
+                                {
+                                ?>
+                                <li class="list-group-item">
+                                <div class="contatiner-idea-credentials">
+                                    <div class="img-user-in-chat">
+                                        <img v-bind:src="image" alt="">
+                                    </div>
+                                    <div class="container-name-votes">
+                                        <h3 class="name-user-idea"><?php echo ($filas["id_user"]); 
+                                             $id_creador=$filas["id_user"];
+                                                                           
+                                        ?>
+                                        <?php    
+                                                $usuario = $_SESSION["id_user"];
+                                                $mostrarususario = mysqli_query($conexion, "SELECT first_name, last_name FROM users WHERE id_user=$id_creador");
+                                                 mysqli_data_seek ($mostrarususario, 0);
+
+                                                $extraido= mysqli_fetch_array($mostrarususario);
+                                                echo $extraido['first_name']." ".$extraido['last_name'].'<br/>';
+                                        ?>
+                                        
+                                        </h3>
+                                        
+                                    </div>
+                                    <p class="idea-message-chat-users" id="idea-message-chat-users"><?php echo utf8_encode($filas["argumento"]); ?></p>
+                                         
+                                </div>
+                               
                                 <i class="far fa-eye"></i>
                                 <i class="far fa-trash-alt"></i>
-                            </li>
-                            <li class="list-group-item">Segunda Idea
-                                <i class="far fa-eye"></i>
-                                <i class="far fa-trash-alt"></i>
-                            </li>
-                            <li class="list-group-item">Tercera Idea
-                                <i class="far fa-eye"></i>
-                                <i class="far fa-trash-alt"></i>
-                            </li>
+                                <?php
+                                    }
+                                    while($filas=$posts->fetch_array());
+                                }
+                                ?>
+
+                            </li> 
                            
                         </ul>
                     </div>
