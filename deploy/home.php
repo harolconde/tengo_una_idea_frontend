@@ -19,6 +19,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
 
 <html>
 	<head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>.: HOME :.</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -447,19 +448,21 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                 <!-- ********** Botones ideas finalizadas y muertas ********** -->
 
                 <section class="section-ideas-df">
-                    <div class="container container-i-df row">
-                        <div class="col-1"></div>
-                        <div class="link-i-finish box-links-i col-5 ">
-                            <div class="i-finish i-id-board">
-                                <a href="" class="ideas-finish" id="ideas-finish">Ideas finalizadas</a>
+                    <div class="container container-i-df">
+                        <div class="row">
+
+                            <div class="link-i-finish box-links-i col-6 ">
+                                <div class="i-finish i-id-board">
+                                    <a href="" class="ideas-finish" id="ideas-finish">Ideas finalizadas</a>
+                                </div>
+                            </div>
+                            <div class="link-i-dead box-links-i col-6 ">
+                                <div class="i-dead i-id-board">
+                                    <a href="" class="ideas-dead" id="ideas-dead">Ideas muertas</a>
+                                </div>
                             </div>
                         </div>
-                        <div class="link-i-dead box-links-i col-5 ">
-                            <div class="i-dead i-id-board">
-                                <a href="" class="ideas-dead" id="ideas-dead">Ideas muertas</a>
-                            </div>
-                        </div>
-                        <div class="col-1"></div>
+                        
                     </div>
 
                 </section>
@@ -785,7 +788,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
             let content = //html
             `
                 <div class="app4" id="app4">
-                <section class="section-return container>
+                    <section class="section-return container>
                         <div class="row">
                             <div class="col-6 container-link-return p-2">
                                 <a href="" class="link"><i class="fas fa-arrow-left"></i> Volver al inicio</a>
@@ -818,25 +821,24 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                                 <div class="contenedor-all-ideas ">
                                     <div class="grid">
 
-                                    <?php
-                                               require_once("config.php");
-                                               $posts=$db->query("SELECT * FROM ideas order by f_creacion desc");
-                                               if ($filas=$posts->fetch_array())
-                                               {
-                                               do
-                                               {
-                                               ?>
-                                            <div class="grid-item">
-                                                <div class="card card-finish" style="width: 18rem;">
-                                                    <img src="img/ideas/idea_f.jpg" alt="" class="card-img-top">
-                                                    <div class="container-name-votes card-body">
-                                                        <!--<h3 class="name-user-idea"><?php echo ($filas["id_user"]);
-                                                        $id_creador=$filas["id_user"];
+                                        <?php
+                                            require_once("config.php");
+                                            $posts=$db->query("SELECT * FROM ideas order by f_creacion desc");
+                                            if ($filas=$posts->fetch_array())
+                                            {
+                                            do
+                                            {
+                                        ?>
+                                        <div class="grid-item">
+                                            <div class="card card-finish" style="width: 18rem;">
+                                                <img src="img/ideas/idea_f.jpg" alt="" class="card-img-top">
+                                                <div class="container-name-votes card-body">
+                                                    <!--<h3 class="name-user-idea"><?php echo ($filas["id_user"]);
+                                                    $id_creador=$filas["id_user"];
                                                 
-                                                        ?>-->
-                                                       
-                                                
-                                                        <p class="idea-message-chat-users card-text" id="idea-message-chat-users"><?php echo utf8_encode($filas["argumento"]); ?></p>
+                                                    ?>-->
+                                            
+                                                    <p class="idea-message-chat-users card-text" id="idea-message-chat-users"><?php echo utf8_encode($filas["argumento"]); ?></p>
                                                         <!--<ul class="votos ">
                                                             <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_user"]; ?>">
                                                             <i class="fas fa-thumbs-up like"></i>
@@ -844,43 +846,38 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                                                             </li>
                                                         </ul> -->
                                                        
-                                                    </div>
-                                                    <ul class="list-group list-group-flush">
-                                                        <li class="list-group-item">
-                                                            <div class="container-date">
-                                                                <span>Fecha: </span>
-                                                                <span><?php echo utf8_encode($filas["f_creacion"]); ?></span> 
-                                                            </div>
-                                                            <div class="container-dates-user-write-idea">
-                                                                <img src="img/perfil/userPerfil.png" alt="" class="rounded-circle">
-                                                                <span class="name-write-idea">
-                                                                        <?php
-                                                                            $usuario = $_SESSION["id_user"];
-                                                                            $mostrarususario = mysqli_query($conexion, "SELECT first_name, last_name FROM users WHERE id_user=$id_creador");
-                                                                            mysqli_data_seek ($mostrarususario, 0);
-                            
-                                                                            $extraido= mysqli_fetch_array($mostrarususario);
-                                                                            echo $extraido['first_name']." ".$extraido['last_name'].'<br/>' ;
-                                                                        ?>
-                                                                </span>
-                                                                    
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                            
-                                                
                                                 </div>
+                                                <ul class="list-group list-group-flush">
+                                                    <li class="list-group-item">
+                                                        <div class="container-date">
+                                                            <span>Fecha: </span>
+                                                            <span><?php echo utf8_encode($filas["f_creacion"]); ?></span> 
+                                                        </div>
+                                                        <div class="container-dates-user-write-idea">
+                                                            <img src="img/perfil/userPerfil.png" alt="" class="rounded-circle">
+                                                            <span class="name-write-idea">
+                                                                <?php
+                                                                    $usuario = $_SESSION["id_user"];
+                                                                    $mostrarususario = mysqli_query($conexion, "SELECT first_name, last_name FROM users WHERE id_user=$id_creador");
+                                                                    mysqli_data_seek ($mostrarususario, 0);
+                            
+                                                                    $extraido= mysqli_fetch_array($mostrarususario);
+                                                                    echo $extraido['first_name']." ".$extraido['last_name'].'<br/>' ;
+                                                                ?>
+                                                            </span>       
+                                                        </div>
+                                                    </li>
+                                                </ul>        
                                                 
-                                                    <?php
-                                                        }
-                                                        while($filas=$posts->fetch_array());
-                                                        }
-                                                        else echo "<h3>No hay entradas disponibles.</h3>";
-                                                    ?>
                                             </div>
-
-                                    </div>
-                                            
+                                        </div>
+                                        <?php
+                                            }
+                                            while($filas=$posts->fetch_array());
+                                            }
+                                            else echo "<h3>No hay entradas disponibles.</h3>";
+                                        ?>
+                                    </div>          
                                 </div>
                             </div>
                         </div>
@@ -893,8 +890,8 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
             let elem = document.querySelector('.grid');
             let msnry = new Masonry( elem, {
             // options
-                itemSelector: '.grid-item',
-                columnWidth: 200
+                itemSelector: '.grid-item'
+                //columnWidth: 0
             })
 
 

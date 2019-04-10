@@ -1,25 +1,16 @@
 <?php session_start(); ?>
 <html>
 	<head>
-        <title>Formulario de Registro</title>
+    <title>Formulario de Registro</title>
         
-        <style>
+    <style>
 
 			body {
-					
 				background-image: url("img/bg.gif");
-
-
 			}
-
-            .lyr {
-                padding: 220px 1300px 75px;
-            }
-
-
-            
-			
-
+      .lyr{
+          padding: 220px 1300px 75px;
+      }
 	</style>
 		
 	</head>
@@ -59,7 +50,6 @@
 		</form>
 		
 		</div>
-
 		<script src="js/valida_registro.js"></script>
 	</body>
 </html>
