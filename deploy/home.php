@@ -1,8 +1,12 @@
 <?php
-session_start();
-if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
-	print "<script>alert(\"Acceso invalido!\");window.location='login.php';</script>";
-    }
+@session_start();
+if(!isset($_SESSION["username"])){
+    header('Location: index.php');
+}
+// session_start();
+// if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
+// 	print "<script>alert(\"Acceso invalido!\");window.location='login.php';</script>";
+//     }
 ?>
 <?php
     $host_db="localhost";
@@ -24,11 +28,12 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
         <title>.: HOME :.</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/owl.carousel.css">
         <link rel="stylesheet" href="css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="css/fontawesome-5.8.1/all.css">
     </head>
 	<body>
 
@@ -81,9 +86,10 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                                 ?></b>
                             .</p>  -->
                             <span class="name-credentials"> 
+                                <?php echo $_SESSION["username"];?>
                                 <?php
                                 
-                                $usuario = $_SESSION["user_id"];
+                                $usuario = $_SESSION["username"];
                                 
                                 $mostrarususario = mysqli_query($conexion, "SELECT first_name, last_name FROM users WHERE id_user='$usuario'");
                                 mysqli_data_seek ($mostrarususario, 0);
@@ -95,12 +101,13 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
 
                                 <span class="email-credentials"> 
                                 <?php
-                                $usuario = $_SESSION["user_id"];
+                                $usuario = $_SESSION["username"];
                                 $mostrarususario = mysqli_query($conexion, "SELECT email FROM users WHERE id_user=$usuario");
-                                mysqli_data_seek ($mostrarususario, 0);
+                                //mysqli_data_seek ($mostrarususario, 0);
 
-                                $extraido= mysqli_fetch_array($mostrarususario);
-                                echo $extraido['email'].'<br/>';
+                                // $extraido= mysqli_fetch_array($mostrarususario);
+                                // echo $extraido['email'].'<br/>';
+                                echo $_SESSION["username"].'@novatec.com.co';
                                 
                                 ?>
                                 
@@ -148,7 +155,11 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                         
                         
                                 <ul class="votos">
+                                    <li>
+                                        <i class="fas fa-heart iconLike"  data-toggle="popover" data-placement="right" data-content="Hola mundo!!"></i>
+                                    </li>
                                     <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_user"]; ?>">
+                                    
                                     <i class="fas fa-thumbs-up like"></i>
                                     <span><?php echo $filas["votos"]; ?></span>
                                     </li>
@@ -156,7 +167,6 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                                 </div>
                                     <p class="idea-message-chat-users" id="idea-message-chat-users"><?php echo utf8_encode($filas["argumento"]); ?></p>
                                     <button class="btn btn-block btn-seemoremessage" id="btn-seemoremessage">Ver <i class="fas fa-plus"></i></button>
-                        
                                 </div>
                         
                                 <?php
@@ -243,9 +253,9 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                                 </div>
                             </div>
                             <div class="col-1 column-logout">
-                                <i class="fas fa-power-off logout-icon" id="btnLogout"></i>
+                                <i class="fas fa-power-off logout-icon btnLogout" id="btnLogout"></i>
                                 <div class="btn btn-logout" id="btn-logout-off">
-                                    <button class="btn-i-logout"><a href="./php/logout.php">Salir</a></button>
+                                    <button class="btn-i-logout"><a href="index.php">Salir</a></button>
                                 </div>
                             </div>
                         </div>
@@ -488,6 +498,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
     <script src="js/main.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/masonry.pkgd.min.js"></script>
+    <script src="js/all.js"></script>
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -495,11 +506,14 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
 <!-- <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script> -->
     <script type="text/javascript">
 
-        $('').on('click', function(){
-            $('#exampleModalScrollable').modal('toggle')
-        })
 
-
+       
+        // $('').on('click', function(){
+        //     $('#exampleModalScrollable').modal('toggle')
+        // })
+        
+        
+        $('[data-toggle="popover"]').popover({ html : true })
 
         $(document).ready(function() 
         {
@@ -549,6 +563,9 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
             
             }
         }
+
+
+
 
         // *************  TEMPLATES ****************
 
@@ -633,7 +650,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                 
                 home.innerHTML = content;
 
-                const btnShowAllIdea = document.getElementsByClassName('btn-seemoremessage-template')
+                const btnShowAllIdea = document.getElementByClassName('btn-seemoremessage-template')
                 const textAllIdeas = document.querySelectorAll('.all-message-all-users')
                 let stateMessage = false
 

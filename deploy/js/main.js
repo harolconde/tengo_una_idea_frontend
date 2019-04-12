@@ -1,45 +1,50 @@
-"use strict";
+'use strict'; //*******************************************************************************//
+// ****************************** CONSTANTES DEL HOME ***************************//
+//*******************************************************************************//
+//Constantes para el boton salir
 
-var btnPowerof = document.querySelectorAll('btnLogout');
-var btnLogout = document.getElementById('btn-logout-off');
-var statePower = false;
-var state = false;
-
-for (var i = 0; i < btnPowerof.length; i++) {
-  btnPowerof[i].addEventListener('click', function () {
-    if (statePower == false) {
-      btnLogout.style.display = 'block';
-      statePower = true;
-    } else {
-      btnLogout.style.display = 'none';
-      statePower = false;
-    }
-  });
-} //**************Chat ideas*************/
-//Mostrar todo el mensaje
-
+var btnPowerof = document.getElementsByClassName('btnLogout');
+var btnLogout = document.getElementById('btn-logout-off'); //Constantes mostrar mensaje completo
 
 var btnSemoreMessage = document.getElementsByClassName('btn-seemoremessage');
-var paragraphMessageChat = document.getElementsByClassName('idea-message-chat-users');
+var paragraphMessageChat = document.getElementsByClassName('idea-message-chat-users'); //Constantes mostrar popover me gusta
 
-var _loop = function _loop(_i) {
-  btnSemoreMessage[_i].addEventListener('click', function () {
-    if (state == false) {
-      paragraphMessageChat[_i].style.whiteSpace = "normal";
-      paragraphMessageChat[_i].style.transitionDuration = "0.5s";
-      state = true;
-    } else {
-      paragraphMessageChat[_i].style.whiteSpace = "nowrap";
-      paragraphMessageChat[_i].style.transitionDuration = "0.5s";
-      state = false;
-    }
+var btnLike = document.getElementsByClassName('iconLike');
+console.log(btnLike);
+
+for (var i = 0; i < btnLike.lenght; i++) {
+  console.log(i);
+  likeIdea[i].addEventListener('click', function () {
+    return console.log('Me gusta');
   });
-};
+} //*******************************************************************************//
+// ************************** CONSTANTES PERFIL DE USUARIO **********************//
+//*******************************************************************************//
+// Constante acordeon perfil del usuario todas las ideas
 
-for (var _i = 0; _i < btnSemoreMessage.length; _i++) {
-  _loop(_i);
-} // Carrusel de imagenes
 
+var acordeon = document.getElementsByClassName('container-all-idea-user'); // Constantes boton editar datos 
+
+var btnEdit = document.getElementById('btn-edit-user');
+var panelEdit = document.getElementById('container-edit-datos'); //*******************************************************************************//
+// ***************************** VARIABLES GENERALES *************************//
+//*******************************************************************************//
+//************* Variables del home ***************/
+
+var statePower = false; //Boolean btn salir
+
+var state = false; //Boolean mostrar mensaje
+//*************** Variables perfil de usuario **************//
+
+var panel = document.querySelectorAll('.list-allideas'); //Panel oculto de acordeon perfil del usuario
+
+var varBol = false; //Boolean acordeon perfil del usuario
+
+var stateEdit = false; //Boolean btn editar perfil del usuario
+//*******************************************************************************//
+// ***************************** FUNCIONES  *************************//
+//*******************************************************************************//
+// Funcion mostrar ideas en carrusel en el tablero de ideas
 
 $(document).ready(function () {
   $('.owl-cards').owlCarousel({
@@ -66,36 +71,68 @@ $(document).ready(function () {
       }
     }
   });
-}); // funcion acordeon perfil del usuario 
+}); //*******************************************************************************//
+// ***************************** VISTA DEL HOME EVENTOS *************************//
+//*******************************************************************************//
+//Evento para el boton salir
 
-var acordeon = document.getElementsByClassName('container-all-idea-user');
-var panel = document.querySelectorAll('.list-allideas');
-var varBol = false;
-
-var _loop2 = function _loop2(_i2) {
-  acordeon[_i2].addEventListener('click', function () {
-    if (varBol == false) {
-      //panel[i].classList.add("activa-user")
-      panel[_i2].style.display = 'block';
-      panel[_i2].style.transition = ' display 1s ease';
-      varBol = true;
-      console.log(panel[_i2]);
+for (var _i = 0; _i < btnPowerof.length; _i++) {
+  btnPowerof[_i].addEventListener('click', function () {
+    if (statePower == false) {
+      btnLogout.style.display = 'block';
+      statePower = true;
     } else {
-      panel[_i2].style.display = 'none';
-      panel[_i2].style.transition = 'display 1s ease';
-      varBol = false;
-      console.log(panel[_i2]);
+      btnLogout.style.display = 'none';
+      statePower = false;
+    }
+  });
+} //**************Chat ideas*************//
+//Evento mostrar todo el mensaje en el chat de ideas
+
+
+var _loop = function _loop(_i2) {
+  btnSemoreMessage[_i2].addEventListener('click', function () {
+    if (state == false) {
+      paragraphMessageChat[_i2].style.whiteSpace = "normal";
+      paragraphMessageChat[_i2].style.transitionDuration = "0.5s";
+      state = true;
+    } else {
+      paragraphMessageChat[_i2].style.whiteSpace = "nowrap";
+      paragraphMessageChat[_i2].style.transitionDuration = "0.5s";
+      state = false;
     }
   });
 };
 
-for (var _i2 = 0; _i2 < acordeon.length; _i2++) {
-  _loop2(_i2);
+for (var _i2 = 0; _i2 < btnSemoreMessage.length; _i2++) {
+  _loop(_i2);
+} //*******************************************************************************//
+// ***************************** VISTA DEL PERFIL DEL USUARIO EVENTOS *************************//
+//*******************************************************************************//
+//Evento acordeon perfil del usuario
+
+
+var _loop2 = function _loop2(_i3) {
+  acordeon[_i3].addEventListener('click', function () {
+    if (varBol == false) {
+      //panel[i].classList.add("activa-user")
+      panel[_i3].style.display = 'block';
+      panel[_i3].style.transition = ' display 1s ease';
+      varBol = true;
+      console.log(panel[_i3]);
+    } else {
+      panel[_i3].style.display = 'none';
+      panel[_i3].style.transition = 'display 1s ease';
+      varBol = false;
+      console.log(panel[_i3]);
+    }
+  });
+};
+
+for (var _i3 = 0; _i3 < acordeon.length; _i3++) {
+  _loop2(_i3);
 }
 
-var btnEdit = document.getElementById('btn-edit-user');
-var panelEdit = document.getElementById('container-edit-datos');
-var stateEdit = false;
 btnEdit.addEventListener('click', function () {
   if (stateEdit == false) {
     panelEdit.style.display = 'block';

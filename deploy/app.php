@@ -1,7 +1,7 @@
 <?php
     @session_start();
-    if(!isset($_SESSION["user"])){
-        header('Location: home_ldap.php');
+    if(!isset($_SESSION["username"])){
+        header('Location: index.php');
     }
 ?>
 <!DOCTYPE html>
@@ -17,7 +17,7 @@
     <div class="container p-2">
         <div class="row">
             <div class="col-4">
-                <span>Hola <?php echo $_SESSION["user"].'@novatec.com.co'; ?></span> <br>
+                <span>Hola <?php echo $_SESSION["username"].'@novatec.com.co'; ?></span> <br>
                 <br>
                 <a href="php/salir.php">Salir</a>
             </div>

@@ -1,8 +1,11 @@
 <?php
-session_start();
-if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
-	print "<script>alert(\"Acceso invalido!\");window.location='login.php';</script>";
+    session_start();
+    if(!isset($_SESSION["username"])){
+        header('Location: index.php');
     }
+// if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
+// 	print "<script>alert(\"Acceso invalido!\");window.location='login.php';</script>";
+//     }
 ?>
 <?php
     $host_db="localhost";
@@ -37,8 +40,8 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
             <div class="container-imagen">imagen</div>
             <div class="container-datos">
                 <div class="container-name-user">
-                    <span class="userdate">Nombre de usuario</span>
-                    <span class="userdate">email.user@email.com.co</span>
+                    <span class="userdate"><?php echo $_SESSION["username"];?></span>
+                    <span class="userdate"><?php echo $_SESSION["username"].'@'.'novatec.com.co';?></span>
                 </div>
             </div>
             

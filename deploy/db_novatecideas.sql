@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-03-2019 a las 00:23:52
--- Versión del servidor: 10.1.36-MariaDB
--- Versión de PHP: 5.6.38
+-- Tiempo de generación: 11-04-2019 a las 22:39:54
+-- Versión del servidor: 10.1.38-MariaDB
+-- Versión de PHP: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -30,9 +30,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `ideas` (
   `id_Idea` int(3) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `titulo` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
-  `argumento` varchar(500) CHARACTER SET armscii8 NOT NULL,
+  `id_user` int(11) DEFAULT NULL,
+  `argumento` varchar(200) CHARACTER SET armscii8 NOT NULL,
   `estado` enum('propuesta','comite','rechazada','moribunda','debate','muerta','aprobada') COLLATE utf8_spanish_ci NOT NULL,
   `f_creacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `f_aprobacion` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -47,36 +46,16 @@ CREATE TABLE `ideas` (
 -- Volcado de datos para la tabla `ideas`
 --
 
-INSERT INTO `ideas` (`id_Idea`, `id_user`, `titulo`, `argumento`, `estado`, `f_creacion`, `f_aprobacion`, `f_muerte`, `votos`, `formulario`, `memorias`, `id`) VALUES
-(1, 2, '', 'propongo idea 1 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene una distribuci?n m?s o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aqu?, contenido aqu?\". Estos textos hacen parecerlo un espa?ol que se puede leer. Muchos paquetes de autoedici?n y editores de p?ginas web usan el Lorem Ipsum como su texto por defecto, y al hac', 'propuesta', '2019-03-18 17:00:58', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 3, '', '', 0),
-(2, 4, '', 'propongo idea 2 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene una distribuci?n m?s o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aqu?, contenido aqu?\". Estos textos hacen parecerlo un espa?ol que se puede leer. Muchos paquetes de autoedici?n y editores de p?ginas web usan el Lorem Ipsum como su texto por defecto, y al hac', 'propuesta', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 5, '', '', 0),
-(3, 6, '', 'propongo idea 3 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene una distribuci?n m?s o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aqu?, contenido aqu?\". Estos textos hacen parecerlo un espa?ol que se puede leer. Muchos paquetes de autoedici?n y editores de p?ginas web usan el Lorem Ipsum como su texto por defecto, y al hac', 'propuesta', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 6, '', '', 0),
-(4, 8, '', 'propongo idea 4 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene una distribuci?n m?s o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aqu?, contenido aqu?\". Estos textos hacen parecerlo un espa?ol que se puede leer. Muchos paquetes de autoedici?n y editores de p?ginas web usan el Lorem Ipsum como su texto por defecto, y al hac', 'propuesta', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 2, '', '', 0),
-(5, 10, '', 'propongo idea 5 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene una distribuci?n m?s o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aqu?, contenido aqu?\". Estos textos hacen parecerlo un espa?ol que se puede leer. Muchos paquetes de autoedici?n y editores de p?ginas web usan el Lorem Ipsum como su texto por defecto, y al hac', 'propuesta', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 5, '', '', 0),
-(6, 12, '', 'propongo idea 6 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene una distribuci?n m?s o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aqu?, contenido aqu?\". Estos textos hacen parecerlo un espa?ol que se puede leer. Muchos paquetes de autoedici?n y editores de p?ginas web usan el Lorem Ipsum como su texto por defecto, y al hac', 'propuesta', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 9, '', '', 0),
-(7, 14, '', 'propongo idea 7 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene una distribuci?n m?s o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aqu?, contenido aqu?\". Estos textos hacen parecerlo un espa?ol que se puede leer. Muchos paquetes de autoedici?n y editores de p?ginas web usan el Lorem Ipsum como su texto por defecto, y al hac', 'propuesta', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 8, '', '', 0),
-(8, 16, '', 'propongo idea 8 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene una distribuci?n m?s o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aqu?, contenido aqu?\". Estos textos hacen parecerlo un espa?ol que se puede leer. Muchos paquetes de autoedici?n y editores de p?ginas web usan el Lorem Ipsum como su texto por defecto, y al hac', 'propuesta', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 5, '', '', 0),
-(9, 18, '', 'propongo idea 9 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene una distribuci?n m?s o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aqu?, contenido aqu?\". Estos textos hacen parecerlo un espa?ol que se puede leer. Muchos paquetes de autoedici?n y editores de p?ginas web usan el Lorem Ipsum como su texto por defecto, y al hac', 'propuesta', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 2, '', '', 0),
-(10, 20, '', 'propongo idea 10 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene una distribuci?n m?s o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aqu?, contenido aqu?\". Estos textos hacen parecerlo un espa?ol que se puede leer. Muchos paquetes de autoedici?n y editores de p?ginas web usan el Lorem Ipsum como su texto por defecto, y al ha', 'propuesta', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 2, '', '', 0),
-(11, 22, '', 'propongo idea 11 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene una distribuci?n m?s o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aqu?, contenido aqu?\". Estos textos hacen parecerlo un espa?ol que se puede leer. Muchos paquetes de autoedici?n y editores de p?ginas web usan el Lorem Ipsum como su texto por defecto, y al ha', 'propuesta', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 10, '', '', 0),
-(12, 24, '', 'propongo idea 12 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene una distribuci?n m?s o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aqu?, contenido aqu?\". Estos textos hacen parecerlo un espa?ol que se puede leer. Muchos paquetes de autoedici?n y editores de p?ginas web usan el Lorem Ipsum como su texto por defecto, y al ha', 'propuesta', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 2, '', '', 0),
-(13, 26, '', 'propongo idea 13 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene una distribuci?n m?s o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aqu?, contenido aqu?\". Estos textos hacen parecerlo un espa?ol que se puede leer. Muchos paquetes de autoedici?n y editores de p?ginas web usan el Lorem Ipsum como su texto por defecto, y al ha', 'propuesta', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, '', '', 0),
-(14, 28, '', 'propongo idea 14 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene una distribuci?n m?s o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aqu?, contenido aqu?\". Estos textos hacen parecerlo un espa?ol que se puede leer. Muchos paquetes de autoedici?n y editores de p?ginas web usan el Lorem Ipsum como su texto por defecto, y al ha', 'propuesta', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 3, '', '', 0),
-(15, 30, '', 'propongo idea 15 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene una distribuci?n m?s o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aqu?, contenido aqu?\". Estos textos hacen parecerlo un espa?ol que se puede leer. Muchos paquetes de autoedici?n y editores de p?ginas web usan el Lorem Ipsum como su texto por defecto, y al ha', 'propuesta', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 6, '', '', 0),
-(16, 32, '', 'propongo idea 16 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene una distribuci?n m?s o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aqu?, contenido aqu?\". Estos textos hacen parecerlo un espa?ol que se puede leer. Muchos paquetes de autoedici?n y editores de p?ginas web usan el Lorem Ipsum como su texto por defecto, y al ha', 'propuesta', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 5, '', '', 0),
-(17, 34, '', 'propongo idea 17 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene una distribuci?n m?s o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aqu?, contenido aqu?\". Estos textos hacen parecerlo un espa?ol que se puede leer. Muchos paquetes de autoedici?n y editores de p?ginas web usan el Lorem Ipsum como su texto por defecto, y al ha', 'propuesta', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 4, '', '', 0),
-(18, 36, '', 'propongo idea 18 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene una distribuci?n m?s o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aqu?, contenido aqu?\". Estos textos hacen parecerlo un espa?ol que se puede leer. Muchos paquetes de autoedici?n y editores de p?ginas web usan el Lorem Ipsum como su texto por defecto, y al ha', 'propuesta', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 3, '', '', 0),
-(19, 38, '', 'propongo idea 19 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene una distribuci?n m?s o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aqu?, contenido aqu?\". Estos textos hacen parecerlo un espa?ol que se puede leer. Muchos paquetes de autoedici?n y editores de p?ginas web usan el Lorem Ipsum como su texto por defecto, y al ha', 'propuesta', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, '', '', 0),
-(20, 40, '', 'propongo idea 20 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene una distribuci?n m?s o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aqu?, contenido aqu?\". Estos textos hacen parecerlo un espa?ol que se puede leer. Muchos paquetes de autoedici?n y editores de p?ginas web usan el Lorem Ipsum como su texto por defecto, y al ha', 'propuesta', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 5, '', '', 0),
-(21, 42, '', 'propongo idea 21 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene una distribuci?n m?s o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aqu?, contenido aqu?\". Estos textos hacen parecerlo un espa?ol que se puede leer. Muchos paquetes de autoedici?n y editores de p?ginas web usan el Lorem Ipsum como su texto por defecto, y al ha', 'aprobada', '2019-03-01 05:00:00', '2019-03-12 05:00:00', '0000-00-00 00:00:00', 12, '', '', 0),
-(22, 44, '', 'propongo idea 22 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene una distribuci?n m?s o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aqu?, contenido aqu?\". Estos textos hacen parecerlo un espa?ol que se puede leer. Muchos paquetes de autoedici?n y editores de p?ginas web usan el Lorem Ipsum como su texto por defecto, y al ha', 'propuesta', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 11, '', '', 0),
-(23, 46, '', 'propongo idea 23 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene una distribuci?n m?s o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aqu?, contenido aqu?\". Estos textos hacen parecerlo un espa?ol que se puede leer. Muchos paquetes de autoedici?n y editores de p?ginas web usan el Lorem Ipsum como su texto por defecto, y al ha', 'aprobada', '2019-03-12 20:29:13', '2019-03-12 05:00:00', '0000-00-00 00:00:00', 12, '', '', 0),
-(24, 48, '', 'propongo idea 24 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene una distribuci?n m?s o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aqu?, contenido aqu?\". Estos textos hacen parecerlo un espa?ol que se puede leer. Muchos paquetes de autoedici?n y editores de p?ginas web usan el Lorem Ipsum como su texto por defecto, y al ha', 'propuesta', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 8, '', '', 0),
-(25, 50, '', 'propongo idea 25 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene una distribuci?n m?s o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aqu?, contenido aqu?\". Estos textos hacen parecerlo un espa?ol que se puede leer. Muchos paquetes de autoedici?n y editores de p?ginas web usan el Lorem Ipsum como su texto por defecto, y al ha', 'aprobada', '2019-03-01 05:00:00', '2019-03-12 05:00:00', '0000-00-00 00:00:00', 12, '', '', 0),
-(26, 52, '', 'propongo idea 26 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene una distribuci?n m?s o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aqu?, contenido aqu?\". Estos textos hacen parecerlo un espa?ol que se puede leer. Muchos paquetes de autoedici?n y editores de p?ginas web usan el Lorem Ipsum como su texto por defecto, y al ha', 'propuesta', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 8, '', '', 0),
-(27, 54, '', 'propongo idea 27 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene una distribuci?n m?s o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aqu?, contenido aqu?\". Estos textos hacen parecerlo un espa?ol que se puede leer. Muchos paquetes de autoedici?n y editores de p?ginas web usan el Lorem Ipsum como su texto por defecto, y al ha', 'aprobada', '2019-03-01 05:00:00', '2019-03-12 05:00:00', '0000-00-00 00:00:00', 12, '', '', 0),
-(28, 56, '', 'propongo idea 28 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene una distribuci?n m?s o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aqu?, contenido aqu?\". Estos textos hacen parecerlo un espa?ol que se puede leer. Muchos paquetes de autoedici?n y editores de p?ginas web usan el Lorem Ipsum como su texto por defecto, y al ha', 'propuesta', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 6, '', '', 0),
-(29, 58, '', 'propongo idea 29 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene una distribuci?n m?s o menos normal de las letras, al contrario de usar textos como por ejemplo \"Contenido aqu?, contenido aqu?\". Estos textos hacen parecerlo un espa?ol que se puede leer. Muchos paquetes de autoedici?n y editores de p?ginas web usan el Lorem Ipsum como su texto por defecto, y al ha', 'aprobada', '2019-03-12 20:12:28', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 12, '', '', 0);
+INSERT INTO `ideas` (`id_Idea`, `id_user`, `argumento`, `estado`, `f_creacion`, `f_aprobacion`, `f_muerte`, `votos`, `formulario`, `memorias`, `id`) VALUES
+(1, 2, 'propongo idea 1 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene u', 'muerta', '2019-03-29 15:22:49', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 4, '', '', 0),
+(4, 8, 'propongo idea 4 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene u', 'muerta', '2019-03-28 19:29:06', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 2, '', '', 0),
+(13, 26, 'propongo idea 13 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene ', 'muerta', '2019-04-04 14:57:19', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 3, '', '', 0),
+(21, 42, 'propongo idea 21 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene ', 'aprobada', '2019-03-29 20:33:54', '2019-03-12 05:00:00', '0000-00-00 00:00:00', 13, '', '', 0),
+(25, 50, 'propongo idea 25 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene ', 'aprobada', '2019-03-29 20:33:03', '2019-03-12 05:00:00', '0000-00-00 00:00:00', 13, '', '', 0),
+(26, 52, 'propongo idea 26 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene ', 'aprobada', '2019-03-27 19:27:51', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 8, '', '', 0),
+(27, 54, 'propongo idea 27 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene ', 'aprobada', '2019-03-01 05:00:00', '2019-03-12 05:00:00', '0000-00-00 00:00:00', 12, '', '', 0),
+(28, 56, 'propongo idea 28 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene ', 'aprobada', '2019-03-27 19:27:43', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 6, '', '', 0),
+(29, 58, 'propongo idea 29 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene ', 'aprobada', '2019-03-29 20:33:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 13, '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -100,106 +79,15 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `email`, `username`, `type`, `password`, `first_name`, `last_name`, `create_at`) VALUES
-(1, '1PENELOPE@notatec.com.co', '1PENELOPE', 'basic', '123', 'PENELOPE', 'GUINESS', '0000-00-00 00:00:00'),
 (2, '2NICK@notatec.com.co', '2NICK', 'basic', '123', 'NICK', 'WAHLBERG', '0000-00-00 00:00:00'),
-(3, '3ED@notatec.com.co', '3ED', 'basic', '123', 'ED', 'CHASE', '0000-00-00 00:00:00'),
-(4, '4JENNIFER@notatec.com.co', '4JENNIFER', 'basic', '123', 'JENNIFER', 'DAVIS', '0000-00-00 00:00:00'),
-(5, '5JOHNNY@notatec.com.co', '5JOHNNY', 'basic', '123', 'JOHNNY', 'LOLLOBRIGIDA', '0000-00-00 00:00:00'),
-(6, '6BETTE@notatec.com.co', '6BETTE', 'basic', '123', 'BETTE', 'NICHOLSON', '0000-00-00 00:00:00'),
-(7, '7GRACE@notatec.com.co', '7GRACE', 'basic', '123', 'GRACE', 'MOSTEL', '0000-00-00 00:00:00'),
 (8, '8MATTHEW@notatec.com.co', '8MATTHEW', 'basic', '123', 'MATTHEW', 'JOHANSSON', '0000-00-00 00:00:00'),
-(9, '9JOE@notatec.com.co', '9JOE', 'basic', '123', 'JOE', 'SWANK', '0000-00-00 00:00:00'),
-(10, '10CHRISTIAN@notatec.com.co', '10CHRISTIAN', 'basic', '123', 'CHRISTIAN', 'GABLE', '0000-00-00 00:00:00'),
-(11, '11ZERO@notatec.com.co', '11ZERO', 'basic', '123', 'ZERO', 'CAGE', '0000-00-00 00:00:00'),
-(12, '12KARL@notatec.com.co', '12KARL', 'basic', '123', 'KARL', 'BERRY', '0000-00-00 00:00:00'),
-(13, '13UMA@notatec.com.co', '13UMA', 'basic', '123', 'UMA', 'WOOD', '0000-00-00 00:00:00'),
-(14, '14VIVIEN@notatec.com.co', '14VIVIEN', 'basic', '123', 'VIVIEN', 'BERGEN', '0000-00-00 00:00:00'),
-(15, '15CUBA@notatec.com.co', '15CUBA', 'basic', '123', 'CUBA', 'OLIVIER', '0000-00-00 00:00:00'),
-(16, '16FRED@notatec.com.co', '16FRED', 'basic', '123', 'FRED', 'COSTNER', '0000-00-00 00:00:00'),
-(17, '17HELEN@notatec.com.co', '17HELEN', 'basic', '123', 'HELEN', 'VOIGHT', '0000-00-00 00:00:00'),
-(18, '18DAN@notatec.com.co', '18DAN', 'basic', '123', 'DAN', 'TORN', '0000-00-00 00:00:00'),
-(19, '19BOB@notatec.com.co', '19BOB', 'basic', '123', 'BOB', 'FAWCETT', '0000-00-00 00:00:00'),
-(20, '20LUCILLE@notatec.com.co', '20LUCILLE', 'basic', '123', 'LUCILLE', 'TRACY', '0000-00-00 00:00:00'),
-(21, '21KIRSTEN@notatec.com.co', '21KIRSTEN', 'basic', '123', 'KIRSTEN', 'PALTROW', '0000-00-00 00:00:00'),
-(22, '22ELVIS@notatec.com.co', '22ELVIS', 'basic', '123', 'ELVIS', 'MARX', '0000-00-00 00:00:00'),
-(23, '23SANDRA@notatec.com.co', '23SANDRA', 'basic', '123', 'SANDRA', 'KILMER', '0000-00-00 00:00:00'),
-(24, '24CAMERON@notatec.com.co', '24CAMERON', 'basic', '123', 'CAMERON', 'STREEP', '0000-00-00 00:00:00'),
-(25, '25KEVIN@notatec.com.co', '25KEVIN', 'basic', '123', 'KEVIN', 'BLOOM', '0000-00-00 00:00:00'),
 (26, '26RIP@notatec.com.co', '26RIP', 'basic', '123', 'RIP', 'CRAWFORD', '0000-00-00 00:00:00'),
-(27, '27JULIA@notatec.com.co', '27JULIA', 'basic', '123', 'JULIA', 'MCQUEEN', '0000-00-00 00:00:00'),
-(28, '28WOODY@notatec.com.co', '28WOODY', 'basic', '123', 'WOODY', 'HOFFMAN', '0000-00-00 00:00:00'),
-(29, '29ALEC@notatec.com.co', '29ALEC', 'basic', '123', 'ALEC', 'WAYNE', '0000-00-00 00:00:00'),
-(30, '30SANDRA@notatec.com.co', '30SANDRA', 'basic', '123', 'SANDRA', 'PECK', '0000-00-00 00:00:00'),
-(31, '31SISSY@notatec.com.co', '31SISSY', 'basic', '123', 'SISSY', 'SOBIESKI', '0000-00-00 00:00:00'),
-(32, '32TIM@notatec.com.co', '32TIM', 'basic', '123', 'TIM', 'HACKMAN', '0000-00-00 00:00:00'),
-(33, '33MILLA@notatec.com.co', '33MILLA', 'basic', '123', 'MILLA', 'PECK', '0000-00-00 00:00:00'),
-(34, '34AUDREY@notatec.com.co', '34AUDREY', 'basic', '123', 'AUDREY', 'OLIVIER', '0000-00-00 00:00:00'),
-(35, '35JUDY@notatec.com.co', '35JUDY', 'basic', '123', 'JUDY', 'DEAN', '0000-00-00 00:00:00'),
-(36, '36BURT@notatec.com.co', '36BURT', 'basic', '123', 'BURT', 'DUKAKIS', '0000-00-00 00:00:00'),
-(37, '37VAL@notatec.com.co', '37VAL', 'basic', '123', 'VAL', 'BOLGER', '0000-00-00 00:00:00'),
-(38, '38TOM@notatec.com.co', '38TOM', 'basic', '123', 'TOM', 'MCKELLEN', '0000-00-00 00:00:00'),
-(39, '39GOLDIE@notatec.com.co', '39GOLDIE', 'basic', '123', 'GOLDIE', 'BRODY', '0000-00-00 00:00:00'),
-(40, '40JOHNNY@notatec.com.co', '40JOHNNY', 'basic', '123', 'JOHNNY', 'CAGE', '0000-00-00 00:00:00'),
-(41, '41JODIE@notatec.com.co', '41JODIE', 'basic', '123', 'JODIE', 'DEGENERES', '0000-00-00 00:00:00'),
 (42, '42TOM@notatec.com.co', '42TOM', 'basic', '123', 'TOM', 'MIRANDA', '0000-00-00 00:00:00'),
-(43, '43KIRK@notatec.com.co', '43KIRK', 'basic', '123', 'KIRK', 'JOVOVICH', '0000-00-00 00:00:00'),
-(44, '44NICK@notatec.com.co', '44NICK', 'basic', '123', 'NICK', 'STALLONE', '0000-00-00 00:00:00'),
-(45, '45REESE@notatec.com.co', '45REESE', 'basic', '123', 'REESE', 'KILMER', '0000-00-00 00:00:00'),
-(46, '46PARKER@notatec.com.co', '46PARKER', 'basic', '123', 'PARKER', 'GOLDBERG', '0000-00-00 00:00:00'),
-(47, '47JULIA@notatec.com.co', '47JULIA', 'basic', '123', 'JULIA', 'BARRYMORE', '0000-00-00 00:00:00'),
-(48, '48FRANCES@notatec.com.co', '48FRANCES', 'basic', '123', 'FRANCES', 'DAY-LEWIS', '0000-00-00 00:00:00'),
-(49, '49ANNE@notatec.com.co', '49ANNE', 'basic', '123', 'ANNE', 'CRONYN', '0000-00-00 00:00:00'),
 (50, '50NATALIE@notatec.com.co', '50NATALIE', 'basic', '123', 'NATALIE', 'HOPKINS', '0000-00-00 00:00:00'),
-(51, '51GARY@notatec.com.co', '51GARY', 'basic', '123', 'GARY', 'PHOENIX', '0000-00-00 00:00:00'),
 (52, '52CARMEN@notatec.com.co', '52CARMEN', 'basic', '123', 'CARMEN', 'HUNT', '0000-00-00 00:00:00'),
-(53, '53MENA@notatec.com.co', '53MENA', 'basic', '123', 'MENA', 'TEMPLE', '0000-00-00 00:00:00'),
 (54, '54PENELOPE@notatec.com.co', '54PENELOPE', 'basic', '123', 'PENELOPE', 'PINKETT', '0000-00-00 00:00:00'),
-(55, '55FAY@notatec.com.co', '55FAY', 'basic', '123', 'FAY', 'KILMER', '0000-00-00 00:00:00'),
 (56, '56DAN@notatec.com.co', '56DAN', 'basic', '123', 'DAN', 'HARRIS', '0000-00-00 00:00:00'),
-(57, '57JUDE@notatec.com.co', '57JUDE', 'basic', '123', 'JUDE', 'CRUISE', '0000-00-00 00:00:00'),
-(58, '58CHRISTIAN@notatec.com.co', '58CHRISTIAN', 'basic', '123', 'CHRISTIAN', 'AKROYD', '0000-00-00 00:00:00'),
-(59, '59DUSTIN@notatec.com.co', '59DUSTIN', 'basic', '123', 'DUSTIN', 'TAUTOU', '0000-00-00 00:00:00'),
-(60, '60HENRY@notatec.com.co', '60HENRY', 'basic', '123', 'HENRY', 'BERRY', '0000-00-00 00:00:00'),
-(61, '61CHRISTIAN@notatec.com.co', '61CHRISTIAN', 'basic', '123', 'CHRISTIAN', 'NEESON', '0000-00-00 00:00:00'),
-(62, '62JAYNE@notatec.com.co', '62JAYNE', 'basic', '123', 'JAYNE', 'NEESON', '0000-00-00 00:00:00'),
-(63, '63CAMERON@notatec.com.co', '63CAMERON', 'basic', '123', 'CAMERON', 'WRAY', '0000-00-00 00:00:00'),
-(64, '64RAY@notatec.com.co', '64RAY', 'basic', '123', 'RAY', 'JOHANSSON', '0000-00-00 00:00:00'),
-(65, '65ANGELA@notatec.com.co', '65ANGELA', 'basic', '123', 'ANGELA', 'HUDSON', '0000-00-00 00:00:00'),
-(66, '66MARY@notatec.com.co', '66MARY', 'basic', '123', 'MARY', 'TANDY', '0000-00-00 00:00:00'),
-(67, '67JESSICA@notatec.com.co', '67JESSICA', 'basic', '123', 'JESSICA', 'BAILEY', '0000-00-00 00:00:00'),
-(68, '68RIP@notatec.com.co', '68RIP', 'basic', '123', 'RIP', 'WINSLET', '0000-00-00 00:00:00'),
-(69, '69KENNETH@notatec.com.co', '69KENNETH', 'basic', '123', 'KENNETH', 'PALTROW', '0000-00-00 00:00:00'),
-(70, '70MICHELLE@notatec.com.co', '70MICHELLE', 'basic', '123', 'MICHELLE', 'MCCONAUGHEY', '0000-00-00 00:00:00'),
-(71, '71ADAM@notatec.com.co', '71ADAM', 'basic', '123', 'ADAM', 'GRANT', '0000-00-00 00:00:00'),
-(72, '72SEAN@notatec.com.co', '72SEAN', 'basic', '123', 'SEAN', 'WILLIAMS', '0000-00-00 00:00:00'),
-(73, '73GARY@notatec.com.co', '73GARY', 'basic', '123', 'GARY', 'PENN', '0000-00-00 00:00:00'),
-(74, '74MILLA@notatec.com.co', '74MILLA', 'basic', '123', 'MILLA', 'KEITEL', '0000-00-00 00:00:00'),
-(75, '75BURT@notatec.com.co', '75BURT', 'basic', '123', 'BURT', 'POSEY', '0000-00-00 00:00:00'),
-(76, '76ANGELINA@notatec.com.co', '76ANGELINA', 'basic', '123', 'ANGELINA', 'ASTAIRE', '0000-00-00 00:00:00'),
-(77, '77CARY@notatec.com.co', '77CARY', 'basic', '123', 'CARY', 'MCCONAUGHEY', '0000-00-00 00:00:00'),
-(78, '78GROUCHO@notatec.com.co', '78GROUCHO', 'basic', '123', 'GROUCHO', 'SINATRA', '0000-00-00 00:00:00'),
-(79, '79MAE@notatec.com.co', '79MAE', 'basic', '123', 'MAE', 'HOFFMAN', '0000-00-00 00:00:00'),
-(80, '80RALPH@notatec.com.co', '80RALPH', 'basic', '123', 'RALPH', 'CRUZ', '0000-00-00 00:00:00'),
-(81, '81SCARLETT@notatec.com.co', '81SCARLETT', 'basic', '123', 'SCARLETT', 'DAMON', '0000-00-00 00:00:00'),
-(82, '82WOODY@notatec.com.co', '82WOODY', 'basic', '123', 'WOODY', 'JOLIE', '0000-00-00 00:00:00'),
-(83, '83BEN@notatec.com.co', '83BEN', 'basic', '123', 'BEN', 'WILLIS', '0000-00-00 00:00:00'),
-(84, '84JAMES@notatec.com.co', '84JAMES', 'basic', '123', 'JAMES', 'PITT', '0000-00-00 00:00:00'),
-(85, '85MINNIE@notatec.com.co', '85MINNIE', 'basic', '123', 'MINNIE', 'ZELLWEGER', '0000-00-00 00:00:00'),
-(86, '86GREG@notatec.com.co', '86GREG', 'basic', '123', 'GREG', 'CHAPLIN', '0000-00-00 00:00:00'),
-(87, '87SPENCER@notatec.com.co', '87SPENCER', 'basic', '123', 'SPENCER', 'PECK', '0000-00-00 00:00:00'),
-(88, '88KENNETH@notatec.com.co', '88KENNETH', 'basic', '123', 'KENNETH', 'PESCI', '0000-00-00 00:00:00'),
-(89, '89CHARLIZE@notatec.com.co', '89CHARLIZE', 'basic', '123', 'CHARLIZE', 'DENCH', '0000-00-00 00:00:00'),
-(90, '90SEAN@notatec.com.co', '90SEAN', 'basic', '123', 'SEAN', 'GUINESS', '0000-00-00 00:00:00'),
-(91, '91CHRISTOPHER@notatec.com.co', '91CHRISTOPHER', 'basic', '123', 'CHRISTOPHER', 'BERRY', '0000-00-00 00:00:00'),
-(92, '92KIRSTEN@notatec.com.co', '92KIRSTEN', 'basic', '123', 'KIRSTEN', 'AKROYD', '0000-00-00 00:00:00'),
-(93, '93ELLEN@notatec.com.co', '93ELLEN', 'basic', '123', 'ELLEN', 'PRESLEY', '0000-00-00 00:00:00'),
-(94, '94KENNETH@notatec.com.co', '94KENNETH', 'basic', '123', 'KENNETH', 'TORN', '0000-00-00 00:00:00'),
-(95, '95DARYL@notatec.com.co', '95DARYL', 'basic', '123', 'DARYL', 'WAHLBERG', '0000-00-00 00:00:00'),
-(96, '96GENE@notatec.com.co', '96GENE', 'basic', '123', 'GENE', 'WILLIS', '0000-00-00 00:00:00'),
-(97, '97MEG@notatec.com.co', '97MEG', 'basic', '123', 'MEG', 'HAWKE', '0000-00-00 00:00:00'),
-(98, '98CHRIS@notatec.com.co', '98CHRIS', 'basic', '123', 'CHRIS', 'BRIDGES', '0000-00-00 00:00:00'),
-(99, '99JIM@notatec.com.co', '99JIM', 'basic', '123', 'JIM', 'MOSTEL', '0000-00-00 00:00:00'),
-(100, '100SPENCER@notatec.com.co', '100SPENCER', 'basic', '123', 'SPENCER', 'DEPP', '0000-00-00 00:00:00');
+(58, '58CHRISTIAN@notatec.com.co', '58CHRISTIAN', 'basic', '123', 'CHRISTIAN', 'AKROYD', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -433,7 +321,7 @@ ALTER TABLE `votacion`
 -- AUTO_INCREMENT de la tabla `ideas`
 --
 ALTER TABLE `ideas`
-  MODIFY `id_Idea` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_Idea` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
@@ -445,7 +333,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `votacion`
 --
 ALTER TABLE `votacion`
-  MODIFY `id_votacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=180;
+  MODIFY `id_votacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=179;
 
 --
 -- Restricciones para tablas volcadas

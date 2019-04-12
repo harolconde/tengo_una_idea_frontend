@@ -207,7 +207,7 @@
 
 //template de administrar usuarios
     btnAllUser.addEventListener('click', ()=>{
-        let contentAllUser = 
+        let contentAllUser = //html
         `
             <div class="container">
                  <section class="section-perfil-admon">
