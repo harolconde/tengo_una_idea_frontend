@@ -140,10 +140,9 @@ if(!isset($_SESSION["username"])){
                                 <img src="img/perfil/userPerfil.png" alt="">
                             </div>
                             <div class="container-name-votes">
-                                <h3 class="name-user-idea"><?php echo ($filas["id_user"]);
+                                <h3 class="name-user-idea"><!--<?php echo ($filas["id_user"]);
                                 $id_creador=$filas["id_user"];
-                        
-                                ?>
+                                ?>-->
                                 <?php
                                 $usuario = $_SESSION["id_user"];
                                 $mostrarususario = mysqli_query($conexion, "SELECT first_name, last_name FROM users WHERE id_user=$id_creador");
@@ -152,21 +151,36 @@ if(!isset($_SESSION["username"])){
                                 $extraido= mysqli_fetch_array($mostrarususario);
                                 echo $extraido['first_name']." ".$extraido['last_name'].'<br/>';
                                 ?>
-                        
-                        
-                                <ul class="votos">
+                                <ul class="container-btns-likes-dslike">
                                     <li>
-                                        <i class="fas fa-heart iconLike"  data-toggle="popover" data-placement="right" data-content="Hola mundo!!"></i>
-                                    </li>
-                                    <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_user"]; ?>">
-                                    
-                                    <i class="fas fa-thumbs-up like"></i>
-                                    <span><?php echo $filas["votos"]; ?></span>
+                                        <i class="fas fa-comment-alt answer-message"></i>
+                                        <i class="fas fa-heart iconLike" data-container="body"  data-toggle="popover" data-placement="right" data-content=' 
+                                            <ul class="votos">
+                                                <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_user"]; ?>">
+                         
+                                                    <i class="far fa-smile-beam like face"></i>
+                                                    <span><?php echo $filas["votos"]; ?></span>
+                                                </li>
+                                                <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_user"]; ?>">
+                                                
+                                                    <i class="far fa-frown like face"></i>
+                                                    <span>0</span>
+                                                </li>
+                                                <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_user"]; ?>">
+                                                
+                                                    <i class="far fa-meh like face"></i>
+                                                    <span>0</span>
+                                                </li>
+                                            </ul>
+                                            '>
+                                        </i>
+                                        <span><?php echo $filas["votos"]; ?></span>
                                     </li>
                                 </ul>
+                                </h3>
                                 </div>
                                     <p class="idea-message-chat-users" id="idea-message-chat-users"><?php echo utf8_encode($filas["argumento"]); ?></p>
-                                    <button class="btn btn-block btn-seemoremessage" id="btn-seemoremessage">Ver <i class="fas fa-plus"></i></button>
+                                    <button class="btn btn-block btn-seemoremessage" id="btn-seemoremessage">Ver <i class="fas fa-plus iconMoreMinus"></i></button>
                                 </div>
                         
                                 <?php
@@ -195,25 +209,6 @@ if(!isset($_SESSION["username"])){
                                 <!-- <input class="title-idea-mobil" v-model="newTitle" type="text" name="" id="" placeholder="Titulo idea"> -->
                                 <textarea class="form-control" v-model="newMessage" rows="5" id="comment" placeholder="Cual es tud idaea?"></textarea>
                             </div>
-                            <!-- <div class="container-write-idea">
-                                    <div class="container-idea-general row">
-                                        <div class="col-auto container-write-idea-board">
-                                            <label class="sr-only" for="inlineFormInputGroup">Cual es tu idea?</label>
-                                            <div class="input-group group-message-send mb-2">
-                                                <form action="procesar_mensaje.php" method="POST" class="form-New-Message">
-                                                    <textarea name="" id="" cols="30" rows="10" class="space-whrite-idea" v-model="newMessage" class="form-control" id="inlineFormInputGroup" placeholder="Cual es tu idea?" name="argumento"></textarea>
-                                                    <div class="input-group-prepend">
-                                                        <div class="input-group-text">
-                                                            <button class="btn btn-plus-idea" @click="addComments" type="submit" value="Enviar Comentario" >
-                                                                <i class="fas fa-plus"></i>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
                         </div>
                         <div class="col2 btn-send-message-mobil">
                             <button class="btn btn-send-mobil" @click="addComments">
@@ -296,7 +291,7 @@ if(!isset($_SESSION["username"])){
                                                         </li>
                                                     </ul> -->
                                                 </div>
-                                                <p class="idea-message-chat-users" id="idea-message-chat-users" data-toggle="modal" data-target="#exampleModalScrollable"><?php echo utf8_encode($filas["argumento"]); ?></p>
+                                                <p class="idea-message-chat-users " id="idea-message-chat-users" data-toggle="modal" data-target="#exampleModalScrollable"><?php echo utf8_encode($filas["argumento"]); ?></p>
                                                 <button class="btn-item-card btn btn-block voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_Idea"]; ?>">Votar</button>
                                                 
                                                 <!-- Modal -->
@@ -416,29 +411,9 @@ if(!isset($_SESSION["username"])){
                                                                 </li>
                                                             </ul> -->
                                                         </div>
-                                                        <p class="idea-message-chat-users" id="idea-message-chat-users" data-toggle="modal" data-target="#exampleModalScrollable"><?php echo utf8_encode($filas["argumento"]); ?></p>
+                                                        <p class="idea-message-chat-users idea-aprovada" id="idea-message-chat-users"><?php echo utf8_encode($filas["argumento"]); ?></p>
                                                         <!-- <button class="btn-item-card btn btn-block voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_Idea"]; ?>">Votar</button> -->
                                                         
-                                                        <!-- Modal -->
-                                                        <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-scrollable" role="document">
-                                                            <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                ...
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                <button type="button" class="btn btn-primary">Save changes</button>
-                                                            </div>
-                                                            </div>
-                                                        </div>
-                                                        </div>
                                                     </div>
                                                 
                                                     <?php
@@ -454,7 +429,28 @@ if(!isset($_SESSION["username"])){
                         </div>
                     </div>
                 </section>
-
+                <section class='section-modal' id="section-modal">
+                    <!-- Modal -->
+                    <div class="aprobadas" id="aprobadas" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
+                                    <button type="button" class="close"  data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true"></span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                                                        ...
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary btn-close" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
                 <!-- ********** Botones ideas finalizadas y muertas ********** -->
 
                 <section class="section-ideas-df">
@@ -492,31 +488,25 @@ if(!isset($_SESSION["username"])){
         </div> 
     </div>
     <div id="output"></div>
-
-    <script src="js/vue.js"></script>
     <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/home.js"></script>
     <script src="js/main.js"></script>
     <script src="js/owl.carousel.min.js"></script>
+    <script src="js/all.js"></script>                                        
     <script src="js/masonry.pkgd.min.js"></script>
-    <script src="js/all.js"></script>
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-<!-- <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script> -->
     <script type="text/javascript">
 
-
-       
-        // $('').on('click', function(){
-        //     $('#exampleModalScrollable').modal('toggle')
-        // })
-        
-        
-        $('[data-toggle="popover"]').popover({ html : true })
-
         $(document).ready(function() 
-        {
+        {   
+            //Popovers
+            $('[data-toggle="popover"]').popover({ html : true, container : ".container-g-home" })
+            //Modal
+            
+            
+            
+            
             $(".votos .voting_btn").click(function (e) 
             {
                 e.preventDefault();
@@ -540,39 +530,41 @@ if(!isset($_SESSION["username"])){
             });
         });
 
+        const home = document.getElementById('container-board-home')
+        const allIdeas = document.getElementById('link-see-all-Ideas') //Todas las ideas
+        const btnIdDead = document.getElementById('ideas-dead') //Ideas muertas
+        const btnIdFinish = document.getElementById('ideas-finish') //Ideas finalizadas
 
-
-        
         let statusItem = false
 
-        let itemCollapse = function(){
-            for(let i = 0; i < btnShowAllIdea.length; i++){
-                btnShowAllIdea[i].addEventListener('click', () => {
-                    if(statusItem == false){
-                        textAllIdeas[i].style.whiteSpace = 'normal'
-                        statusItem = true
-                        console.log(statusItem)   
+        // Funcion que muertra la informacion completa de todos los mensajes
+        let itemCollapse = function(elem1, elem2,icons){
+                    for(let i = 0; i < elem1.length; i++){
+                        elem1[i].addEventListener('click', () => {
+                            if(statusItem == false){
+                                elem2[i].style.whiteSpace = 'normal'
+                                icons[i].classList.remove('fa-plus')
+                                icons[i].classList.add('fa-minus')
+                                statusItem = true
+                                console.log(statusItem)   
+                            }
+                            else{
+                                elem2[i].style.whiteSpace = 'nowrap'
+                                icons[i].classList.remove('fa-minus')
+                                icons[i].classList.add('fa-plus')
+                                statusItem = false
+                                console.log(statusItem)
+                            }        
+                        })
+                    
                     }
-                    else{
-                        textAllIdeas[i].style.whiteSpace = 'nowrap'
-                        statusItem = false
-                        console.log(statusItem)
-                    }        
-
-                })
-            
-            }
-        }
-
+                }
 
 
 
         // *************  TEMPLATES ****************
 
-        const home = document.getElementById('container-board-home')
-        const allIdeas = document.getElementById('link-see-all-Ideas') //Todas las ideas
-        const btnIdDead = document.getElementById('ideas-dead') //Ideas muertas
-        const btnIdFinish = document.getElementById('ideas-finish') //Ideas finalizadas
+        
 
         // Template todas las ideas
         allIdeas.addEventListener('click', function(e){
@@ -620,16 +612,46 @@ if(!isset($_SESSION["username"])){
                                                             <img src="img/perfil/userPerfil.png" alt="">
                                                         </div>
                                                         <div class="container-name-votes">
-                                                            <h3 class="name-user-idea"><?php echo utf8_encode($filas["id_user"]); ?> Nombre de usuario</h3>
-                                                            <ul class="votos">
-                                                                <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_Idea"]; ?>">
-                                                                    <i class="fas fa-thumbs-up like"></i>
-                                                                    <span><?php echo $filas["votos"]; ?></span>
-                                                                </li>
-                                                            </ul>
+                                                            <h3 class="name-user-idea"><!--<?php echo ($filas["id_user"]);
+                                                            $id_creador=$filas["id_user"];
+                                                            ?>-->
+                                                            <?php
+                                                            $usuario = $_SESSION["id_user"];
+                                                            $mostrarususario = mysqli_query($conexion, "SELECT first_name, last_name FROM users WHERE id_user=$id_creador");
+                                                            mysqli_data_seek ($mostrarususario, 0);
+
+                                                            $extraido= mysqli_fetch_array($mostrarususario);
+                                                            echo $extraido['first_name']." ".$extraido['last_name'].'<br/>';
+                                                            ?>
+                                                                <ul class="container-btns-likes-dslike">
+                                                                    <li>
+                                                                        <i class="fas fa-heart iconLike" data-container="body"  data-toggle="popover" data-placement="right" data-content=' 
+                                                                            <ul class="votos">
+                                                                                <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_user"]; ?>">
+                                                        
+                                                                                    <i class="far fa-smile-beam like face"></i>
+                                                                                    <span><?php echo $filas["votos"]; ?></span>
+                                                                                </li>
+                                                                                <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_user"]; ?>">
+                                                                                
+                                                                                    <i class="far fa-frown like face"></i>
+                                                                                    <span>0</span>
+                                                                                </li>
+                                                                                <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_user"]; ?>">
+                                                                                
+                                                                                    <i class="far fa-meh like face"></i>
+                                                                                    <span>0</span>
+                                                                                </li>
+                                                                            </ul>
+                                                                            '>
+                                                                        </i>
+                                                                        <span><?php echo $filas["votos"]; ?></span>
+                                                                    </li>
+                                                                </ul>
+                                                            </h3>
                                                         </div>
                                                         <p class="idea-message-chat-users all-message-all-users" id="idea-message-chat-users"><?php echo utf8_encode($filas["argumento"]); ?></p>
-                                                        <button class="btn btn-block btn-seemoremessage  btn-seemoremessage-template" id="btn-seemoremessage-template">Ver <i class="fas fa-plus"></i></button>
+                                                        <button class="btn btn-block btn-seemoremessage  btn-seemoremessage-template" id="btn-seemoremessage-template">Ver <i class="fas fa-plus iconMoreMinus"></i></button>
                                                         
                                                     </div>
                                                 
@@ -650,32 +672,23 @@ if(!isset($_SESSION["username"])){
                 
                 home.innerHTML = content;
 
-                const btnShowAllIdea = document.getElementByClassName('btn-seemoremessage-template')
+                const btnShowAllIdea = document.getElementsByClassName('btn-seemoremessage-template')
                 const textAllIdeas = document.querySelectorAll('.all-message-all-users')
-                let stateMessage = false
-
-
-                for(let i = 0; i < btnShowAllIdea.length; i ++){
-                    btnShowAllIdea[i].addEventListener('click', ()=> {
-                        if(statusItem == false){
-                            textAllIdeas[i].style.whiteSpace = 'normal'
-                            statusItem = true
-                            console.log(statusItem)   
-                        }
-                        else{
-                            textAllIdeas[i].style.whiteSpace = 'nowrap'
-                            statusItem = false
-                            console.log(statusItem)
-                        }     
-                    })
-
+                const iconAllIdeas = document.getElementsByClassName('iconMoreMinus')
+                //Llamada a la funcion mostrar todos los mensajes
+                for(let i = 0; i < btnShowAllIdea.length; i++){
+                    btnShowAllIdea[i].addEventListener('click', itemCollapse(btnShowAllIdea, textAllIdeas,iconAllIdeas))
                 }
-
+                
                 let elem = document.querySelector('.grid');
                 let msnry = new Masonry( elem, {
                 // options
                     itemSelector: '.grid-item',
                     columnWidth: 10
+                })
+
+                $(document).ready(function(){
+                    $('[data-toggle="popover"]').popover({ html : true, container : ".container-g-home" })
                 })
 
             }
@@ -732,10 +745,10 @@ if(!isset($_SESSION["username"])){
                                                 <img src="img/perfil/userPerfil.png" alt="">
                                             </div>
                                             <div class="container-name-votes">
-                                                <h3 class="name-user-idea"><?php echo ($filas["id_user"]);
+                                                <h3 class="name-user-idea"><!--<?php echo ($filas["id_user"]);
                                                 $id_creador=$filas["id_user"];
                                         
-                                                ?>
+                                                ?>-->
                                                 <?php
                                                 $usuario = $_SESSION["id_user"];
                                                 $mostrarususario = mysqli_query($conexion, "SELECT first_name, last_name FROM users WHERE id_user=$id_creador");
@@ -744,57 +757,41 @@ if(!isset($_SESSION["username"])){
                                                 $extraido= mysqli_fetch_array($mostrarususario);
                                                 echo $extraido['first_name']." ".$extraido['last_name'].'<br/>';
                                                 ?>
-                                        
-                                        
-                                                <ul class="votos">
+                                                <!--<span><ul class="votos">
                                                     <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_user"]; ?>">
                                                     <i class="fas fa-thumbs-up like"></i>
-                                                    <span><?php echo $filas["votos"]; ?></span>
+                                                    <?php echo $filas["votos"]; ?></span>
                                                     </li>
-                                                </ul>
-                                                </div>
-                                                    <p class="idea-message-chat-users" id="idea-message-chat-users"><?php echo utf8_encode($filas["argumento"]); ?></p>
-                                                    <button class="btn btn-block btn-seemoremessage" id="btn-seemoremessage">Ver <i class="fas fa-plus"></i></button>
+                                                </ul>-->
+                                            </div>
+                                                <p class="idea-message-dead idea-message-chat-users" id="idea-message-chat-users"><?php echo utf8_encode($filas["argumento"]); ?></p>
+                                                <button class="btn btn-block btn-seemoremessage-template-dead" id="btn-seemoremessage">Ver <i class="fas fa-plus semoreDead"></i></button>
                                         
-                                                </div>
-                                        
-                                                <?php
+                                        </div>
+                                            <?php
                                                 }
                                                 while($filas=$posts->fetch_array());
                                                 }
                                                 else echo "<h3>No hay entradas disponibles.</h3>";
-                                                ?>
-                                        </div>
+                                            ?>
                                     </div>
-                                </div> 
-                            </div>
-                        </section>
+                                </div>
+                            </div> 
+                        </div>
+                    </section>
                 </div>
             `
             home.innerHTML = content
             console.log('Ideas muertas')
-
-            const btnShowAllIdea = document.getElementsByClassName('btn-seemoremessage-template')
-            const textAllIdeas = document.querySelectorAll('.all-message-all-users')
-            let stateMessage = false
-
-
-            for(let i = 0; i < btnShowAllIdea.length; i ++){
-                btnShowAllIdea[i].addEventListener('click', ()=> {
-                    if(statusItem == false){
-                        textAllIdeas[i].style.whiteSpace = 'normal'
-                        statusItem = true
-                        console.log(statusItem)   
-                    }
-                    else{
-                        textAllIdeas[i].style.whiteSpace = 'nowrap'
-                        statusItem = false
-                        console.log(statusItem)
-                    }     
-                })
-
+            
+            const btnShowAllIdeaDead = document.getElementsByClassName('btn-seemoremessage-template-dead')
+            const textAllIdeasDead = document.querySelectorAll('.idea-message-dead')
+            const seMoreDead = document.getElementsByClassName('semoreDead')
+            
+            //showMessageDead(btnShowAllIdea, textAllIdeas)
+            for(let i = 0; i < btnShowAllIdeaDead.length; i++){
+                btnShowAllIdeaDead[i].addEventListener('click', itemCollapse(btnShowAllIdeaDead, textAllIdeasDead, seMoreDead))
             }
-
         })
         
 
@@ -915,7 +912,6 @@ if(!isset($_SESSION["username"])){
         })
 
     </script>
-    
     
   </body>
 </html>
