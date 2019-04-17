@@ -440,11 +440,11 @@ if(!isset($_SESSION["username"])){
                                     <span aria-hidden="true"></span>
                                     </button>
                                 </div>
-                                <div class="modal-body">
-                                                                        ...
+                                <div class="modal-body" id="modal-body">
+
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary btn-close" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-secondary btn-close" id="btn-close" data-dismiss="modal">Close</button>
                                     <button type="button" class="btn btn-primary">Save changes</button>
                                 </div>
                             </div>

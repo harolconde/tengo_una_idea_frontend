@@ -26,23 +26,44 @@ btnPowerof.addEventListener('click', showAllMesageChat(btnPowerof, btnLogout))
 const myModal = document.getElementsByClassName('idea-aprovada')
 const aprobadas = document.getElementById('section-modal')
 const closeModal = document.getElementById('btn-close')
+const ideaModal = document.getElementsByClassName('idea-message-chat-users')
+const contentIdeaModal = document.getElementById('modal-body')
+const parentDestroy = document.getElementById('para-destroy')
+
+let ideaCopied = ' '
 let showModalAll = false
-let showModal = function(){
-    for(let i = 0; i < myModal.length; i++){
-        myModal[i].addEventListener('click', () => {
+let showModal = function(elem, modal, contentModal, contentModalCopy){
+    for(let i = 0; i < elem.length; i++){
+        elem[i].addEventListener('click', () => {
             if(showModalAll == false){
-                aprobadas.style.display = 'block'
+                modal.style.display = 'block'
                 showModalAll = true
+                ideaCopied =  `<span> ${contentModal[i].innerText} </span>`
+                let element = document.createElement('P')
+                element.setAttribute('id', 'para-destroy') 
+                element.innerHTML = ideaCopied
+                console.log(element)
+                contentModalCopy.appendChild(element)
+
+                console.log(element.length)
+
+                contentIdeaModal.removeChild(parentDestroy)
                 console.log(showModalAll)
             }
         })
-        closeModal.addEventListener('click', () => {
-            aprobadas.style.display = 'none'
-            showModalAll = false
-            console.log(showModalAll)
-        })
     }
 }
-showModal()
 
+//Evento mostrar modal
+for(let j = 0; j < myModal.length; j++){
+    myModal[j].addEventListener('click', showModal(myModal, aprobadas, ideaModal, contentIdeaModal))
+}
+
+//Evento cerrar modal
+closeModal.addEventListener('click', () => {  
+    aprobadas.style.display = 'none'
+    showModalAll = false
+    console.log(contentIdeaModal)
+       
+})
 
