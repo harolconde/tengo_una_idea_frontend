@@ -7,3 +7,11 @@
     z-index: 10000;
     display: none;
 }
+.modal-footer {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: end;
+    justify-content: flex-start;
+}

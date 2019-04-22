@@ -1,69 +1,87 @@
 'use strict'
 
-console.log('Este es el home')
 
-const btnPowerof = document.getElementById('btnLogout')
+// ************************
+//   Variables Constantes
+// ************************
+
+//Boton Cerrar sesion
+const btnLogoutSesion = document.querySelector('.container-btn-logout')
 const btnLogout = document.getElementById('btn-logout-off')
-let statePower = false; //Boolean btn salir
 
-let showAllMesageChat = function(elem1, elem2){
-    for(let i = 0; i < elem1.length; i++){
-        elem1[i].addEventListener('click', () => {
-            console.log('Salir')
-            if(statePower == false){
-               elem2.style.display = 'block'
-               statePower = true 
-            }
-            else{
-                elem2.style.display = 'none'
-                statePower = false
-            }
-        })
-    }
-}
-btnPowerof.addEventListener('click', showAllMesageChat(btnPowerof, btnLogout))
-
+//Modal const
 const myModal = document.getElementsByClassName('idea-aprovada')
 const aprobadas = document.getElementById('section-modal')
 const closeModal = document.getElementById('btn-close')
-const ideaModal = document.getElementsByClassName('idea-message-chat-users')
+//const ideaModal = document.getElementsByClassName('idea-message-chat-users')
 const contentIdeaModal = document.getElementById('modal-body')
-const parentDestroy = document.getElementById('para-destroy')
 
+// ***********************
+//     Variables let
+// ***********************
+
+//Boton salir
+let statePower = false; //Boolean btn salir
+
+//Modal let
 let ideaCopied = ' '
 let showModalAll = false
-let showModal = function(elem, modal, contentModal, contentModalCopy){
+
+// ***********************
+//        Funciones
+// ***********************
+
+//Funcion mostrar cerrar sesion
+let showlogout = function(){
+    if(statePower == false){
+        btnLogout.style.display = 'block'
+        statePower = true
+    }
+    else{
+        btnLogout.style.display = 'none'
+        statePower = false
+    }
+}
+
+//Funcion mostrar modal
+let showModal = function(elem, modal, contentModalCopy){
     for(let i = 0; i < elem.length; i++){
         elem[i].addEventListener('click', () => {
             if(showModalAll == false){
                 modal.style.display = 'block'
                 showModalAll = true
-                ideaCopied =  `<span> ${contentModal[i].innerText} </span>`
+                ideaCopied =  `<span> ${elem[i].innerText} </span>`
                 let element = document.createElement('P')
-                element.setAttribute('id', 'para-destroy') 
+                element.setAttribute('class', 'para-destroy') 
                 element.innerHTML = ideaCopied
-                console.log(element)
                 contentModalCopy.appendChild(element)
-
-                console.log(element.length)
-
-                contentIdeaModal.removeChild(parentDestroy)
-                console.log(showModalAll)
             }
         })
     }
 }
 
+//Funcion ocultar modal
+let hideModal = function(){
+    let parentDestroy =  contentIdeaModal.firstElementChild
+    //console.log(contentIdeaModal.firstChild) 
+    aprobadas.style.display = 'none'
+    showModalAll = false
+    contentIdeaModal.removeChild(parentDestroy)
+}
+
+
+// ***********************
+//        Eventos
+// ***********************
+
+//Evento cerrar session
+btnLogoutSesion.addEventListener('click', showlogout)
+
 //Evento mostrar modal
 for(let j = 0; j < myModal.length; j++){
-    myModal[j].addEventListener('click', showModal(myModal, aprobadas, ideaModal, contentIdeaModal))
+    myModal[j].addEventListener('click', showModal(myModal, aprobadas, contentIdeaModal))
 }
 
 //Evento cerrar modal
-closeModal.addEventListener('click', () => {  
-    aprobadas.style.display = 'none'
-    showModalAll = false
-    console.log(contentIdeaModal)
-       
-})
+closeModal.addEventListener('click', hideModal)
 

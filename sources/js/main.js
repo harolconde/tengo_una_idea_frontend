@@ -1,24 +1,6 @@
 'use strict'
 
 
-
-console.warn('Ingresando')
-
-//Evento para el boton salir
-for(let i = 0; i < btnPowerof.length; i++){
-    btnPowerof[i].addEventListener('click', () => {
-        console.log('Salir')
-        if(statePower == false){
-           btnLogout.style.display = 'block'
-           statePower = true 
-        }
-        else{
-            btnLogout.style.display = 'none'
-            statePower = false
-        }
-    })
-}
-
 //Constantes mostrar mensaje completo
 const btnSemoreMessage = document.getElementsByClassName('btn-seemoremessage')
 const paragraphMessageChat = document.getElementsByClassName('idea-message-chat-users')
@@ -79,7 +61,7 @@ for(let i = 0; i < acordeon.length; i++){
 $(document).ready(function(){
 
     $('.owl-cards').owlCarousel({
-        loop:true,
+        //loop:true,
         margin: 5,
         nav:true,
         smartSpeed: 900,

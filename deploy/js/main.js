@@ -1,21 +1,4 @@
-'use strict';
-
-console.warn('Ingresando'); //Evento para el boton salir
-
-for (var i = 0; i < btnPowerof.length; i++) {
-  btnPowerof[i].addEventListener('click', function () {
-    console.log('Salir');
-
-    if (statePower == false) {
-      btnLogout.style.display = 'block';
-      statePower = true;
-    } else {
-      btnLogout.style.display = 'none';
-      statePower = false;
-    }
-  });
-} //Constantes mostrar mensaje completo
-
+'use strict'; //Constantes mostrar mensaje completo
 
 var btnSemoreMessage = document.getElementsByClassName('btn-seemoremessage');
 var paragraphMessageChat = document.getElementsByClassName('idea-message-chat-users');
@@ -23,32 +6,26 @@ var btnMinus = document.getElementsByClassName('iconMoreMinus');
 var state = false; //Boolean mostrar mensaje
 //Evento mostrar todo el mensaje en el chat de ideas
 
-var _loop = function _loop(_i) {
-  btnSemoreMessage[_i].addEventListener('click', function () {
+var _loop = function _loop(i) {
+  btnSemoreMessage[i].addEventListener('click', function () {
     if (state == false) {
-      paragraphMessageChat[_i].style.whiteSpace = "normal";
-      paragraphMessageChat[_i].style.transitionDuration = "0.5s";
-
-      btnMinus[_i].classList.remove('fa-plus');
-
-      btnMinus[_i].classList.add('fa-minus');
-
+      paragraphMessageChat[i].style.whiteSpace = "normal";
+      paragraphMessageChat[i].style.transitionDuration = "0.5s";
+      btnMinus[i].classList.remove('fa-plus');
+      btnMinus[i].classList.add('fa-minus');
       state = true;
     } else {
-      paragraphMessageChat[_i].style.whiteSpace = "nowrap";
-      paragraphMessageChat[_i].style.transitionDuration = "0.5s";
-
-      btnMinus[_i].classList.remove('fa-minus');
-
-      btnMinus[_i].classList.add('fa-plus');
-
+      paragraphMessageChat[i].style.whiteSpace = "nowrap";
+      paragraphMessageChat[i].style.transitionDuration = "0.5s";
+      btnMinus[i].classList.remove('fa-minus');
+      btnMinus[i].classList.add('fa-plus');
       state = false;
     }
   });
 };
 
-for (var _i = 0; _i < btnSemoreMessage.length; _i++) {
-  _loop(_i);
+for (var i = 0; i < btnSemoreMessage.length; i++) {
+  _loop(i);
 } //Constantes mostrar popover me gusta
 
 
@@ -60,31 +37,31 @@ var panel = document.querySelectorAll('.list-allideas'); //Panel oculto de acord
 var varBol = false; //Boolean acordeon perfil del usuario
 //Evento acordeon perfil del usuario
 
-var _loop2 = function _loop2(_i2) {
-  acordeon[_i2].addEventListener('click', function () {
+var _loop2 = function _loop2(i) {
+  acordeon[i].addEventListener('click', function () {
     if (varBol == false) {
       //panel[i].classList.add("activa-user")
-      panel[_i2].style.display = 'block';
-      panel[_i2].style.transition = ' display 1s ease';
+      panel[i].style.display = 'block';
+      panel[i].style.transition = ' display 1s ease';
       varBol = true;
-      console.log(panel[_i2]);
+      console.log(panel[i]);
     } else {
-      panel[_i2].style.display = 'none';
-      panel[_i2].style.transition = 'display 1s ease';
+      panel[i].style.display = 'none';
+      panel[i].style.transition = 'display 1s ease';
       varBol = false;
-      console.log(panel[_i2]);
+      console.log(panel[i]);
     }
   });
 };
 
-for (var _i2 = 0; _i2 < acordeon.length; _i2++) {
-  _loop2(_i2);
+for (var i = 0; i < acordeon.length; i++) {
+  _loop2(i);
 } // Funcion mostrar ideas en carrusel en el tablero de ideas
 
 
 $(document).ready(function () {
   $('.owl-cards').owlCarousel({
-    loop: true,
+    //loop:true,
     margin: 5,
     nav: true,
     smartSpeed: 900,

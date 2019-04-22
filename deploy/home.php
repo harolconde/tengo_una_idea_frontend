@@ -226,7 +226,7 @@ if(!isset($_SESSION["username"])){
                     <div class="container container-ideas">
                         <div class="row">
                             <div class="col-1 "></div>
-                            <div class="col-10">
+                            <div class="col-10 ">
                                 <div class="container-write-idea">
                                     <div class="container-idea-general row">
                                         <div class="col-auto container-write-idea-board">
@@ -247,8 +247,10 @@ if(!isset($_SESSION["username"])){
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-1 column-logout">
-                                <i class="fas fa-power-off logout-icon btnLogout" id="btnLogout"></i>
+                            <div class="col-1  column-logout">
+                                <div class="container-btn-logout">
+                                    <i class="fas fa-power-off logout-icon btnLogout" id="btn-logout"></i>
+                                </div>
                                 <div class="btn btn-logout" id="btn-logout-off">
                                     <button class="btn-i-logout"><a href="index.php">Salir</a></button>
                                 </div>
@@ -294,26 +296,6 @@ if(!isset($_SESSION["username"])){
                                                 <p class="idea-message-chat-users " id="idea-message-chat-users" data-toggle="modal" data-target="#exampleModalScrollable"><?php echo utf8_encode($filas["argumento"]); ?></p>
                                                 <button class="btn-item-card btn btn-block voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_Idea"]; ?>">Votar</button>
                                                 
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-scrollable" role="document">
-                                                    <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        ...
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                        <button type="button" class="btn btn-primary">Save changes</button>
-                                                    </div>
-                                                    </div>
-                                                </div>
-                                                </div>
                                             </div>
                                         
                                             <?php
@@ -343,8 +325,8 @@ if(!isset($_SESSION["username"])){
                                                         </div> -->
                                                         <div class="container-name-votes item-card-idea">
                                                             <!-- <h3 class="name-user-idea"><?php echo utf8_encode($filas["id_user"]); ?> {{newName}}</h3> -->
-                                                            <i class="material-icons liston">turned_in_not</i>
-                                                            <span><?php echo $filas["votos"]; ?></span>
+                                                            <!-- <i class="material-icons liston">turned_in_not</i>
+                                                            <span><?php echo $filas["votos"]; ?></span> -->
                                                             <!-- <ul class="votos">
                                                                 <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_Idea"]; ?>">
                                                                     <i class="fas fa-thumbs-up like"></i>
@@ -353,28 +335,8 @@ if(!isset($_SESSION["username"])){
                                                             </ul> -->
                                                         </div>
                                                         <p class="idea-message-chat-users" id="idea-message-chat-users" data-toggle="modal" data-target="#exampleModalScrollable"><?php echo utf8_encode($filas["argumento"]); ?></p>
-                                                        <!-- <button class="btn-item-card btn btn-block voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_Idea"]; ?>">Votar</button> -->
+                                                        <button class="btn-item-card btn btn-block voting_btn up_button">Ver mas</button>
                                                         
-                                                        <!-- Modal -->
-                                                        <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-scrollable" role="document">
-                                                            <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                ...
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                <button type="button" class="btn btn-primary">Save changes</button>
-                                                            </div>
-                                                            </div>
-                                                        </div>
-                                                        </div>
                                                     </div>
                                                 
                                                     <?php
@@ -390,7 +352,7 @@ if(!isset($_SESSION["username"])){
                                     <div class="owl-carousel owl-cards owl-theme ">
                                             <?php
                                                 require_once("config.php");
-                                                $posts=$db->query("SELECT * FROM ideas WHERE estado = 'aprobada' order by f_creacion desc");
+                                                $posts=$db->query("SELECT * FROM ideas WHERE estado = 'aprobada' order by f_creacion ");
                                                 if ($filas=$posts->fetch_array())
                                                 {
                                                     do
@@ -402,8 +364,8 @@ if(!isset($_SESSION["username"])){
                                                         </div> -->
                                                         <div class="container-name-votes item-card-idea">
                                                             <!-- <h3 class="name-user-idea"><?php echo utf8_encode($filas["id_user"]); ?> {{newName}}</h3> -->
-                                                            <i class="material-icons liston">turned_in_not</i>
-                                                            <span><?php echo $filas["votos"]; ?></span>
+                                                            <!-- <i class="material-icons liston">turned_in_not</i>
+                                                            <span><?php echo $filas["votos"]; ?></span> -->
                                                             <!-- <ul class="votos">
                                                                 <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_Idea"]; ?>">
                                                                     <i class="fas fa-thumbs-up like"></i>
@@ -411,8 +373,8 @@ if(!isset($_SESSION["username"])){
                                                                 </li>
                                                             </ul> -->
                                                         </div>
-                                                        <p class="idea-message-chat-users idea-aprovada" id="idea-message-chat-users"><?php echo utf8_encode($filas["argumento"]); ?></p>
-                                                        <!-- <button class="btn-item-card btn btn-block voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_Idea"]; ?>">Votar</button> -->
+                                                        <p class="idea-message-chat-users idea-message-chat-users-aproved idea-aprovada" id="idea-message-chat-users"><?php echo utf8_encode($filas["argumento"]); ?></p>
+                                                        <button class="btn-item-card btn btn-block voting_btn up_button">Ver mas</button>
                                                         
                                                     </div>
                                                 
@@ -432,20 +394,28 @@ if(!isset($_SESSION["username"])){
                 <section class='section-modal' id="section-modal">
                     <!-- Modal -->
                     <div class="aprobadas" id="aprobadas" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-scrollable" role="document">
+                        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
-                                    <button type="button" class="close"  data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true"></span>
+                                    <button type="button" class="close btn-close" id="btn-close">
+                                    <i class="fas fa-times"></i>
                                     </button>
                                 </div>
                                 <div class="modal-body" id="modal-body">
 
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary btn-close" id="btn-close" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                <div class="modal-footer"> 
+                                    <img src="img/perfil/userPerfil.png" alt="" class="rounded-circle">
+                                    <span class="name-write-idea">
+                                        <?php
+                                            $usuario = $_SESSION["id_user"];
+                                            $mostrarususario = mysqli_query($conexion, "SELECT first_name, last_name FROM users WHERE id_user=$id_creador");
+                                            mysqli_data_seek ($mostrarususario, 0);
+                                
+                                            $extraido= mysqli_fetch_array($mostrarususario);
+                                            echo $extraido['first_name']." ".$extraido['last_name'].'<br/>' ;
+                                        ?>
+                                    </span> 
                                 </div>
                             </div>
                         </div>
