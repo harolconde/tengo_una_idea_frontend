@@ -63,8 +63,8 @@ let showModal = function(elem, modal, contentModalCopy){
 //Funcion ocultar modal
 let hideModal = function(){
     let parentDestroy =  contentIdeaModal.firstElementChild
-    //console.log(contentIdeaModal.firstChild) 
     aprobadas.style.display = 'none'
+    aprobadas.style.transition = 'all .5s ease-in-out'
     showModalAll = false
     contentIdeaModal.removeChild(parentDestroy)
 }

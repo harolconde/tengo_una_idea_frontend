@@ -530,12 +530,11 @@ if(!isset($_SESSION["username"])){
                     }
                 }
 
-
-
+       
         // *************  TEMPLATES ****************
 
         
-
+        
         // Template todas las ideas
         allIdeas.addEventListener('click', function(e){
             e.preventDefault()
@@ -553,8 +552,8 @@ if(!isset($_SESSION["username"])){
                                             <!-- <form action="" method="POST" class="form-New-Message"> -->
                                             <div class="input-group input-group-search">
                                                 
-                                                <input type="search" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-                                                <div class="input-group-prepend">
+                                                <input type="search" class="form-control inputFilterSearch" id="inputFilterSearch" placeholder="Buscar idea por usuario" aria-label="Username" aria-describedby="basic-addon1">
+                                                <div class="input-group-prepend" id="btnFilterSearch">
                                                     <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
                                                 </div>
                                             </div>
@@ -567,8 +566,11 @@ if(!isset($_SESSION["username"])){
                         <section class="section-all-users-all-ideas container">
                             <div class="row">
                                 <div class="col-12">
+                                    <div class="" id="container-result-filter">
+                                        
+                                    </div>
                                     <div class=" contenedor-all-ideas ">
-                                        <div class="card-columns">
+                                        <div class="card-columns" >
                                             <?php
                                                 require_once("config.php");
                                                 $posts=$db->query("SELECT * FROM ideas order by votos desc");
@@ -582,7 +584,7 @@ if(!isset($_SESSION["username"])){
                                                             <img src="img/perfil/userPerfil.png" alt="">
                                                         </div>
                                                         <div class="container-name-votes">
-                                                            <h3 class="name-user-idea"><!--<?php echo ($filas["id_user"]);
+                                                            <h3 class="name-user-idea "><!--<?php echo ($filas["id_user"]);
                                                             $id_creador=$filas["id_user"];
                                                             ?>-->
                                                             <?php
@@ -591,7 +593,7 @@ if(!isset($_SESSION["username"])){
                                                             mysqli_data_seek ($mostrarususario, 0);
 
                                                             $extraido= mysqli_fetch_array($mostrarususario);
-                                                            echo $extraido['first_name']." ".$extraido['last_name'].'<br/>';
+                                                            echo '<span class="name-user-all-idea">'. $extraido['first_name']." ".$extraido['last_name'].'</span>'.'<br/>';
                                                             ?>
                                                                 <ul class="container-btns-likes-dslike">
                                                                     <li>
@@ -645,11 +647,46 @@ if(!isset($_SESSION["username"])){
                 const btnShowAllIdea = document.getElementsByClassName('btn-seemoremessage-template')
                 const textAllIdeas = document.querySelectorAll('.all-message-all-users')
                 const iconAllIdeas = document.getElementsByClassName('iconMoreMinus')
+                const inputFilter = document.querySelector('#inputFilterSearch')// filtro de busqueda;
+                const btnSearch = document.getElementById('btnFilterSearch') // Boton filtro de busqueda
+                const nameUsers = document.getElementsByClassName('name-user-all-idea') // Array de usuarios
+                const result = document.getElementById('container-result-filter')
+ 
+
+                let filterUserIdea = function(){                                       
+                    let texto = inputFilter.value.toLowerCase()
+                    result.innerHTML = ' ' 
+                    for(let name = 0; name < nameUsers.length; name++){
+                        let user = nameUsers[name].innerText.toLowerCase();
+                        if(user.indexOf(texto) !== -1){
+                            let element = nameUsers[name].parentElement.parentElement.parentElement
+                            let templateIdea = document.createElement('DIV')
+                            templateIdea.innerHTML +=  `<div> ${element} </div>`
+                            console.log(element)
+                            //let c = nameUsers[name].parentElement.parentElement.parentElement;
+                            //console.log(nameUsers.offsetParent)
+                            //$('.name-user-all-idea').eq(name).parents('.contatiner-idea-credentials').appendTo('#container-result-filter')
+                            //console.log(c);                            
+                            //$(result).append($(nameUsers[name]).parent().parent().parent());
+                            result.appendChild(templateIdea)
+                           
+                        }
+                    }
+                    if(result === ' '){
+                        result.innerHTML = `<li>Usuario no encontrado</li>`
+                    }
+                }
+                filterUserIdea()
+                btnSearch.addEventListener('click', filterUserIdea)
+                inputFilter.addEventListener('keyup', filterUserIdea)
+                
+
                 //Llamada a la funcion mostrar todos los mensajes
                 for(let i = 0; i < btnShowAllIdea.length; i++){
                     btnShowAllIdea[i].addEventListener('click', itemCollapse(btnShowAllIdea, textAllIdeas,iconAllIdeas))
                 }
                 
+
                 let elem = document.querySelector('.grid');
                 let msnry = new Masonry( elem, {
                 // options

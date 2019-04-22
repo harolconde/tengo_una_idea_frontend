@@ -42,6 +42,10 @@
 }
 .section-return .group-message-send .input-group-search{
     width: 100%;
+    margin-top: .5rem !important;
+}
+.section-return .group-message-send .input-group-search .btnFilterSearch{
+    cursor: pointer;
 }
 .contenedor-all-ideas .contatiner-idea-credentials .btn-seemoremessage i{
     position: absolute;

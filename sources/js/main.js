@@ -11,8 +11,9 @@ let state = false; //Boolean mostrar mensaje
 for(let i = 0; i < btnSemoreMessage.length; i++){
     btnSemoreMessage[i].addEventListener('click', () => {
         if(state == false){
-            paragraphMessageChat[i].style.whiteSpace = "normal"
-            paragraphMessageChat[i].style.transitionDuration = "0.5s"
+            paragraphMessageChat[i].classList.toggle('activeAll')
+            //paragraphMessageChat[i].style.whiteSpace = "normal"
+            //paragraphMessageChat[i].style.transitionDuration = "0.5s"
             btnMinus[i].classList.remove('fa-plus')
             btnMinus[i].classList.add('fa-minus')
             state = true;
@@ -27,8 +28,6 @@ for(let i = 0; i < btnSemoreMessage.length; i++){
     })
 }
 
-//Constantes mostrar popover me gusta
-const btnLike = document.getElementsByClassName('iconLike')
 
 // Constante acordeon perfil del usuario todas las ideas
 const acordeon = document.getElementsByClassName('container-all-idea-user')
@@ -40,7 +39,6 @@ for(let i = 0; i < acordeon.length; i++){
     acordeon[i].addEventListener('click', function(){
        
         if(varBol == false){
-            
             //panel[i].classList.add("activa-user")
             panel[i].style.display = 'block'
             panel[i].style.transition = ' display 1s ease'
