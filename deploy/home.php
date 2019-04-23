@@ -152,23 +152,22 @@ if(!isset($_SESSION["username"])){
                                 echo $extraido['first_name']." ".$extraido['last_name'].'<br/>';
                                 ?>
                                 <ul class="container-btns-likes-dslike">
-                                    <li>
-                                        <i class="fas fa-comment-alt answer-message"></i>
+                                    <li class="list-icons-message">
+                                        <div class="answer-message-cont"><i class="fas fa-comment-alt answer-message" id="answer-message"></i></div>
                                         <i class="fas fa-heart iconLike" data-container="body"  data-toggle="popover" data-placement="right" data-content=' 
                                             <ul class="votos">
                                                 <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_user"]; ?>">
-                         
-                                                    <i class="far fa-smile-beam like face"></i>
+                                                    <img src="img/icons/hapy.svg">
                                                     <span><?php echo $filas["votos"]; ?></span>
                                                 </li>
                                                 <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_user"]; ?>">
                                                 
-                                                    <i class="far fa-frown like face"></i>
+                                                    <img src="img/icons/sad.svg">
                                                     <span>0</span>
                                                 </li>
                                                 <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_user"]; ?>">
                                                 
-                                                    <i class="far fa-meh like face"></i>
+                                                    <img src="img/icons/mee.svg">
                                                     <span>0</span>
                                                 </li>
                                             </ul>
@@ -192,7 +191,7 @@ if(!isset($_SESSION["username"])){
                         
 
                             </div>
-                        </div>
+                    </div>
                 </div>
                 <div class="see-all-ideas">
                     <div class="icon-see-more-ideas">
@@ -200,6 +199,24 @@ if(!isset($_SESSION["username"])){
                     </div>
                     <div class="see-all-ideas-link">
                         <a href="" class="link" id="link-see-all-Ideas">Ver todas</a>
+                    </div>
+                </div>
+                <div class="reply-message" id="reply-message">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 my-1">
+                            <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
+                            <div class="input-group">
+                                
+                                <textarea type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Responde esta idea"></textarea>
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text group-btn-reply-message">
+                                        <button class="btn btn-reply-message">
+                                            <i class="fas fa-paper-plane"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="write-message-mobil w-100 container fixed-bottom">
@@ -566,11 +583,11 @@ if(!isset($_SESSION["username"])){
                         <section class="section-all-users-all-ideas container">
                             <div class="row">
                                 <div class="col-12">
-                                    <div class="" id="container-result-filter">
+                                    <div class="" id="container-result-filter" class="container-result-filter">
                                         
                                     </div>
                                     <div class=" contenedor-all-ideas ">
-                                        <div class="card-columns" >
+                                        <div class="card-columns container-all-ideas-div" >
                                             <?php
                                                 require_once("config.php");
                                                 $posts=$db->query("SELECT * FROM ideas order by votos desc");
@@ -623,7 +640,7 @@ if(!isset($_SESSION["username"])){
                                                             </h3>
                                                         </div>
                                                         <p class="idea-message-chat-users all-message-all-users" id="idea-message-chat-users"><?php echo utf8_encode($filas["argumento"]); ?></p>
-                                                        <button class="btn btn-block btn-seemoremessage  btn-seemoremessage-template" id="btn-seemoremessage-template">Ver <i class="fas fa-plus iconMoreMinus"></i></button>
+                                                        <button class="btn btn-block btn-seemoremessage  btn-seemoremessage-template btn-seemoremessage-template-all" id="btn-seemoremessage-template">Ver <i class="fas fa-plus iconMoreMinus iconMoreMinus-all"></i></button>
                                                         
                                                     </div>
                                                 
@@ -644,34 +661,28 @@ if(!isset($_SESSION["username"])){
                 
                 home.innerHTML = content;
 
-                const btnShowAllIdea = document.getElementsByClassName('btn-seemoremessage-template')
-                const textAllIdeas = document.querySelectorAll('.all-message-all-users')
-                const iconAllIdeas = document.getElementsByClassName('iconMoreMinus')
+                const btnShowAllIdea = document.getElementsByClassName('btn-seemoremessage-template-all')//Mensajes
+                const textAllIdeas = document.getElementsByClassName('all-message-all-users')// Texto
+                const iconAllIdeas = document.getElementsByClassName('iconMoreMinus-all')//icono
                 const inputFilter = document.querySelector('#inputFilterSearch')// filtro de busqueda;
                 const btnSearch = document.getElementById('btnFilterSearch') // Boton filtro de busqueda
-                const nameUsers = document.getElementsByClassName('name-user-all-idea') // Array de usuarios
+                const nameUsers = document.querySelectorAll('div .name-user-all-idea') // Array de usuarios
                 const result = document.getElementById('container-result-filter')
- 
+                
+                let statusMessage = false
 
                 let filterUserIdea = function(){                                       
                     let texto = inputFilter.value.toLowerCase()
-                    result.innerHTML = ' ' 
+                    let contenido = ''
                     for(let name = 0; name < nameUsers.length; name++){
                         let user = nameUsers[name].innerText.toLowerCase();
                         if(user.indexOf(texto) !== -1){
                             let element = nameUsers[name].parentElement.parentElement.parentElement
-                            let templateIdea = document.createElement('DIV')
-                            templateIdea.innerHTML +=  `<div> ${element} </div>`
-                            console.log(element)
-                            //let c = nameUsers[name].parentElement.parentElement.parentElement;
-                            //console.log(nameUsers.offsetParent)
-                            //$('.name-user-all-idea').eq(name).parents('.contatiner-idea-credentials').appendTo('#container-result-filter')
-                            //console.log(c);                            
-                            //$(result).append($(nameUsers[name]).parent().parent().parent());
-                            result.appendChild(templateIdea)
-                           
+                            contenido +=  element.outerHTML
+                            //console.log(element)
                         }
                     }
+                    result.innerHTML = contenido
                     if(result === ' '){
                         result.innerHTML = `<li>Usuario no encontrado</li>`
                     }
@@ -683,16 +694,30 @@ if(!isset($_SESSION["username"])){
 
                 //Llamada a la funcion mostrar todos los mensajes
                 for(let i = 0; i < btnShowAllIdea.length; i++){
-                    btnShowAllIdea[i].addEventListener('click', itemCollapse(btnShowAllIdea, textAllIdeas,iconAllIdeas))
+                    btnShowAllIdea[i].addEventListener('click', () => {
+                        if(statusMessage == false){
+                            textAllIdeas[i].style.whiteSpace = 'normal'
+                            iconAllIdeas[i].classList.remove('fa-plus')
+                            iconAllIdeas[i].classList.add('fa-minus')
+                            statusMessage = true
+                        }
+                        else{
+                            textAllIdeas[i].style.whiteSpace = 'nowrap'
+                            iconAllIdeas[i].classList.remove('fa-minus')
+                            iconAllIdeas[i].classList.add('fa-plus')
+                            statusItem = false
+                        }
+                    })
                 }
                 
+                
 
-                let elem = document.querySelector('.grid');
-                let msnry = new Masonry( elem, {
-                // options
-                    itemSelector: '.grid-item',
-                    columnWidth: 10
-                })
+                // let elem = document.querySelector('.grid');
+                // let msnry = new Masonry( elem, {
+                // // options
+                //     itemSelector: '.grid-item',
+                //     columnWidth: 10
+                // })
 
                 $(document).ready(function(){
                     $('[data-toggle="popover"]').popover({ html : true, container : ".container-g-home" })

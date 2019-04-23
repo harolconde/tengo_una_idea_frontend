@@ -114,6 +114,75 @@
     display: inline-flex !important;
     margin-bottom: .75rem;
 }
+#container-result-filter{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+#container-result-filter .contatiner-idea-credentials{
+    width: 23.25%;
+    background-color: #fff;
+    height: auto;
+    position: relative;
+    margin: 10px 10px 10px 76px;
+    padding: 10px 10px 0px 10px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+}
+#container-result-filter .contatiner-idea-credentials .img-user-in-chat{
+    position: absolute;
+    top: 0;
+    left: -75px;
+    width: 60px;
+    height: 60px;
+}
+#container-result-filter .contatiner-idea-credentials .img-user-in-chat img{
+    width: 90%;
+}
+#container-result-filter .contatiner-idea-credentials::before, .contenedor-all-ideas .contatiner-idea-credentials::after {
+    content: '';
+    height: 0;
+    width: 0;
+    position: absolute;
+    display: block;
+    border-width: 10px 14px 12px 0px;
+    border-style: solid;
+    border-color: transparent #fff;
+    left: -14px;
+    z-index: 1000;
+    top: 8px;
+}
+#container-result-filter .contatiner-idea-credentials .idea-message-chat-users {
+    width: 100%;
+    /* height: 100px; */
+    padding: 2px 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: justify;
+    display: block;
+    font-size: 0.8rem;
+    transition: all .5s;
+}
+// #container-result-filter .contatiner-idea-credentials::before {
+//     content: '';
+//     height: 0;
+//     width: 0;
+//     position: absolute;
+//     display: block;
+//     border-width: 10px 14px 12px 0px;
+//     border-style: solid;
+//     border-color: transparent rgba(0, 0, 0, 0.125);
+//     left: -15.2px;
+//     z-index: 999;
+//     top: 8px;
+// }
+
+.active-all-idea-message{
+    white-space: normal;
+}
 
 // ESTILOS IDEAS MUERTAS
 // Titulo

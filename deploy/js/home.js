@@ -9,6 +9,10 @@
 const btnLogoutSesion = document.querySelector('.container-btn-logout')
 const btnLogout = document.getElementById('btn-logout-off')
 
+//Responder idea
+const btnReply = document.getElementsByClassName('answer-message-cont')
+const layoutReply = document.getElementById('reply-message')
+
 //Modal const
 const myModal = document.getElementsByClassName('idea-aprovada')
 const aprobadas = document.getElementById('section-modal')
@@ -31,6 +35,7 @@ let showModalAll = false
 //        Funciones
 // ***********************
 
+
 //Funcion mostrar cerrar sesion
 let showlogout = function(){
     if(statePower == false){
@@ -43,8 +48,20 @@ let showlogout = function(){
     }
 }
 
+//Funcion responder Mensaje
+let replyMessage = function(){
+    console.log('Replicar mensaje')
+    for(let i = 0; i < btnReply.length; i++){
+        btnReply[i].addEventListener('click', function(){
+            layoutReply.classList.toggle('reply-message-active')
+        })
+    }
+}
+replyMessage()
+
 //Funcion mostrar modal
 let showModal = function(elem, modal, contentModalCopy){
+    
     for(let i = 0; i < elem.length; i++){
         elem[i].addEventListener('click', () => {
             if(showModalAll == false){
@@ -76,6 +93,9 @@ let hideModal = function(){
 
 //Evento cerrar session
 btnLogoutSesion.addEventListener('click', showlogout)
+
+//Evento responder idea
+
 
 //Evento mostrar modal
 for(let j = 0; j < myModal.length; j++){
