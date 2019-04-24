@@ -13,10 +13,12 @@ if(!empty($_POST)){
 				break;
 			}
 			if($user_id==null){
-				print "<script>alert(\"Acceso invalido.\");window.location='../login.php';</script>";
+				print "<script>alert(\"Acceso invalido.\");";
+				header('Location: ../index.php');
 			}else{
 				session_start();
 				$_SESSION["user_id"]=$user_id;
+				header('Location: ../home.php');
 				print "<script>window.location='../home.php';</script>";				
 			}
 		}

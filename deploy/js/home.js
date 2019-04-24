@@ -12,6 +12,9 @@ const btnLogout = document.getElementById('btn-logout-off')
 //Responder idea
 const btnReply = document.getElementsByClassName('answer-message-cont')
 const layoutReply = document.getElementById('reply-message')
+const inputReplyIdea = document.querySelector('.input-reply-idea')
+const btnReplyIdea = document.getElementById('btn-reply-message')
+const messageReply = document.getElementsByClassName('element-reply')
 
 //Modal const
 const myModal = document.getElementsByClassName('idea-aprovada')
@@ -24,6 +27,7 @@ const contentIdeaModal = document.getElementById('modal-body')
 //     Variables let
 // ***********************
 
+
 //Boton salir
 let statePower = false; //Boolean btn salir
 
@@ -31,6 +35,14 @@ let statePower = false; //Boolean btn salir
 let ideaCopied = ' '
 let showModalAll = false
 
+let btnVote = document.getElementsByClassName('voting_like')
+
+let btnVoteAdd = function(){
+    for(let i = 0; i < btnVote.length; i++){
+        console.log(btnVote[i]) 
+    }
+}
+btnVoteAdd()
 // ***********************
 //        Funciones
 // ***********************
@@ -54,10 +66,23 @@ let replyMessage = function(){
     for(let i = 0; i < btnReply.length; i++){
         btnReply[i].addEventListener('click', function(){
             layoutReply.classList.toggle('reply-message-active')
+            btnReplyIdea.addEventListener('click', () => {
+                console.log()
+                let idea = inputReplyIdea.value
+                messageReply[i].innerHTML += //html
+                `
+                    <li>${idea}</li>
+                `
+            })
         })
     }
 }
 replyMessage()
+
+//Funcion Mostrar Mensaje Respondido
+// let showReplyMessage = function(){
+//     inputReplyIdea.value
+// }
 
 //Funcion mostrar modal
 let showModal = function(elem, modal, contentModalCopy){
@@ -95,7 +120,7 @@ let hideModal = function(){
 btnLogoutSesion.addEventListener('click', showlogout)
 
 //Evento responder idea
-
+//btnReplyIdea.addEventListener('click', showReplyMessage)
 
 //Evento mostrar modal
 for(let j = 0; j < myModal.length; j++){

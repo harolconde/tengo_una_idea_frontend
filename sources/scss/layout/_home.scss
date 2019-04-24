@@ -185,16 +185,14 @@
     right: 10px;
 }
 .container-g-home .container-chat .reply-message{
-    
     display: none;
-    
     width: 99%;
-    background-color:#fff;
+    background-color: #fff;
     z-index: 2000;
     border-radius: 5px 5px 0px 0px;
     display: block;
     left: .5%;
-    padding: .5rem;
+    padding: 1rem 1.4rem 2rem 1.4rem;
     border: 1px solid rgba(0, 0, 0, 0.125);
 }
 .reply-message-active{
@@ -203,13 +201,33 @@
     bottom: 0;
     transition: 900ms ease;
 }
+.container-g-home .container-chat .reply-message .input-group-reply-message{
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: stretch;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+}
 .container-g-home .container-chat .reply-message .group-btn-reply-message{
-    padding: 0;
+    width: auto;
+    background-color: #ffff;
+    border: none;
+}
+.container-g-home .container-chat .reply-message .input-reply-idea{
+    border-radius: 32px;
+    height: 3rem;
 }
 .container-g-home .container-chat .reply-message .group-btn-reply-message .btn-reply-message{
-    width: 100%;
-    height: 100%;
-    padding: 15px;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    border-radius: 50%;
     
 }
 .container-g-home .container-chat .reply-message .group-btn-reply-message .btn-reply-message .fa-paper-plane{
@@ -615,6 +633,8 @@
     font-size: .8rem;
     color: #555;
     cursor: pointer;
+    width: 100%;
+    height: 100%;
 }
 .container-g-home .container-post-it .box-cards .owl-cards .item-cards .item-card-idea{
     width: 25px;

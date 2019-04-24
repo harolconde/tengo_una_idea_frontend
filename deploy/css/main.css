@@ -611,7 +611,7 @@
   border-radius: 5px 5px 0px 0px;
   display: block;
   left: .5%;
-  padding: .5rem;
+  padding: 1rem 1.4rem 2rem 1.4rem;
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
@@ -622,14 +622,33 @@
   transition: 900ms ease;
 }
 
+.container-g-home .container-chat .reply-message .input-group-reply-message {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  align-content: center;
+}
+
 .container-g-home .container-chat .reply-message .group-btn-reply-message {
-  padding: 0;
+  width: auto;
+  background-color: #ffff;
+  border: none;
+}
+
+.container-g-home .container-chat .reply-message .input-reply-idea {
+  border-radius: 32px;
+  height: 3rem;
 }
 
 .container-g-home .container-chat .reply-message .group-btn-reply-message .btn-reply-message {
-  width: 100%;
-  height: 100%;
-  padding: 15px;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  border-radius: 50%;
 }
 
 .container-g-home .container-chat .reply-message .group-btn-reply-message .btn-reply-message .fa-paper-plane {
@@ -1061,6 +1080,8 @@
   font-size: .8rem;
   color: #555;
   cursor: pointer;
+  width: 100%;
+  height: 100%;
 }
 
 .container-g-home .container-post-it .box-cards .owl-cards .item-cards .item-card-idea {
@@ -1232,6 +1253,18 @@
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.45);
 }
 
+.contenedor .container-display-reply {
+  width: 100%;
+  height: auto;
+  padding: 5px;
+  border-top: 1px dotted #ddd;
+}
+
+.contenedor .container-display-reply h4 {
+  font-size: .8rem;
+  font-weight: 600;
+}
+
 .contenedor .contatiner-idea-credentials::before, .contenedor .contatiner-idea-credentials::after {
   content: '';
   height: 0;
@@ -1286,6 +1319,22 @@
   display: flex;
 }
 
+.list-icons-message .btnLikeMyHeart {
+  width: auto;
+  height: auto;
+  position: absolute;
+  right: 10px;
+}
+
+.list-icons-message .btnLikeMyHeart .contentBtnLikeMyHeart {
+  position: absolute;
+  right: 0;
+}
+
+.list-icons-message .btnLikeMyHeart .contentBtnLikeMyHeart li img {
+  width: 1.5rem;
+}
+
 .list-icons-message .answer-message-cont, .iconLike {
   margin-right: 3px;
 }
@@ -1317,20 +1366,36 @@
 }
 
 .votos {
-  width: 100%;
-  /* width: 138px; */
-  /* margin: 0 0 10px 40px; */
-  /* border: 2px solid #eee; */
-  /* padding: 10px; */
+  position: absolute;
+  width: auto;
+  padding: 5px;
+  background-color: #fff;
+  right: 0;
+  border: 1px solid #eee;
+  top: 1.5rem;
   list-style: none;
   border-radius: 4px;
   /* margin-bottom: 0; */
   /* top: 3px; */
   /* right: 8px; */
   display: flex;
-  margin-bottom: 0;
+  margin-bottom: 10px;
   align-items: center;
   justify-content: center;
+}
+
+.votos::before, .votos::after {
+  content: '';
+  height: 0;
+  width: 0;
+  position: absolute;
+  display: block;
+  border-width: 10px 0px 12px 15px;
+  border-style: solid;
+  border-color: transparent #263238;
+  right: -14px;
+  z-index: 1000;
+  top: 5px;
 }
 
 .votos .dw_button {
@@ -1350,7 +1415,7 @@
   align-content: center;
 }
 
-.voting_btn span {
+.up_button span {
   font-size: 0.9rem;
   font-family: 'Roboto',sans-serif, Arial;
   /* margin: 10px 0 0 37px; */
@@ -1364,14 +1429,14 @@
   margin: 0;
 }
 
-.voting_btn img {
+.up_button img {
   color: #333;
   width: 4.2rem;
   border-radius: 50%;
   border: 0px transparent;
 }
 
-.voting_btn img:hover circle {
+.up_button img:hover circle {
   background-color: #f9a825;
   transition: .5s;
 }
@@ -1970,7 +2035,7 @@
 .contenedor-all-ideas {
   width: 100%;
   height: auto;
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   justify-content: center;
 }

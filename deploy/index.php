@@ -36,7 +36,7 @@
 								</picture>
 							</div>
 							<div class="card-content">
-								<form role="form" name="login" action="php/autenticacion.php" method="post">
+								<form role="form" name="login" action="php/login.php" method="post">
 									<div class="form-group card-content-input">
 										<!-- <label for="username">Nombre de usuario</label> -->
 										<input type="text" class="form-control input-card-login" id="username" name="username" placeholder="Nombre de usuario">

@@ -1,8 +1,10 @@
 <?php
 @session_start();
-if(!isset($_SESSION["username"])){
+if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
+    print "<script>alert(\"Acceso invalido!\");";
     header('Location: index.php');
 }
+
 // session_start();
 // if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
 // 	print "<script>alert(\"Acceso invalido!\");window.location='login.php';</script>";
@@ -86,33 +88,29 @@ if(!isset($_SESSION["username"])){
                                 ?></b>
                             .</p>  -->
                             <span class="name-credentials"> 
-                                <?php echo $_SESSION["username"];?>
-                                <?php
+                            <?php
                                 
-                                $usuario = $_SESSION["username"];
+                                $usuario = $_SESSION["user_id"];
                                 
                                 $mostrarususario = mysqli_query($conexion, "SELECT first_name, last_name FROM users WHERE id_user='$usuario'");
                                 mysqli_data_seek ($mostrarususario, 0);
-
                                 $extraido= mysqli_fetch_array($mostrarususario);
                                 echo $extraido['first_name']." ".$extraido['last_name'].'<br/>';
                                 
-                                ?> </span>
-
+                                ?>
+                            </span>
+                            <span>
                                 <span class="email-credentials"> 
                                 <?php
-                                $usuario = $_SESSION["username"];
+                                $usuario = $_SESSION["user_id"];
                                 $mostrarususario = mysqli_query($conexion, "SELECT email FROM users WHERE id_user=$usuario");
-                                //mysqli_data_seek ($mostrarususario, 0);
-
-                                // $extraido= mysqli_fetch_array($mostrarususario);
-                                // echo $extraido['email'].'<br/>';
-                                echo $_SESSION["username"].'@novatec.com.co';
+                                mysqli_data_seek ($mostrarususario, 0);
+                                $extraido= mysqli_fetch_array($mostrarususario);
+                                echo $extraido['email'].'<br/>';
                                 
                                 ?>
                                 
                                 </span>
- 
                             </span>
                             <a href="home_user.php"><span>Perfil <i></i></span></a>
                         </div>
@@ -135,6 +133,7 @@ if(!isset($_SESSION["username"])){
                         do
                         {
                         ?>
+                        
                         <div class="contatiner-idea-credentials">
                             <div class="img-user-in-chat">
                                 <img src="img/perfil/userPerfil.png" alt="">
@@ -151,46 +150,57 @@ if(!isset($_SESSION["username"])){
                                 $extraido= mysqli_fetch_array($mostrarususario);
                                 echo $extraido['first_name']." ".$extraido['last_name'].'<br/>';
                                 ?>
-                                <ul class="container-btns-likes-dslike">
-                                    <li class="list-icons-message">
-                                        <div class="answer-message-cont"><i class="fas fa-comment-alt answer-message" id="answer-message"></i></div>
-                                        <i class="fas fa-heart iconLike" data-container="body"  data-toggle="popover" data-placement="right" data-content=' 
-                                            <ul class="votos">
-                                                <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_user"]; ?>">
-                                                    <img src="img/icons/hapy.svg">
-                                                    <span><?php echo $filas["votos"]; ?></span>
-                                                </li>
-                                                <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_user"]; ?>">
-                                                
-                                                    <img src="img/icons/sad.svg">
-                                                    <span>0</span>
-                                                </li>
-                                                <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_user"]; ?>">
-                                                
-                                                    <img src="img/icons/mee.svg">
-                                                    <span>0</span>
-                                                </li>
-                                            </ul>
-                                            '>
-                                        </i>
-                                        <span><?php echo $filas["votos"]; ?></span>
-                                    </li>
-                                </ul>
+                                    <ul class="container-btns-likes-dslike">
+                                        <li class="list-icons-message">
+                                            <div class="answer-message-cont" data-toggle="tooltip" data-placement="top" title="Comentarios"><i class="fas fa-comment-alt answer-message" id="answer-message"></i></div>
+                                            <div class="btnLikeMyHeart">
+                                                <ul class="contentBtnLikeMyHeart">
+                                                    <li><img src="img/icons/myHeart.svg" alt="" data-toggle="tooltip" data-placement="top" title="Votos"></li>
+                                                    <li></li>
+                                                </ul>
+                                                <ul class="votos">
+                                                    <li class=" up_button" data-voto="votos" data-id="<?php echo $filas["id_user"]; ?>" >
+                                                        <img src="img/icons/hapy.svg" data-toggle="tooltip" data-placement="top" title="Me gusta" class="voting_btn voting_like">
+                                                        <span><?php echo $filas["votos"]; ?></span>
+                                                    </li>
+                                                    <li class=" up_button" data-voto="votos" data-id="<?php echo $filas["id_user"]; ?>">
+                                                    
+                                                        <img src="img/icons/sad.svg" data-toggle="tooltip" data-placement="top" title="No me gusta" class="votin_sad">
+                                                        <span>0</span>
+                                                    </li>
+                                                    <li class=" up_button" data-voto="votos" data-id="<?php echo $filas["id_user"]; ?>">
+                                                    
+                                                        <img src="img/icons/mee.svg" data-toggle="tooltip" data-placement="top" title="Me da igual" class="votin_meeh">
+                                                        <span>0</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </h3>
-                                </div>
-                                    <p class="idea-message-chat-users" id="idea-message-chat-users"><?php echo utf8_encode($filas["argumento"]); ?></p>
-                                    <button class="btn btn-block btn-seemoremessage" id="btn-seemoremessage">Ver <i class="fas fa-plus iconMoreMinus"></i></button>
-                                </div>
-                        
-                                <?php
-                                }
-                                while($filas=$posts->fetch_array());
-                                }
-                                else echo "<h3>No hay entradas disponibles.</h3>";
-                                ?>
-                        
-
                             </div>
+                                <p class="idea-message-chat-users" id="idea-message-chat-users"><?php echo utf8_encode($filas["argumento"]); ?></p>
+
+                                <div class="container-display-reply">
+                                    <h4 class="reply-title">
+                                        Comentarios
+                                    </h4>
+                                    <ul class="element-reply">
+                                        
+                                    </ul>
+                                </div>
+                                <button class="btn btn-block btn-seemoremessage" id="btn-seemoremessage">Ver <i class="fas fa-plus iconMoreMinus"></i></button>
+                        </div>
+                        
+                            <?php
+                            }
+                            while($filas=$posts->fetch_array());
+                            }
+                            else echo "<h3>No hay entradas disponibles.</h3>";
+                            ?>
+
+
+                        </div>
                     </div>
                 </div>
                 <div class="see-all-ideas">
@@ -205,12 +215,12 @@ if(!isset($_SESSION["username"])){
                     <div class="row">
                         <div class="col-12 col-sm-12 my-1">
                             <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
-                            <div class="input-group">
+                            <div class="input-group input-group-reply-message">
                                 
-                                <textarea type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Responde esta idea"></textarea>
+                                <textarea type="text" class="form-control input-reply-idea" id=" input-reply-idea" placeholder="Responde esta idea" ></textarea>
                                 <div class="input-group-prepend">
                                     <div class="input-group-text group-btn-reply-message">
-                                        <button class="btn btn-reply-message">
+                                        <button class="btn btn-reply-message" id="btn-reply-message">
                                             <i class="fas fa-paper-plane"></i>
                                         </button>
                                     </div>
@@ -310,7 +320,7 @@ if(!isset($_SESSION["username"])){
                                                         </li>
                                                     </ul> -->
                                                 </div>
-                                                <p class="idea-message-chat-users " id="idea-message-chat-users" data-toggle="modal" data-target="#exampleModalScrollable"><?php echo utf8_encode($filas["argumento"]); ?></p>
+                                                <p class="idea-message-chat-users idea-aprovada" id="idea-message-chat-users " data-toggle="modal" data-target="#exampleModalScrollable"><?php echo utf8_encode($filas["argumento"]); ?></p>
                                                 <button class="btn-item-card btn btn-block voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_Idea"]; ?>">Votar</button>
                                                 
                                             </div>
@@ -351,7 +361,7 @@ if(!isset($_SESSION["username"])){
                                                                 </li>
                                                             </ul> -->
                                                         </div>
-                                                        <p class="idea-message-chat-users" id="idea-message-chat-users" data-toggle="modal" data-target="#exampleModalScrollable"><?php echo utf8_encode($filas["argumento"]); ?></p>
+                                                        <p class="idea-message-chat-users idea-aprovada" id="idea-message-chat-users " data-toggle="modal" data-target="#exampleModalScrollable"><?php echo utf8_encode($filas["argumento"]); ?></p>
                                                         <button class="btn-item-card btn btn-block voting_btn up_button">Ver mas</button>
                                                         
                                                     </div>
@@ -488,13 +498,23 @@ if(!isset($_SESSION["username"])){
         $(document).ready(function() 
         {   
             //Popovers
-            $('[data-toggle="popover"]').popover({ html : true, container : ".container-g-home" })
-            //Modal
+            $('[data-toggle="popover"]').popover({ 
+                html : true,
+                container : ".container-g-home"
+            })
+            
+            $('.voting_like').on({
+                'click' : function(){
+                    alert('Hola mundo')
+                }
+            })
+            //Tooltips
+            $('[data-toggle="tooltip"]').tooltip()
             
             
             
             
-            $(".votos .voting_btn").click(function (e) 
+            $(" .voting_btn").click(function (e) 
             {
                 e.preventDefault();
                 var voto_hecho = $(this).data('voto');
@@ -614,6 +634,8 @@ if(!isset($_SESSION["username"])){
                                                             ?>
                                                                 <ul class="container-btns-likes-dslike">
                                                                     <li>
+                                                                        
+                                                                        
                                                                         <i class="fas fa-heart iconLike" data-container="body"  data-toggle="popover" data-placement="right" data-content=' 
                                                                             <ul class="votos">
                                                                                 <li class="voting_btn up_button" data-voto="votos" data-id="<?php echo $filas["id_user"]; ?>">
@@ -641,6 +663,11 @@ if(!isset($_SESSION["username"])){
                                                         </div>
                                                         <p class="idea-message-chat-users all-message-all-users" id="idea-message-chat-users"><?php echo utf8_encode($filas["argumento"]); ?></p>
                                                         <button class="btn btn-block btn-seemoremessage  btn-seemoremessage-template btn-seemoremessage-template-all" id="btn-seemoremessage-template">Ver <i class="fas fa-plus iconMoreMinus iconMoreMinus-all"></i></button>
+                                                        <div class="container-display-reply">
+                                                            <ul class="list-reply">
+                                                            
+                                                            </ul>
+                                                        </div>
                                                         
                                                     </div>
                                                 

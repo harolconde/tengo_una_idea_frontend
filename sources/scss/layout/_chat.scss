@@ -19,6 +19,16 @@
     -moz-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.45);
     box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.45);
 }
+.contenedor  .container-display-reply{
+    width: 100%;
+    height: auto;
+    padding: 5px;
+    border-top: 1px dotted #ddd;
+}
+.contenedor  .container-display-reply h4{
+    font-size: .8rem;
+    font-weight: 600;
+}
 .contenedor .contatiner-idea-credentials::before, .contenedor .contatiner-idea-credentials::after{
     content: '';
     height: 0;
@@ -71,6 +81,20 @@
 .list-icons-message{
     display: flex;
 }
+
+.list-icons-message .btnLikeMyHeart{
+    width: auto;
+    height: auto;
+    position: absolute;
+    right: 10px;
+}
+.list-icons-message .btnLikeMyHeart .contentBtnLikeMyHeart{
+    position: absolute;
+    right: 0;
+}
+.list-icons-message .btnLikeMyHeart .contentBtnLikeMyHeart li img{
+    width: 1.5rem;
+}
 .list-icons-message .answer-message-cont,.iconLike{
     margin-right: 3px;
 }
@@ -97,21 +121,35 @@
     cursor: pointer;
 }
 .votos {
-    // position: absolute; 
-    width: 100%;
-    /* width: 138px; */
-    /* margin: 0 0 10px 40px; */
-    /* border: 2px solid #eee; */
-    /* padding: 10px; */
+    position: absolute;
+    width: auto;
+    padding: 5px;
+    background-color: #fff;
+    right: 0;
+    border: 1px solid #eee;
+    top: 1.5rem;
     list-style: none;
     border-radius: 4px;
     /* margin-bottom: 0; */
     /* top: 3px; */
     /* right: 8px; */
     display: flex;
-    margin-bottom: 0;
+    margin-bottom: 10px;
     align-items: center;
     justify-content: center;
+}
+.votos::before, .votos::after{
+    content: '';
+    height: 0;
+    width: 0;
+    position: absolute;
+    display: block;
+    border-width: 10px 0px 12px 15px;
+    border-style: solid;
+    border-color: transparent #263238;
+    right: -14px;
+    z-index: 1000; 
+    top: 5px; 
 }
 
 .votos .dw_button {
@@ -133,7 +171,7 @@
 }
 
 
-.voting_btn span{
+.up_button span{
     font-size: 0.9rem;
     font-family: 'Roboto',sans-serif, Arial;
     /* margin: 10px 0 0 37px; */
@@ -146,13 +184,13 @@
     padding: 0;
     margin: 0;
 }
-.voting_btn img{
+.up_button img{
     color: #333;
     width: 4.2rem;
     border-radius: 50%;
     border: 0px transparent;
 }
-.voting_btn img:hover circle{
+.up_button img:hover circle{
     background-color: #f9a825;
     transition: .5s;
 }
