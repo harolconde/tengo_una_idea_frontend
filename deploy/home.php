@@ -152,11 +152,11 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                                 ?>
                                     <ul class="container-btns-likes-dslike">
                                         <li class="list-icons-message">
-                                            <div class="answer-message-cont" data-toggle="tooltip" data-placement="top" title="Comentarios"><i class="fas fa-comment-alt answer-message" id="answer-message"></i></div>
+                                            
                                             <div class="btnLikeMyHeart">
                                                 <ul class="contentBtnLikeMyHeart">
                                                     <li><img src="img/icons/myHeart.svg" alt="" data-toggle="tooltip" data-placement="top" title="Votos"></li>
-                                                    <li></li>
+                                                    <li><?php echo $filas["votos"]; ?></li>
                                                 </ul>
                                                 <ul class="votos">
                                                     <li class=" up_button" data-voto="votos" data-id="<?php echo $filas["id_user"]; ?>" >
@@ -179,17 +179,32 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                                     </ul>
                                 </h3>
                             </div>
-                                <p class="idea-message-chat-users" id="idea-message-chat-users"><?php echo utf8_encode($filas["argumento"]); ?></p>
+                                <p class="idea-message-chat-users" id="idea-message-chat-users"><?php echo utf8_encode($filas["argumento"]); 
+                                
+                                ?>
+                                <span class="id_idea_mas" name="id_idea">
+                                    <?php
+                                        echo utf8_encode($filas["id_Idea"]); 
+                                    ?>
+                                </span>    
+                            </p>
 
                                 <div class="container-display-reply">
                                     <h4 class="reply-title">
                                         Comentarios
+                                        <span class="btnAddNewReply">
+                                            <i class="fas fa-plus-circle" data-toggle="tooltip" data-placement="left" title="Agregar respuesta"></i>
+                                        </span> 
                                     </h4>
-                                    <ul class="element-reply">
+                                    <ul class="element-reply list-group list-group-flush">
                                         
                                     </ul>
                                 </div>
-                                <button class="btn btn-block btn-seemoremessage" id="btn-seemoremessage">Ver <i class="fas fa-plus iconMoreMinus"></i></button>
+                                <hr>
+                                <button class="btn btn-block btn-seemoremessage" id="btn-seemoremessage">Ver 
+                                <!-- <div class="answer-message-cont" data-toggle="tooltip" data-placement="top" title="Comentarios"></div> -->
+                                <i class="fas fa-comment-alt answer-message" id="answer-message"></i>
+                                <i class="fas fa-plus iconMoreMinus"></i></button>
                         </div>
                         
                             <?php
@@ -216,15 +231,24 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                         <div class="col-12 col-sm-12 my-1">
                             <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
                             <div class="input-group input-group-reply-message">
-                                
-                                <textarea type="text" class="form-control input-reply-idea" id=" input-reply-idea" placeholder="Responde esta idea" ></textarea>
-                                <div class="input-group-prepend">
-                                    <div class="input-group-text group-btn-reply-message">
-                                        <button class="btn btn-reply-message" id="btn-reply-message">
-                                            <i class="fas fa-paper-plane"></i>
-                                        </button>
+                                <?php
+                                    $usuario_id = $_SESSION["user_id"];
+                                    $id_idea = $_SESSION["id_idea"];
+                                    $comentario = $_SESSION["reply_ideas"];
+                                    echo $id_idea.' '.$comentario;
+                                    $insertarComentario ="INSERT INTO comentarios (`id_user`,`id_Idea`, `comentario`)
+                                    VALUES ('".$_SESSION["user_id"]."','".$_SESSION["id_idea"]."','".$comentario."')";
+                                ?>
+                                <!-- <form action="" method="post"> -->
+                                    <textarea type="text" class="form-control input-reply-idea" id=" input-reply-idea" placeholder="Responde esta idea" name="reply_ideas"></textarea>
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text group-btn-reply-message">
+                                            <button class="btn btn-reply-message" id="btn-reply-message">
+                                                <i class="fas fa-paper-plane"></i>
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
+                                <!-- </form> -->
                             </div>
                         </div>
                     </div>
@@ -260,7 +284,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                                             <label class="sr-only" for="inlineFormInputGroup">Cual es tu idea?</label>
                                             <div class="input-group group-message-send mb-2">
                                                 <form action="procesar_mensaje.php" method="POST" class="form-New-Message">
-                                                    <textarea  cols="30" rows="10" class="space-whrite-idea" v-model="newMessage" class="form-control" id="inlineFormInputGroup" placeholder="Cual es tu idea?" name="argumento" require></textarea>
+                                                    <textarea  cols="30" rows="10" class="space-whrite-idea" class="form-control" id="inlineFormInputGroup" placeholder="Cual es tu idea?" name="argumento" require></textarea>
                                                     <div class="input-group-prepend">
                                                         <div class="input-group-text">
                                                             <button class="btn btn-plus-idea" @click="addComments" type="submit" value="Enviar Comentario" >
@@ -536,6 +560,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                 }
             });
         });
+
 
         const home = document.getElementById('container-board-home')
         const allIdeas = document.getElementById('link-see-all-Ideas') //Todas las ideas

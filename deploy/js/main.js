@@ -3,6 +3,7 @@
 var btnSemoreMessage = document.getElementsByClassName('btn-seemoremessage');
 var paragraphMessageChat = document.getElementsByClassName('idea-message-chat-users');
 var btnMinus = document.getElementsByClassName('iconMoreMinus');
+var panelReply = document.getElementsByClassName('container-display-reply');
 var state = false; //Boolean mostrar mensaje
 //Evento mostrar todo el mensaje en el chat de ideas
 
@@ -11,12 +12,26 @@ var _loop = function _loop(i) {
     if (state == false) {
       paragraphMessageChat[i].style.whiteSpace = "normal";
       paragraphMessageChat[i].style.transitionDuration = "0.5s";
+      panelReply[i].style.display = 'flex';
+      panelReply[i].style.transition = 'all 500ms linear';
+      btnSemoreMessage[i].style.backgroundColor = '#f1f1f1';
+      btnSemoreMessage[i].style.fontWeight = '600';
+      btnSemoreMessage[i].style.border = '1px solid #ddd';
+      btnSemoreMessage[i].style.borderRadius = '22px';
+      btnSemoreMessage[i].style.transition = 'all 700ms linear';
       btnMinus[i].classList.remove('fa-plus');
       btnMinus[i].classList.add('fa-minus');
       state = true;
     } else {
       paragraphMessageChat[i].style.whiteSpace = "nowrap";
       paragraphMessageChat[i].style.transitionDuration = "0.5s";
+      panelReply[i].style.display = 'none';
+      panelReply[i].style.transition = 'all 500ms linear';
+      btnSemoreMessage[i].style.backgroundColor = '#fafafa';
+      btnSemoreMessage[i].style.fontWeight = '400';
+      btnSemoreMessage[i].style.border = '1px solid transparent';
+      btnSemoreMessage[i].style.borderRadius = '5px';
+      btnSemoreMessage[i].style.transition = 'all 700ms linear';
       btnMinus[i].classList.remove('fa-minus');
       btnMinus[i].classList.add('fa-plus');
       state = false;
@@ -26,10 +41,8 @@ var _loop = function _loop(i) {
 
 for (var i = 0; i < btnSemoreMessage.length; i++) {
   _loop(i);
-} //Constantes mostrar popover me gusta
+} // Constante acordeon perfil del usuario todas las ideas
 
-
-var btnLike = document.getElementsByClassName('iconLike'); // Constante acordeon perfil del usuario todas las ideas
 
 var acordeon = document.getElementsByClassName('container-all-idea-user');
 var panel = document.querySelectorAll('.list-allideas'); //Panel oculto de acordeon perfil del usuario
