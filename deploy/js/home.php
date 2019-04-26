@@ -29,7 +29,7 @@ const closeModal = document.getElementById('btn-close')
 const contentIdeaModal = document.getElementById('modal-body')
 
 // ***********************
-//     Variables let 
+//     Variables let
 // ***********************
 
 
@@ -100,27 +100,27 @@ let replyMessage = function(){
             layoutReply.classList.toggle('reply-message-active')
             let valor = id_idea[i].innerText
             inputReplyIdea.value = valor
-            // btnReplyIdea.addEventListener('click', () => {
-            //     //let myReply = []
-            //     let idea = inputReplyIdea.value
-            //     let elemCreated = document.createElement('li')
-            //     elemCreated.setAttribute('class', 'replyAdded list-group-item')
-            //     //myReply.push(idea)
-            //     let indice = elemCreated
-            //     elemCreated.innerHTML = //html
-            //     `
-            //         <div class="replyAddedBody">
-            //             <p class="replyAddedParagraph">${idea}</p>
-            //             <div class="imgReplyAddedBody">
-            //                 <img src="img/perfil/userAdmon.png" alt="">
-            //             </div>
-            //         </div>
-            //     `
-            //     messageReply[i].appendChild(elemCreated)
+            btnReplyIdea.addEventListener('click', () => {
+                //let myReply = []
+                let idea = inputReplyIdea.value
+                let elemCreated = document.createElement('li')
+                elemCreated.setAttribute('class', 'replyAdded list-group-item')
+                //myReply.push(idea)
+                let indice = elemCreated
+                elemCreated.innerHTML = //html
+                `
+                    <div class="replyAddedBody">
+                        <p class="replyAddedParagraph">${idea}</p>
+                        <div class="imgReplyAddedBody">
+                            <img src="img/perfil/userAdmon.png" alt="">
+                        </div>
+                    </div>
+                `
+                messageReply[i].appendChild(elemCreated)
                 
-            //     //console.log(myReply)
+                //console.log(myReply)
                 
-            // })
+            })
             
             
         })
