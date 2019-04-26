@@ -67,7 +67,7 @@ const btnIdDead = document.getElementById('ideas-dead') //Ideas muertas
                                         <div class="card-columns">
                                         <?php
                                         require_once("../config.php");
-                                        $posts=$db->query("SELECT * FROM ideas order by f_creacion desc");
+                                        $posts=$db->query("SELECT * FROM ideas WHERE estado='muerta' order by f_creacion desc");
                                         if ($filas=$posts->fetch_array())
                                         {
                                         do

@@ -15,7 +15,7 @@ if(!empty($_POST)){
 			if($user_id==null){
 				print "<script>alert(\"Acceso invalido.\");";
 				header('Location: ../index.php');
-			}else{
+			}else{ 
 				session_start();
 				$_SESSION["user_id"]=$user_id;
 				header('Location: ../home.php');

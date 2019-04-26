@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-04-2019 a las 22:39:54
+-- Tiempo de generación: 26-04-2019 a las 16:21:50
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -49,13 +49,17 @@ CREATE TABLE `ideas` (
 INSERT INTO `ideas` (`id_Idea`, `id_user`, `argumento`, `estado`, `f_creacion`, `f_aprobacion`, `f_muerte`, `votos`, `formulario`, `memorias`, `id`) VALUES
 (1, 2, 'propongo idea 1 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene u', 'muerta', '2019-03-29 15:22:49', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 4, '', '', 0),
 (4, 8, 'propongo idea 4 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene u', 'muerta', '2019-03-28 19:29:06', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 2, '', '', 0),
-(13, 26, 'propongo idea 13 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene ', 'muerta', '2019-04-04 14:57:19', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 3, '', '', 0),
-(21, 42, 'propongo idea 21 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene ', 'aprobada', '2019-03-29 20:33:54', '2019-03-12 05:00:00', '0000-00-00 00:00:00', 13, '', '', 0),
+(13, 26, 'propongo idea 13 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene ', 'muerta', '2019-04-12 16:31:06', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 4, '', '', 0),
+(21, 42, 'propongo idea 21 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene ', 'aprobada', '2019-04-12 16:31:28', '2019-03-12 05:00:00', '0000-00-00 00:00:00', 14, '', '', 0),
 (25, 50, 'propongo idea 25 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene ', 'aprobada', '2019-03-29 20:33:03', '2019-03-12 05:00:00', '0000-00-00 00:00:00', 13, '', '', 0),
 (26, 52, 'propongo idea 26 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene ', 'aprobada', '2019-03-27 19:27:51', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 8, '', '', 0),
 (27, 54, 'propongo idea 27 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene ', 'aprobada', '2019-03-01 05:00:00', '2019-03-12 05:00:00', '0000-00-00 00:00:00', 12, '', '', 0),
 (28, 56, 'propongo idea 28 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene ', 'aprobada', '2019-03-27 19:27:43', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 6, '', '', 0),
-(29, 58, 'propongo idea 29 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene ', 'aprobada', '2019-03-29 20:33:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 13, '', '', 0);
+(29, 58, 'propongo idea 29 Es un hecho establecido hace demasiado tiempo que un lector se distraer? con el contenido del texto de un sitio mientras que mira su dise?o. El punto de usar Lorem Ipsum es que tiene ', 'aprobada', '2019-03-29 20:33:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 13, '', '', 0),
+(39, 2, 'Mi idea', 'comite', '2019-04-26 14:19:59', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '', '', 0),
+(40, 2, 'dfadf', 'propuesta', '2019-04-24 19:52:28', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '', '', 0),
+(41, 59, 'Idea de prueba', 'propuesta', '2019-04-24 20:35:52', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '', '', 0),
+(42, 59, 'Tengo mucha hambre, es hora de almorzar\r\n', 'aprobada', '2019-04-26 14:19:32', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -68,7 +72,7 @@ CREATE TABLE `users` (
   `email` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
   `username` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `type` enum('basic','admin','comite','') COLLATE utf8_spanish_ci NOT NULL,
-  `password` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
+  `password` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `first_name` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `last_name` varchar(50) CHARACTER SET armscii8 NOT NULL,
   `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -87,7 +91,15 @@ INSERT INTO `users` (`id_user`, `email`, `username`, `type`, `password`, `first_
 (52, '52CARMEN@notatec.com.co', '52CARMEN', 'basic', '123', 'CARMEN', 'HUNT', '0000-00-00 00:00:00'),
 (54, '54PENELOPE@notatec.com.co', '54PENELOPE', 'basic', '123', 'PENELOPE', 'PINKETT', '0000-00-00 00:00:00'),
 (56, '56DAN@notatec.com.co', '56DAN', 'basic', '123', 'DAN', 'HARRIS', '0000-00-00 00:00:00'),
-(58, '58CHRISTIAN@notatec.com.co', '58CHRISTIAN', 'basic', '123', 'CHRISTIAN', 'AKROYD', '0000-00-00 00:00:00');
+(58, '58CHRISTIAN@notatec.com.co', '58CHRISTIAN', 'basic', '123', 'CHRISTIAN', 'AKROYD', '0000-00-00 00:00:00'),
+(59, 'harol.conde@novatec.com.co', 'harol.conde', 'basic', 'Temporal123', 'Harol', 'Conde', '2019-04-24 20:34:10'),
+(61, 'camilo.ramirez@novatec.com.co', 'luisa.rodriguez', 'basic', 'Temporal123', 'Camilo', 'Ramirez', '2019-04-24 20:47:29'),
+(63, 'luisa.rodriguez@novatec.com.co', 'luisa.rodriguez', 'basic', 'Temporal123', 'Luisa', 'Rodriguez', '2019-04-24 20:51:04'),
+(65, 'alexandra.chisco@novatec.com.co', 'alexandra.chisco', 'basic', 'Temporal123', 'Alexandra', 'Chisco', '2019-04-24 20:55:35'),
+(66, 'elizabeth.lavado@novatec.com.co', 'elizabeth.lavado', 'basic', 'Temporal123', 'Elizabeth', 'Lavado', '2019-04-24 20:57:04'),
+(67, 'monica.cardozo@novatec.com.co', 'monica.cardozo', 'basic', 'Temporal123', 'Monica', 'Cardozo', '2019-04-24 20:58:06'),
+(68, 'paola.ardila@novatec.com.co', 'paola.ardila', 'basic', 'Temporal123', 'Paola', 'Ardila', '2019-04-24 20:59:21'),
+(69, 'sandra.parra@novatec.com.co', 'sandra.parra', 'basic', 'Temporal123', 'Sandra', 'Parra', '2019-04-24 21:00:19');
 
 -- --------------------------------------------------------
 
@@ -321,13 +333,13 @@ ALTER TABLE `votacion`
 -- AUTO_INCREMENT de la tabla `ideas`
 --
 ALTER TABLE `ideas`
-  MODIFY `id_Idea` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id_Idea` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT de la tabla `votacion`
@@ -344,13 +356,6 @@ ALTER TABLE `votacion`
 --
 ALTER TABLE `ideas`
   ADD CONSTRAINT `ideas_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`);
-
---
--- Filtros para la tabla `votacion`
---
-ALTER TABLE `votacion`
-  ADD CONSTRAINT `votacion_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`),
-  ADD CONSTRAINT `votacion_ibfk_2` FOREIGN KEY (`id_idea`) REFERENCES `ideas` (`id_Idea`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

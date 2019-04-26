@@ -171,7 +171,8 @@ const allIdeas = document.getElementById('link-see-all-Ideas') //Todas las ideas
                     if(result === ' '){
                         result.innerHTML = `<li>Usuario no encontrado</li>`
                     }
-                    //Llamada a la funcion mostrar todos los mensajes
+                }
+                //Llamada a la funcion mostrar todos los mensajes
                     for(let i = 0; i < btnShowAllIdea.length; i++){
                         
                         btnShowAllIdea[i].addEventListener('click', () => {
@@ -190,8 +191,6 @@ const allIdeas = document.getElementById('link-see-all-Ideas') //Todas las ideas
                             }
                         })
                     }
-                
-                }
                 filterUserIdea()
                 btnSearch.addEventListener('click', filterUserIdea)
                 inputFilter.addEventListener('keyup', filterUserIdea)

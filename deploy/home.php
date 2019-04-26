@@ -33,18 +33,7 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
 // 	print "<script>alert(\"Acceso invalido!\");window.location='login.php';</script>";
 //     }
 ?>
-<?php
-    $host_db="localhost";
-    $user_db="root";
-    $pass_db="";
-    $bd_name="db_novatecideas";
-    $tabla="users";
- 
-    $conexion=new mysqli($host_db, $user_db, $pass_db, $bd_name);
-    if ($conexion -> connect_error) {
-        die("La conexion fallo". $conexion -> connect_error);
-    }
-?>
+
 
 <html>
 	<head>
@@ -254,24 +243,16 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                         <div class="col-12 col-sm-12 my-1">
                             <label class="sr-only" for="inlineFormInputGroupUsername">Username</label>
                             <div class="input-group input-group-reply-message">
-                                <?php
-                                    $usuario_id = $_SESSION["user_id"];
-                                    $id_idea = $_SESSION["id_idea"];
-                                    $comentario = $_SESSION["reply_ideas"];
-                                    echo $id_idea.' '.$comentario;
-                                    $insertarComentario ="INSERT INTO comentarios (`id_user`,`id_Idea`, `comentario`)
-                                    VALUES ('".$_SESSION["user_id"]."','".$_SESSION["id_idea"]."','".$comentario."')";
-                                ?>
-                                <!-- <form action="" method="post"> -->
+                                <form action="procesar_comentario.php" method="POST">
                                     <textarea type="text" class="form-control input-reply-idea" id=" input-reply-idea" placeholder="Responde esta idea" name="reply_ideas"></textarea>
                                     <div class="input-group-prepend">
                                         <div class="input-group-text group-btn-reply-message">
-                                            <button class="btn btn-reply-message" id="btn-reply-message">
+                                            <button type="button" class="btn btn-reply-message" id="btn-reply-message">
                                                 <i class="fas fa-paper-plane"></i>
                                             </button>
                                         </div>
                                     </div>
-                                <!-- </form> -->
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -545,9 +526,45 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script type="text/javascript">
+        
+        'use strict'
+        // const input_capture_idea = document.getElementById('input-reply-idea')
+        // let var 
 
         $(document).ready(function() 
         {   
+            var input_capture_idea = $("#input-reply-idea")
+            var btn_selected = $('.btnAddNewReply')
+            for (var i = 0; i < $(btn_selected).length; i++){
+                $(btn_selected[i]).on({
+                    'click' : function(){
+                            var valueIdIdea = $(inputReplyIdea).val()
+                            //console.log($(valueIdIdea).val())
+                    }
+                })
+            }
+
+            $('.btn-reply-message').on('click',function(e){
+                e.preventDefault()
+                var comm = $(inputReplyIdea).val()
+                comm = parseInt(comm)
+                $.ajax({
+                    url: 'procesar_comentario.php',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    data : JSON.stringify({ idea: , comentario: comm }),
+                    success: function(){
+                        setTimeout(() => {
+                            console.log(data)
+                            alert('Comentario agregado')
+                        }, 1000);
+                    }
+                })
+            })
+                        
+
+            console.log(btn_selected)
             //Popovers
             $('[data-toggle="popover"]').popover({ 
                 html : true,
@@ -586,6 +603,10 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
                     setTimeout(function() {$('.votado').fadeOut('fast');}, 3000);
                 }
             });
+            //const id_idea_capture = document.getElementsByClassName('id_idea_mas')
+            
+            console.log(input_capture_idea)
+
         });
 
 
@@ -593,7 +614,6 @@ if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){
         //const allIdeas = document.getElementById('link-see-all-Ideas') //Todas las ideas
 
         
-        'use strict'
 
         //const btnIdDead = document.getElementById('ideas-dead') //Ideas muertas
         //const btnIdFinish = document.getElementById('ideas-finish') //Ideas finalizadas
